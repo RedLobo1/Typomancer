@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b679afd6ee03dad4bbeff61e2b51c185, type: 3}
   m_Name: EnemyTemplate
   m_EditorClassIdentifier: 
-  Name: 
-  PrizeLetter: 0
-  Health: 0
-  attackCooldown: 0
+  Name: Dwarf
+  PrizeLetter: 100
+  Health: 10
+  attackCooldown: 2
   enemySprite: {fileID: 0}
