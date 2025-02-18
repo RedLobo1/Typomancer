@@ -7,9 +7,9 @@ public class StringByteDictionary
 {
     public List<StringBytePair> entries = new List<StringBytePair>();
 
-    public Dictionary<string, byte> ToDictionary()
+    public Dictionary<string, float> ToDictionary()
     {
-        Dictionary<string, byte> dictionary = new Dictionary<string, byte>();
+        Dictionary<string, float> dictionary = new Dictionary<string, float>();
         foreach (var pair in entries)
         {
             dictionary[pair.key] = pair.value;

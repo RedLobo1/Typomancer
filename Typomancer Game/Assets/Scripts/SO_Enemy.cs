@@ -6,27 +6,27 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Enemy", menuName = "ScriptableObjects/Enemy")]
 public class SO_Enemy : ScriptableObject
 {
-    
+
 
     public string Name;
     public char PrizeLetter; //text displayed when using the word
     public byte Health;
-    public float attackCooldown; //Seconds until next attack --> could possible decrease over time? 
+    public float BasettackCooldown; //Seconds until next attack --> could possible decrease over time? 
     public StringByteDictionary wordList;
 
     public EStatusEffect? StatusEffect = null;
     public Sprite enemySprite;
 
-    private Dictionary<string, byte> _wordList;
-    public Dictionary<string, byte> WordList
+    private Dictionary<string, float> _availableWords;
+    public Dictionary<string, float> AvailableWords
     {
         get
         {
-            if (_wordList == null)
+            if (_availableWords == null)
             {
-                _wordList = wordList.ToDictionary();
+                _availableWords = wordList.ToDictionary();
             }
-            return _wordList;
+            return _availableWords;
         }
     }
 }

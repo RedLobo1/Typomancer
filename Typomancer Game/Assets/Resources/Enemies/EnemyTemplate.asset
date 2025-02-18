@@ -22,4 +22,4 @@ MonoBehaviour:
       value: 60
     - key: 
       value: 0
-  enemySprite: {fileID: 0}
+  enemySprite: {fileID: -1463742794, guid: 128a76340023d064683f20e8253c7a2c, type: 3}

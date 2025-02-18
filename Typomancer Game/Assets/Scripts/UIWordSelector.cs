@@ -21,6 +21,9 @@ public class UIWordSelector : MonoBehaviour
 
     private bool canSubmit = false;
 
+
+    private Action<string, WordEventArgs> OnAttackOpponent;
+
     void Start()
     {
         loadInOwnedLetters = FindObjectOfType<LoadInOwnedLetters>();
@@ -66,6 +69,7 @@ public class UIWordSelector : MonoBehaviour
     {
         ClearLetters();
         canSubmit = false;
+        OnAttackOpponent?.Invoke("player", GetSpelledWord());
         Invoke("LoadInStartSequence", 1f);
     }
 
