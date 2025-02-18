@@ -5,7 +5,7 @@ using UnityEngine;
 public class WordManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    List<SO_Word> _wordList = new List<SO_Word>();
+    public List<SO_Word> _wordList = new List<SO_Word>();
     void Start()
     {
         LoadDictionary();
