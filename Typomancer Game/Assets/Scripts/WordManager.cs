@@ -1,14 +1,25 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WordManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public List<SO_Word> _wordList = new List<SO_Word>();
+    public List<List<SO_Word>> _wordList = new();
+    public List<SO_Word> _AttackList = new List<SO_Word>();
+    public List<SO_Word> _DefenceList = new List<SO_Word>();
+    public List<SO_Word> _HealList = new List<SO_Word>();
+    public List<SO_Word> _StatusList = new List<SO_Word>();
     UIWordSelector UI;
+
+    private string[] types = { "Attacks", "Defence", "Health", "Status" };
+    private string[] wordGroups = { "3-LetterWords"/*, "4-LetterWords"*/};
+
+    private string[] hexColors = { "#E31D2B", "#00A0FF", "#1DE276", "#E8DE1C", "#FFFFFF" };
+    private List<Color> colors = new List<Color>();
     void Start()
     {
+        ConvertHexToColors();
         LoadDictionary();
         Debug.Log(_wordList.Count);
 
@@ -16,36 +27,39 @@ public class WordManager : MonoBehaviour
         UI.OnValidateWord += ValidateWord;
     }
 
-    private void ValidateWord(object sender, WordEventArgs e)
+    private void ConvertHexToColors()
     {
-        if (IsWordInDictionary(GetWordFromEvent(e)))
+        foreach (var hex in hexColors)
         {
-            foreach (var letter in e.Word)
-            {
-                letter.color = Color.green;
-            }
-
-        }
-        else
-        {
-            foreach (var letter in e.Word)
-            {
-                letter.color = Color.black;
-            }
+            ColorUtility.TryParseHtmlString(hex, out Color color);
+            colors.Add(color);
         }
     }
 
-    private bool IsWordInDictionary(string spelledWord)
+    private void ValidateWord(object sender, WordEventArgs e)
     {
-        foreach (var word in _wordList)
+        var color = IsWordInDictionary(GetWordFromEvent(e));
+        foreach (var letter in e.Word)
         {
-            if (word.Word.ToLower() == spelledWord.ToLower())
-            {
-
-                return true;
-            }
+            letter.transform.parent.GetComponent<Image>().color = color;
         }
-        return false;
+    }
+
+    private Color IsWordInDictionary(string spelledWord)
+    {
+        for (int i = 0; i < _wordList.Count; i++)
+        {
+            foreach (var word in _wordList[i])
+            {
+                if (word.Word.ToLower() == spelledWord.ToLower())
+                {
+                    return colors[i];
+                }
+            }
+
+        }
+        return colors[colors.Count - 1];
+
     }
 
     private string GetWordFromEvent(WordEventArgs e)
@@ -60,11 +74,20 @@ public class WordManager : MonoBehaviour
 
     private void LoadDictionary()
     {
-        string[] types = { "Attacks", "Defence", "Health", "Status" };
-        string[] wordGroups = { "3-LetterWords"/*, "4-LetterWords"*/};
         foreach (string wordGroup in wordGroups)
             foreach (string type in types)
-                _wordList.AddRange(Resources.LoadAll<SO_Word>($"Dictionary/{wordGroup}/{type}").ToList());
+                switch (type)
+                {
+                    case "Attacks": _AttackList.AddRange(Resources.LoadAll<SO_Word>($"Dictionary/{wordGroup}/{type}")); break;
+                    case "Defence": _DefenceList.AddRange(Resources.LoadAll<SO_Word>($"Dictionary/{wordGroup}/{type}")); break;
+                    case "Health": _HealList.AddRange(Resources.LoadAll<SO_Word>($"Dictionary/{wordGroup}/{type}")); break;
+                    case "Status": _StatusList.AddRange(Resources.LoadAll<SO_Word>($"Dictionary/{wordGroup}/{type}")); break;
+                }
+
+        _wordList.Add(_AttackList);
+        _wordList.Add(_DefenceList);
+        _wordList.Add(_HealList);
+        _wordList.Add(_StatusList);
     }
 
     // Update is called once per frame
