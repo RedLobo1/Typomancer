@@ -25,7 +25,7 @@ public class WordManager : MonoBehaviour
     {
         ConvertHexToColors();
         LoadDictionary();
-        Debug.Log(_wordList.Count);
+        //Debug.Log(_wordList.Count);
 
         UI = FindObjectOfType<UIWordSelector>();
         UI.OnValidateWord += ValidateWord;

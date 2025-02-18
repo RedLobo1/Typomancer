@@ -15,11 +15,11 @@ MonoBehaviour:
   Name: Dwarf
   PrizeLetter: 100
   Health: 10
-  attackCooldown: 2
+  BasettackCooldown: 0
   wordList:
     entries:
     - key: LOP
       value: 60
-    - key: 
+    - key: POD
       value: 0
   enemySprite: {fileID: -1463742794, guid: 128a76340023d064683f20e8253c7a2c, type: 3}

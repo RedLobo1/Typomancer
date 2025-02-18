@@ -5,8 +5,8 @@ public class SO_Word : ScriptableObject
 {
     public string Word;
     public string Phrase; //text displayed when using the word
-    public sbyte attackModifier;
-    public sbyte DefenceModifier;
+    public byte attackModifier;
+    public byte DefenceModifier;
     public sbyte HealthModifier;
     public Color TextColor;
     public EStatusEffect StatusEffect;
