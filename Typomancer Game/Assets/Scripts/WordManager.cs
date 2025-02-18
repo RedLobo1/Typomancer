@@ -17,7 +17,7 @@ public class WordManager : MonoBehaviour
 
     private string[] hexColors = { "#E31D2B", "#00A0FF", "#1DE276", "#E8DE1C", "#FFFFFF" };
     private List<Color> colors = new List<Color>();
-    void Start()
+    void Awake()
     {
         ConvertHexToColors();
         LoadDictionary();
