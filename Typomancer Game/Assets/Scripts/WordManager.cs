@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,10 @@ public class WordManager : MonoBehaviour
 
     private string[] hexColors = { "#E31D2B", "#00A0FF", "#1DE276", "#E8DE1C", "#FFFFFF" };
     private List<Color> colors = new List<Color>();
+    private bool canSubmitWord = false;
+
+    public event Action<bool> onWordchecked;
+
     void Awake()
     {
         ConvertHexToColors();
@@ -38,14 +43,22 @@ public class WordManager : MonoBehaviour
 
     private void ValidateWord(object sender, WordEventArgs e)
     {
-        var color = IsWordInDictionary(GetWordFromEvent(e));
+        var color = returnColorForSet(GetWordFromEvent(e));
         foreach (var letter in e.Word)
         {
             letter.transform.parent.GetComponent<Image>().color = color;
         }
+        onWordchecked?.Invoke(IsWordInDictionary(color));
+
     }
 
-    private Color IsWordInDictionary(string spelledWord)
+    private bool IsWordInDictionary(Color color)
+    {
+        if (color != colors[colors.Count - 1]) return true;
+        else return false;
+    }
+
+    private Color returnColorForSet(string spelledWord)
     {
         for (int i = 0; i < _wordList.Count; i++)
         {
