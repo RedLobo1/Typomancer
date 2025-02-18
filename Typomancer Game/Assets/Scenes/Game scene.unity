@@ -3206,11 +3206,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2aa19de79096343abb79391edefb79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letter1: {fileID: 378118275}
-  letter2: {fileID: 322764355}
-  letter3: {fileID: 576149709}
-  letter4: {fileID: 1552690939}
-  _pointer: {fileID: 1364738841}
+  letterSlots:
+  - {fileID: 378118275}
+  - {fileID: 322764355}
+  - {fileID: 576149709}
+  - {fileID: 1552690939}
+  _pointer: {fileID: 1532793277}
+  loadInOwnedLetters: {fileID: 0}
 --- !u!4 &1151172058
 Transform:
   m_ObjectHideFlags: 0
