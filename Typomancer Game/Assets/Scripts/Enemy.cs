@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private SO_Enemy SO_Enemy;
     private char prizeLetter;
-    private byte health;
+    private short health;
     private float baseAttackCooldown;
 
     public Dictionary<string, float> AvailableWords { get; private set; }
@@ -21,12 +21,17 @@ public class Enemy : MonoBehaviour
         this.health = SO_Enemy.Health;
         this.baseAttackCooldown = SO_Enemy.BasettackCooldown;
         this.AvailableWords = SO_Enemy.AvailableWords;
-        this.StatusEffect = SO_Enemy.StatusEffect; 
+        this.StatusEffect = SO_Enemy.StatusEffect;
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void ChangeHealth(sbyte modifier)
+    {
+        this.health += (short)modifier;
     }
 }

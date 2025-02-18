@@ -57,6 +57,21 @@ public class WordManager : MonoBehaviour
         else return false;
     }
 
+    public SO_Word GetWordDataFromWord(string spelledWord)
+    {
+        for (int i = 0; i < _wordList.Count; i++)
+        {
+            foreach (var word in _wordList[i])
+            {
+                if (word.Word.ToLower() == spelledWord.ToLower())
+                {
+                    return word;
+                }
+            }
+        }
+        return null;
+    }
+
     private Color returnColorForSet(string spelledWord)
     {
         for (int i = 0; i < _wordList.Count; i++)

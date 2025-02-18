@@ -22,7 +22,7 @@ public class UIWordSelector : MonoBehaviour
     private bool canSubmit = false;
 
 
-    private Action<string, WordEventArgs> OnAttackOpponent;
+    public Action<SO_Word> OnMove;
 
     void Start()
     {
@@ -69,7 +69,7 @@ public class UIWordSelector : MonoBehaviour
     {
         ClearLetters();
         canSubmit = false;
-        OnAttackOpponent?.Invoke("player", GetSpelledWord());
+        OnMove?.Invoke(wordManager.GetWordDataFromWord(GetSpelledWord().Word.ToString()));
         Invoke("LoadInStartSequence", 1f);
     }
 
