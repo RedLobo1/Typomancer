@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -13,12 +14,15 @@ public class UIWordSelector : MonoBehaviour
 
     private float tolerance = 0.01f;
 
+    public event EventHandler<WordEventArgs> OnValidateWord;
+
     void Start()
     {
         loadInOwnedLetters = FindObjectOfType<LoadInOwnedLetters>();
         letters = loadInOwnedLetters.Letters;
 
         LoadInStartSequence();
+        OnValidateWord?.Invoke(this, GetSpelledWord());
     }
 
     private void LoadInStartSequence()
@@ -40,21 +44,23 @@ public class UIWordSelector : MonoBehaviour
 
     private void CheckForCorrectWord()
     {
-        var word = GetSpelledWord();
-        Debug.Log(word);
+        //var word = GetSpelledWord();
+        OnValidateWord?.Invoke(this, GetSpelledWord());
     }
 
-    private string GetSpelledWord()
+    private WordEventArgs GetSpelledWord()
     {
-        List<char> slots = new();
+        //List<char> slots = new();
+        List<TMP_Text> slots = new();
         foreach (var letter in letterSlots)
         {
             if (CheckIfVisible(letter))
             {
-                slots.Add(letter.text.ToCharArray()[0]);
+                slots.Add(letter);
             }
         }
-        return new string(slots.ToArray());
+        return new WordEventArgs(slots);
+        //return new string(slots.ToArray());
     }
 
     private void UpdateCurrentSelectedLetter()
@@ -86,7 +92,7 @@ public class UIWordSelector : MonoBehaviour
 
         do
         {
-            chosenLetter = letters.letters[Random.Range(0, letters.letters.Count)].ToString();
+            chosenLetter = letters.letters[UnityEngine.Random.Range(0, letters.letters.Count)].ToString();
         }
         while (letter == chosenLetter);
         return chosenLetter;
