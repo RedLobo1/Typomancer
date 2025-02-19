@@ -20,8 +20,17 @@ public class BattleSimulator : MonoBehaviour
 
     public event EventHandler<CreatureUIStatUpdate> OnPlayerStatUpdate;
     public event EventHandler<CreatureUIStatUpdate> OnEnemyStatUpdate;
+    public event Action OnGameOver;
+    public event Action OnEnemyBeaten;
+
+    public event Action<Creature, sbyte> OnHealthChanged;
+    public event Action<Creature, byte> OnDefenceChanged;
+    public event Action<Creature, EStatusEffect> OnStatusEffectAfflicted;
+    public event Action<char> OnPrizeLetterObtained;
 
     private string chosenWord;
+    private bool battleEnded = false;
+
     void Start()
     {
         wordManager = FindObjectOfType<WordManager>();
@@ -38,47 +47,82 @@ public class BattleSimulator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        timeElapsed += Time.deltaTime;
-        if (timeElapsed >= enemyAttackCooldown)
+        if (!battleEnded)
         {
-            MoveByEnemy(); // Call your function
-            timeElapsed = 0f;
-        }
-        //StatucEffectTick();
+            timeElapsed += Time.deltaTime;
+            if (timeElapsed >= enemyAttackCooldown)
+            {
+                MoveByEnemy(); // Call your function
+                timeElapsed = 0f;
+            }
+            //StatucEffectTick();
 
-        if (player.GetHealth() <= 0 || enemy.GetHealth() <= 0)
-        {
-            UnityEditor.EditorApplication.isPlaying = false;
+            if (player.GetHealth() <= 0)
+            {
+                OnGameOver?.Invoke();
+                battleEnded = true;
+            }
+            if (enemy.GetHealth() <= 0)
+            {
+                OnPrizeLetterObtained?.Invoke(enemy.GetPrizeLetter());
+                OnEnemyBeaten?.Invoke();
+                battleEnded = true;
+            }
         }
     }
 
-    private void MoveByPlayer(SO_Word wordData)
+    private void MoveByPlayer(SO_Word moveData)
     {
-        enemy.ChangeHealth((sbyte)(Mathf.Min(0, -wordData.attackModifier - enemy.GetBaseAttackCooldown())));
-        enemy.AfflictStatusEffect(wordData.StatusEffect);
-
-        player.ChangeHealth(wordData.HealthModifier);
-        player.BoostDefence((byte)wordData.DefenceModifier);
-
-        enemyAttackCooldown = Math.Max(enemyAttackCooldownMinumum, enemyAttackCooldown * enemyAttackModifier);
-
-
-        OnPlayerStatUpdate?.Invoke(this, new CreatureUIStatUpdate(player.GetHealth()));
-        OnEnemyStatUpdate?.Invoke(this, new CreatureUIStatUpdate(enemy.GetHealth()));
+        ExecuteStatChanges(player, enemy, moveData);
     }
 
     private void MoveByEnemy()
     {
-        var wordData = wordManager.GetWordDataFromWord(chosenWord);
+        var moveData = wordManager.GetWordDataFromWord(chosenWord);
 
-        player.ChangeHealth((sbyte)(-wordData.attackModifier - player.GetDefence()));
-        player.AfflictStatusEffect(wordData.StatusEffect);
+        ExecuteStatChanges(player, enemy, moveData);
 
-        enemy.ChangeHealth(wordData.HealthModifier);
-        enemy.BoostDefence((byte)wordData.DefenceModifier);
+        enemyAttackCooldown = Math.Max(enemyAttackCooldownMinumum, enemyAttackCooldown * enemyAttackModifier);
+
+
+    }
+
+    private void ExecuteStatChanges(Creature attacker, Creature defender, SO_Word MoveData)
+    {
+        sbyte healthModifier = (sbyte)(Mathf.Min(0, -MoveData.attackModifier - enemy.GetDefence()));
+        UpdateHealth(defender, healthModifier);
+        if (MoveData.attackModifier != 0)
+            UpdateDefence(defender, 0); //if the attack does damage, remove the defence
+
+        UpdateHealth(attacker, MoveData.HealthModifier);
+        UpdateDefence(attacker, (byte)MoveData.DefenceModifier);
+
+
+        if (MoveData.StatusEffect != EStatusEffect.None)
+        {
+            OnStatusEffectAfflicted?.Invoke(defender, MoveData.StatusEffect);
+            defender.AfflictStatusEffect(MoveData.StatusEffect);
+        }
+
+
 
         OnPlayerStatUpdate?.Invoke(this, new CreatureUIStatUpdate(player.GetHealth()));
         OnEnemyStatUpdate?.Invoke(this, new CreatureUIStatUpdate(enemy.GetHealth()));
+    }
+    private void UpdateHealth(Creature creature, sbyte healthModifier)
+    {
+        if (healthModifier != 0)
+        {
+            OnHealthChanged?.Invoke(creature, healthModifier);
+            creature.ChangeHealth(healthModifier);
+        }
+    }
+    private void UpdateDefence(Creature creature, byte DefenceModifier)
+    {
+        if (DefenceModifier != 0)
+        {
+            OnDefenceChanged?.Invoke(creature, DefenceModifier);
+            creature.ChangeDefence(DefenceModifier);
+        }
     }
 }

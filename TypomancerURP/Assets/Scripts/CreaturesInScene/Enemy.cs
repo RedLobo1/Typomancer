@@ -13,7 +13,6 @@ public class Enemy : Creature
 
     private Dictionary<string, float> AvailableWords;
 
-
     // Start is called before the first frame update
     void Awake()
     {
@@ -54,5 +53,10 @@ public class Enemy : Creature
         }
 
         return ""; // Fallback if no valid item is chosen (shouldn't normally happen if the dictionary is valid)
+    }
+
+    public char GetPrizeLetter()
+    {
+        return prizeLetter;
     }
 }

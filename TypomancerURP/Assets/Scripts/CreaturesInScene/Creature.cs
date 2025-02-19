@@ -9,14 +9,17 @@ public class Creature : MonoBehaviour
 
     public void ChangeHealth(sbyte modifier)
     {
-        if (modifier > 0) Debug.Log($"{modifier} damage afflicted");
+         if (modifier < 0)
+            Debug.Log($"{modifier} damage afflicted");
+        if (modifier > 0)
+            Debug.Log($"{modifier} HP healed");
         this.health += (short)modifier;
     }
 
-    public void BoostDefence(byte modifier)
+    public void ChangeDefence(byte modifier)
     {
-        if(modifier > 0) Debug.Log($"{modifier} defence boost");
-        defence += modifier;
+        if (modifier > 0) Debug.Log($"{modifier} defence boost");
+        defence = modifier; //defence is a one-time shield
     }
 
     public void AfflictStatusEffect(EStatusEffect statusEffect)
