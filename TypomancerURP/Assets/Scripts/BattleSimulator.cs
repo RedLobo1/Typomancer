@@ -44,8 +44,7 @@ public class BattleSimulator : MonoBehaviour
         player = FindObjectOfType<Player>();
 
         enemyAttackCooldown = enemy.GetBaseAttackCooldown();
-        chosenWord = enemy.PickWord();
-        OnEnemyWordPicked?.Invoke(chosenWord);
+        RerollEnemyWord();
     }
     // Update is called once per frame
     void Update()
@@ -99,21 +98,28 @@ public class BattleSimulator : MonoBehaviour
     {
         if (creature is Player)
         {
-            //rest letters, only restore after 3s
+            userInput.ResetLetters(3f); //rest letters, only restore after 3s
         }
         if (creature is Enemy enemy)
         {
-            //roll back timer by 3s or until 0
-
-            //reroll chosen word
-            //heal stun
+            enemyAttackCooldown = MathF.Max(enemyAttackCooldown - 3, 0);//roll back timer by 3s or until 0
+            RerollEnemyWord();//reroll chosen word
+            enemy.SetStatusEffect(EStatusEffect.None);//heal stun
         }
     }
+
+
     private void OnSick(Creature creature) { }
     private void OnStun(Creature creature)
     {
 
     }
+    private void RerollEnemyWord()
+    {
+        chosenWord = enemy.PickWord();
+        OnEnemyWordPicked?.Invoke(chosenWord);
+    }
+
 
     private void MoveByPlayer(SO_Word moveData)
     {
@@ -127,8 +133,7 @@ public class BattleSimulator : MonoBehaviour
 
         ExecuteStatChanges(player, enemy, moveData);
 
-        chosenWord = enemy.PickWord(); //enemy picks new word after attacking
-        OnEnemyWordPicked?.Invoke(chosenWord);
+        RerollEnemyWord();
     }
 
     private void ExecuteStatChanges(Creature attacker, Creature defender, SO_Word MoveData)
@@ -145,7 +150,7 @@ public class BattleSimulator : MonoBehaviour
         if (MoveData.StatusEffect != EStatusEffect.None)
         {
             OnStatusEffectAfflicted?.Invoke(defender, MoveData.StatusEffect);
-            defender.AfflictStatusEffect(MoveData.StatusEffect);
+            defender.SetStatusEffect(MoveData.StatusEffect);
         }
 
 

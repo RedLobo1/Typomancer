@@ -74,8 +74,14 @@ public class UIWordSelector : MonoBehaviour
     {
         canSubmit = false;
         OnMove?.Invoke(wordManager.GetWordDataFromWord(GetWord()));
+        ResetLetters();
+
+    }
+
+    public void ResetLetters(float time = 1f)
+    {
         ClearLetters();
-        Invoke("LoadInStartSequence", 1f);
+        Invoke("UpdateAllLetters", time);
     }
 
     private void ClearLetters()
