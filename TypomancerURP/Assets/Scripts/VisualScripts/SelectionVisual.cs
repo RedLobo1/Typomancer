@@ -4,6 +4,7 @@ public class SelectionVisual : MonoBehaviour
 {
     [SerializeField] private GameObject[] _selectables;
     [SerializeField] private GameObject _pointer;
+    [SerializeField] private GameObject _pointer2;
     private int _currentSelected = 0;
 
     void Start()
@@ -36,6 +37,11 @@ public class SelectionVisual : MonoBehaviour
                 {
 
                     _pointer.transform.position = _selectables[i].transform.position;
+
+                    _pointer2.SetActive(false);
+                    if (_selectables[i].gameObject.name != "Lexicon") return;
+                        _pointer2.SetActive(true);
+
                 }
 
 
