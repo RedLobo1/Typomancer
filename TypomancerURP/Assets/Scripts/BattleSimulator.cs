@@ -27,6 +27,8 @@ public class BattleSimulator : MonoBehaviour
     public event Action<Creature, byte> OnDefenceChanged;
     public event Action<Creature, EStatusEffect> OnStatusEffectAfflicted;
     public event Action<char> OnPrizeLetterObtained;
+    public event Action<string> OnEnemyWordPicked;
+    //public event Action<char> OnPrizeLetterObtained;
 
     private string chosenWord;
     private bool battleEnded = false;
@@ -43,6 +45,7 @@ public class BattleSimulator : MonoBehaviour
 
         enemyAttackCooldown = enemy.GetBaseAttackCooldown();
         chosenWord = enemy.PickWord();
+        OnEnemyWordPicked?.Invoke(chosenWord);
     }
     // Update is called once per frame
     void Update()
@@ -84,7 +87,8 @@ public class BattleSimulator : MonoBehaviour
 
         enemyAttackCooldown = Math.Max(enemyAttackCooldownMinumum, enemyAttackCooldown * enemyAttackModifier);
 
-
+        chosenWord = enemy.PickWord(); //enemy picks new word after attacking
+        OnEnemyWordPicked?.Invoke(chosenWord);
     }
 
     private void ExecuteStatChanges(Creature attacker, Creature defender, SO_Word MoveData)
