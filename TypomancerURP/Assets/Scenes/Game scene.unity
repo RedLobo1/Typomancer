@@ -1350,6 +1350,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 405.43
       objectReference: {fileID: 0}
+    - target: {fileID: 789290725892138824, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 789290725892138824, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.56666666
+      objectReference: {fileID: 0}
+    - target: {fileID: 789290725892138824, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.56666666
+      objectReference: {fileID: 0}
     - target: {fileID: 907951852844000282, guid: 880f09c9dd9f7e94b956a071e922b859,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1374,6 +1389,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225948429066593426, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5384156642513165236, guid: 880f09c9dd9f7e94b956a071e922b859,
         type: 3}
@@ -1514,6 +1534,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.a
       value: 0.7607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999235948304609017, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
