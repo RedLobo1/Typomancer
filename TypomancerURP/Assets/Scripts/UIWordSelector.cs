@@ -151,6 +151,7 @@ public class UIWordSelector : MonoBehaviour
                 letter.text = GetRandomLetter(letter.text);
             }
         }
+        CheckForCorrectWord();
     }
 
     private string GetRandomLetter(string letter)
