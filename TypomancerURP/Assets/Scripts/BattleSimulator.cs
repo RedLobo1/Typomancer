@@ -100,16 +100,35 @@ public class BattleSimulator : MonoBehaviour
         {
             userInput.ResetLetters(3f); //rest letters, only restore after 3s
         }
-        if (creature is Enemy enemy)
+        if (creature is Enemy)
         {
             enemyAttackCooldown = MathF.Max(enemyAttackCooldown - 3, 0);//roll back timer by 3s or until 0
             RerollEnemyWord();//reroll chosen word
-            enemy.SetStatusEffect(EStatusEffect.None);//heal stun
+            RemoveStatusEffectFromCreature(creature);
+            
         }
     }
 
+    private void RemoveStatusEffectFromCreature(Creature creature)
+    {
+        creature.SetStatusEffect(EStatusEffect.None);//heal stun
+    }
 
-    private void OnSick(Creature creature) { }
+    private void OnSick(Creature creature)
+    {
+        //1 damage every second, heal after 5s
+        creature.statusTimer += Time.deltaTime; //every 1 second afflict damage
+        if (creature.statusTimer >= 1)
+        {
+            creature.ChangeHealth(-1);
+            creature.statusTimer = 0f;
+        }
+        if(creature.statusTimer >= 5) //after 5s remove stun
+        {
+            creature.statusTimer = 0; //reset status timer
+            RemoveStatusEffectFromCreature(creature);
+        }
+    }
     private void OnStun(Creature creature)
     {
 

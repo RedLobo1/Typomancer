@@ -7,7 +7,7 @@ public class Creature : MonoBehaviour
     protected short health;
     protected byte defence;
     protected EStatusEffect? StatusEffect = null;
-    protected float statusTimer;
+    public float statusTimer;
 
     private void Start()
     {
