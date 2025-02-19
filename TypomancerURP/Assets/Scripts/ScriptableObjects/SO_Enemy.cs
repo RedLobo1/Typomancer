@@ -8,7 +8,7 @@ public class SO_Enemy : ScriptableObject
 {
     public string Name;
     public char PrizeLetter; //text displayed when using the word
-    public byte Health;
+    public byte MaxHealth;
     public float BasettackCooldown; //Seconds until next attack --> could possible decrease over time? 
     public StringByteDictionary wordList;
 

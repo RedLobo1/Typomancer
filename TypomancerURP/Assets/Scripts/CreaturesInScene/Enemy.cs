@@ -20,7 +20,8 @@ public class Enemy : Creature
         this.sprite = SO_Enemy.enemySprite;
         this.name = SO_Enemy.name;
         this.prizeLetter = SO_Enemy.PrizeLetter;
-        this.health = SO_Enemy.Health;
+        this.maxHealth = SO_Enemy.MaxHealth;
+        this.health = SO_Enemy.MaxHealth;
         this.baseAttackCooldown = SO_Enemy.BasettackCooldown;
         this.AvailableWords = SO_Enemy.AvailableWords;
         this.StatusEffect = SO_Enemy.StatusEffect;
