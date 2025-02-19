@@ -14,7 +14,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField]
     private float enemyAttackCooldownMinumum = 0.1f;
 
-    private float timeElapsed = 0f; // To track time
+    private float EnemyCooldownTimePassed = 0f; // To track time
 
     WordManager wordManager;
 
@@ -31,7 +31,7 @@ public class BattleSimulator : MonoBehaviour
     //public event Action<char> OnPrizeLetterObtained;
 
     private string chosenWord;
-    private bool battleEnded = false;
+    private bool battlePaused = false;
 
     void Start()
     {
@@ -50,35 +50,45 @@ public class BattleSimulator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!battleEnded)
+        if (!battlePaused)
         {
-            timeElapsed += Time.deltaTime;
-            if (timeElapsed >= enemyAttackCooldown)
-            {
-                MoveByEnemy(); // Call your function
-                timeElapsed = 0f;
-            }
-            //StatucEffectTick();
+            BattleFinishCheck();
 
-            if (player.GetHealth() <= 0)
-            {
-                OnGameOver?.Invoke();
-                battleEnded = true;
-            }
-            if (enemy.GetHealth() <= 0)
-            {
-                OnPrizeLetterObtained?.Invoke(enemy.GetPrizeLetter());
-                OnEnemyBeaten?.Invoke();
-                battleEnded = true;
-            }
+            EnemyCooldownTick();
             StatusTick(player);
             StatusTick(enemy); ;
         }
     }
 
+    private void BattleFinishCheck()
+    {
+        if (player.GetHealth() <= 0)
+        {
+            OnGameOver?.Invoke();
+            battlePaused = true;
+        }
+        if (enemy.GetHealth() <= 0)
+        {
+            OnPrizeLetterObtained?.Invoke(enemy.GetPrizeLetter());
+            OnEnemyBeaten?.Invoke();
+            battlePaused = true;
+        }
+    }
+
+    private void EnemyCooldownTick()
+    {
+        EnemyCooldownTimePassed += Time.deltaTime;
+        if (EnemyCooldownTimePassed >= enemyAttackCooldown)
+        {
+            MoveByEnemy(); // Call your function
+            EnemyCooldownTimePassed = 0f;
+        }
+    }
+
     private void StatusTick(Creature player)
     {
-        
+        switch(player.GetStatusEffect)
+        //player.statusTimer
     }
 
     private void MoveByPlayer(SO_Word moveData)
@@ -93,11 +103,6 @@ public class BattleSimulator : MonoBehaviour
 
         ExecuteStatChanges(player, enemy, moveData);
 
-<<<<<<< Updated upstream
-=======
-        
-
->>>>>>> Stashed changes
         chosenWord = enemy.PickWord(); //enemy picks new word after attacking
         OnEnemyWordPicked?.Invoke(chosenWord);
     }
@@ -122,7 +127,7 @@ public class BattleSimulator : MonoBehaviour
 
 
         OnPlayerStatUpdate?.Invoke(this, new CreatureUIStatUpdate(player.GetHealth()));
-        OnEnemyStatUpdate?.Invoke(new CreatureUIStatUpdate(enemy.GetHealth()), (timeElapsed / enemyAttackCooldown));
+        OnEnemyStatUpdate?.Invoke(new CreatureUIStatUpdate(enemy.GetHealth()), (EnemyCooldownTimePassed / enemyAttackCooldown));
     }
     private void UpdateHealth(Creature creature, sbyte healthModifier)
     {
