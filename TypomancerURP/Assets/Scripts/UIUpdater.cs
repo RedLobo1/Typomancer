@@ -1,11 +1,16 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIUpdater : MonoBehaviour
 {
     [SerializeField]
     private GameObject PlayerName;
+
+    [SerializeField] private Slider EnemyAttackSlider;
+
+    [SerializeField] private Slider EnemyHealthSlider;
     // Start is called before the first frame update
 
     private BattleSimulator battleSim;
@@ -13,6 +18,22 @@ public class UIUpdater : MonoBehaviour
     {
         battleSim = FindObjectOfType<BattleSimulator>();
         battleSim.OnPrizeLetterObtained += UpdatePlayerName;
+
+        battleSim.OnEnemyWordPicked += UpdateEnemyAttack;
+        battleSim.OnEnemyStatUpdate += UpdateEnemyAttackTimer;
+    }
+
+    private void UpdateEnemyAttackTimer(CreatureUIStatUpdate stats, float percentage)
+    {
+        EnemyAttackSlider.value = percentage;
+        EnemyHealthSlider.value = stats.Health;
+    }
+
+    private void UpdateEnemyAttack(string attack)
+    {
+        attack.ToCharArray();
+
+        
     }
 
     private void UpdatePlayerName(char prizeLetter)

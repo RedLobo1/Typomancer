@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Dwarf
   PrizeLetter: 100
-  Health: 10
-  BasettackCooldown: 10
+  MaxHealth: 10
+  BasettackCooldown: 3
   wordList:
     entries:
     - word: LOP

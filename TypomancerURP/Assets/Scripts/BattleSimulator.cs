@@ -87,7 +87,7 @@ public class BattleSimulator : MonoBehaviour
 
     private void StatusTick(Creature player)
     {
-        switch(player.GetStatusEffect)
+        //switch(player.GetStatusEffect)
         //player.statusTimer
     }
 
