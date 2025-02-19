@@ -76,7 +76,7 @@ Material:
     - _BlendOp: 0
     - _BumpScale: 1
     - _Cull: 2
-    - _Cutoff: 0.5
+    - _Cutoff: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
     - _DstBlendAlpha: 10
