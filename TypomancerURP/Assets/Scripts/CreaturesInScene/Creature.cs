@@ -8,6 +8,7 @@ public class Creature : MonoBehaviour
     protected byte defence;
     protected EStatusEffect? StatusEffect = null;
     public float statusTimer;
+    public byte damagecounter;
 
     private void Start()
     {

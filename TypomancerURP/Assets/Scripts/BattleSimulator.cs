@@ -33,6 +33,17 @@ public class BattleSimulator : MonoBehaviour
     private string chosenWord;
     private bool battlePaused = false;
 
+    [SerializeField]
+    private float stunTime = 5f;
+    [SerializeField]
+    private float sickTime = 5f;
+    [SerializeField]
+    private float sickDamageInterval = 1f;
+    [SerializeField]
+    private sbyte sickDamageAmount = 1;
+    [SerializeField]
+    private float blindSetBackamount = 3f;
+
     void Start()
     {
         wordManager = FindObjectOfType<WordManager>();
@@ -76,7 +87,10 @@ public class BattleSimulator : MonoBehaviour
 
     private void EnemyCooldownTick()
     {
-        EnemyCooldownTimePassed += Time.deltaTime;
+        if (enemy.GetStatusEffect() != EStatusEffect.Stun)
+            EnemyCooldownTimePassed += Time.deltaTime;
+        else EnemyCooldownTimePassed += Time.deltaTime / 2;
+
         if (EnemyCooldownTimePassed >= enemyAttackCooldown)
         {
             MoveByEnemy(); // Call your function
@@ -102,10 +116,9 @@ public class BattleSimulator : MonoBehaviour
         }
         if (creature is Enemy)
         {
-            enemyAttackCooldown = MathF.Max(enemyAttackCooldown - 3, 0);//roll back timer by 3s or until 0
+            enemyAttackCooldown = MathF.Max(enemyAttackCooldown - blindSetBackamount, 0);//roll back timer by 3s or until 0
             RerollEnemyWord();//reroll chosen word
             RemoveStatusEffectFromCreature(creature);
-            
         }
     }
 
@@ -116,22 +129,36 @@ public class BattleSimulator : MonoBehaviour
 
     private void OnSick(Creature creature)
     {
+
         //1 damage every second, heal after 5s
-        creature.statusTimer += Time.deltaTime; //every 1 second afflict damage
-        if (creature.statusTimer >= 1)
+        creature.statusTimer += Time.deltaTime;
+        if (creature.statusTimer >= sickDamageInterval)
         {
-            creature.ChangeHealth(-1);
-            creature.statusTimer = 0f;
+            creature.damagecounter++;
+            UpdateHealth(creature, (sbyte)-sickDamageAmount); //every 1 second afflict damage
+            creature.statusTimer = 0;
         }
-        if(creature.statusTimer >= 5) //after 5s remove stun
+        if (creature.damagecounter >= sickTime) //after 5s remove stun
         {
+            creature.damagecounter = 0;
             creature.statusTimer = 0; //reset status timer
             RemoveStatusEffectFromCreature(creature);
         }
     }
     private void OnStun(Creature creature)
     {
+        if (creature is Player)
+        {
+            userInput.IsMovementBlocked = true; //block player pointer until unstun
+        }
 
+        creature.statusTimer += Time.deltaTime;
+        if (creature.statusTimer >= stunTime) //after 5s remove stun
+        {
+            creature.statusTimer = 0; //reset status timer
+            if (creature is Player) userInput.IsMovementBlocked = false;
+            RemoveStatusEffectFromCreature(creature);
+        }
     }
     private void RerollEnemyWord()
     {
