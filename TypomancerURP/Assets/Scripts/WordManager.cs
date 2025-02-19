@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class WordManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public List<List<SO_Word>> _wordList = new();
-    public List<SO_Word> _AttackList = new List<SO_Word>();
-    public List<SO_Word> _DefenceList = new List<SO_Word>();
-    public List<SO_Word> _HealList = new List<SO_Word>();
-    public List<SO_Word> _StatusList = new List<SO_Word>();
+    private List<List<SO_Word>> _wordList = new();
+    private List<SO_Word> _AttackList = new List<SO_Word>();
+    private List<SO_Word> _DefenceList = new List<SO_Word>();
+    private List<SO_Word> _HealList = new List<SO_Word>();
+    private List<SO_Word> _StatusList = new List<SO_Word>();
     UIWordSelector UI;
 
     private string[] types = { "Attacks", "Defence", "Health", "Status" };
@@ -92,9 +92,11 @@ public class WordManager : MonoBehaviour
     public string GetWordFromEventArgs(WordEventArgs e)
     {
         List<char> Letters = new();
+        
         foreach (var letter in e.Word)
         {
-            Letters.Add(letter.text.ToCharArray()[0]);
+            if(letter.text != "")
+                Letters.Add(letter.text.ToCharArray()[0]);
         }
         return new string(Letters.ToArray());
     }

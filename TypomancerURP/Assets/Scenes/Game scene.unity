@@ -1148,6 +1148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   SO_Enemy: {fileID: 11400000, guid: 3919f91c710c0984a80bb6c4cf5cefe3, type: 2}
+  health: 10
 --- !u!212 &1743401826
 SpriteRenderer:
   m_ObjectHideFlags: 0

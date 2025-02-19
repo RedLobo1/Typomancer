@@ -24,6 +24,8 @@ public class UIWordSelector : MonoBehaviour
 
     public Action<SO_Word> OnMove;
 
+
+
     void Start()
     {
         loadInOwnedLetters = FindObjectOfType<LoadInOwnedLetters>();
@@ -35,7 +37,10 @@ public class UIWordSelector : MonoBehaviour
         OnValidateWord?.Invoke(this, GetWordEventArgs());
 
         wordManager.onWordchecked += TogglCanSubmit;
+
+
     }
+
 
     private void TogglCanSubmit(bool isWordCorrect)
     {
@@ -124,7 +129,8 @@ public class UIWordSelector : MonoBehaviour
         {
             if (Vector3.Distance(ptr_pos, letter.transform.position) < tolerance)
             {
-                letter.text = GetRandomLetter(letter.text);
+                if (letter.text != "" && letter.text != null)
+                    letter.text = GetRandomLetter(letter.text);
             }
         }
     }
