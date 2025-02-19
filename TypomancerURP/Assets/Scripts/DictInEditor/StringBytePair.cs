@@ -1,15 +1,14 @@
 using System;
-using UnityEngine;
 
 [Serializable]
 public class StringBytePair
 {
-    public string key;
-    public byte value;
+    public string word;
+    public byte odds;
 
     public StringBytePair(string key, byte value)
     {
-        this.key = key;
-        this.value = value;
+        this.word = key;
+        this.odds = value;
     }
 }

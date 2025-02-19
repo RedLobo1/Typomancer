@@ -18,6 +18,9 @@ public class BattleSimulator : MonoBehaviour
 
     WordManager wordManager;
 
+    public event EventHandler<CreatureUIStatUpdate> OnPlayerStatUpdate;
+    public event EventHandler<CreatureUIStatUpdate> OnEnemyStatUpdate;
+
     private string chosenWord;
     void Start()
     {
@@ -43,6 +46,11 @@ public class BattleSimulator : MonoBehaviour
             timeElapsed = 0f;
         }
         //StatucEffectTick();
+
+        if (player.GetHealth() <= 0 || enemy.GetHealth() <= 0)
+        {
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
     }
 
     private void MoveByPlayer(SO_Word wordData)
@@ -55,16 +63,22 @@ public class BattleSimulator : MonoBehaviour
 
         enemyAttackCooldown = Math.Max(enemyAttackCooldownMinumum, enemyAttackCooldown * enemyAttackModifier);
 
+
+        OnPlayerStatUpdate?.Invoke(this, new CreatureUIStatUpdate(player.GetHealth()));
+        OnEnemyStatUpdate?.Invoke(this, new CreatureUIStatUpdate(enemy.GetHealth()));
     }
 
     private void MoveByEnemy()
     {
-        //var wordData = wordManager.GetWordDataFromWord(chosenWord);
+        var wordData = wordManager.GetWordDataFromWord(chosenWord);
 
-        //player.ChangeHealth((sbyte)(-wordData.attackModifier - enemy.GetDefence()));
-        //player.AfflictStatusEffect(wordData.StatusEffect);
+        player.ChangeHealth((sbyte)(-wordData.attackModifier - player.GetDefence()));
+        player.AfflictStatusEffect(wordData.StatusEffect);
 
-        //enemy.ChangeHealth(wordData.HealthModifier);
-        //enemy.BoostDefence((byte)wordData.DefenceModifier);
+        enemy.ChangeHealth(wordData.HealthModifier);
+        enemy.BoostDefence((byte)wordData.DefenceModifier);
+
+        OnPlayerStatUpdate?.Invoke(this, new CreatureUIStatUpdate(player.GetHealth()));
+        OnEnemyStatUpdate?.Invoke(this, new CreatureUIStatUpdate(enemy.GetHealth()));
     }
 }

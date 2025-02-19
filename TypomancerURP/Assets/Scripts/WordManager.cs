@@ -42,7 +42,7 @@ public class WordManager : MonoBehaviour
 
     private void ValidateWord(object sender, WordEventArgs e)
     {
-        var color = returnColorForSet(GetWordFromEvent(e));
+        var color = returnColorForSet(GetWordFromEventArgs(e));
         foreach (var letter in e.Word)
         {
             letter.transform.parent.GetComponent<Image>().color = color;
@@ -89,7 +89,7 @@ public class WordManager : MonoBehaviour
 
     }
 
-    private string GetWordFromEvent(WordEventArgs e)
+    public string GetWordFromEventArgs(WordEventArgs e)
     {
         List<char> Letters = new();
         foreach (var letter in e.Word)

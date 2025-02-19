@@ -32,7 +32,7 @@ public class UIWordSelector : MonoBehaviour
         letters = loadInOwnedLetters.Letters;
 
         LoadInStartSequence();
-        OnValidateWord?.Invoke(this, GetSpelledWord());
+        OnValidateWord?.Invoke(this, GetWordEventArgs());
 
         wordManager.onWordchecked += TogglCanSubmit;
     }
@@ -67,9 +67,9 @@ public class UIWordSelector : MonoBehaviour
 
     private void SubmitWord()
     {
-        ClearLetters();
         canSubmit = false;
-        OnMove?.Invoke(wordManager.GetWordDataFromWord(GetSpelledWord().Word.ToString()));
+        OnMove?.Invoke(wordManager.GetWordDataFromWord(GetWord()));
+        ClearLetters();
         Invoke("LoadInStartSequence", 1f);
     }
 
@@ -85,10 +85,24 @@ public class UIWordSelector : MonoBehaviour
     private void CheckForCorrectWord()
     {
         //var word = GetSpelledWord();
-        OnValidateWord?.Invoke(this, GetSpelledWord());
+        OnValidateWord?.Invoke(this, GetWordEventArgs());
+    }
+    private string GetWord()
+    {
+        //List<char> slots = new();
+        List<char> slots = new();
+        foreach (var letter in letterSlots)
+        {
+            if (CheckIfVisible(letter))
+            {
+                slots.Add(letter.text[0]);
+            }
+        }
+        //return new WordEventArgs(slots);
+        return new string(slots.ToArray());
     }
 
-    private WordEventArgs GetSpelledWord()
+    private WordEventArgs GetWordEventArgs()
     {
         //List<char> slots = new();
         List<TMP_Text> slots = new();

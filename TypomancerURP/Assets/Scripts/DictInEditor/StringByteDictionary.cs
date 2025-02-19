@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 [Serializable]
 public class StringByteDictionary
@@ -12,7 +11,7 @@ public class StringByteDictionary
         Dictionary<string, float> dictionary = new Dictionary<string, float>();
         foreach (var pair in entries)
         {
-            dictionary[pair.key] = pair.value;
+            dictionary[pair.word] = pair.odds;
         }
         return dictionary;
     }

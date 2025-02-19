@@ -15,7 +15,7 @@ public class Enemy : Creature
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         //this.GetComponent<SpriteRenderer>().sprite = SO_Enemy.enemySprite;
         this.sprite = SO_Enemy.enemySprite;
@@ -38,18 +38,15 @@ public class Enemy : Creature
     {
         return baseAttackCooldown;
     }
-    public float GetDefence()
-    {
-        return defence;
-    }
     public string PickWord()
     {
-        var OddsTotal = SO_Enemy.AvailableWords.Values.Sum();
-        //float OddsTotal = this.AvailableWords.Values.Sum();
+        //var OddsTotal = SO_Enemy.AvailableWords.Values.Sum();
+        float OddsTotal = this.AvailableWords.Values.Sum();
 
+        Dictionary<string, float> normalizedData = SO_Enemy.AvailableWords.ToDictionary(kvp => kvp.Key, kvp => kvp.Value / OddsTotal);
         foreach (var word in SO_Enemy.AvailableWords)
         {
-            if (OddsTotal < word.Value)
+            if (word.Value > Random.Range(0, OddsTotal + 1))
             {
                 return word.Key; // Return the key (string) associated with the selected probability
             }

@@ -15,11 +15,11 @@ MonoBehaviour:
   Name: Dwarf
   PrizeLetter: 100
   Health: 10
-  BasettackCooldown: 0
+  BasettackCooldown: 10
   wordList:
     entries:
-    - key: LOP
-      value: 60
-    - key: POD
-      value: 0
+    - word: LOP
+      odds: 70
+    - word: POD
+      odds: 0
   enemySprite: {fileID: 21300000, guid: 580b932b2cba48d45bffe105bdbf3f8c, type: 3}

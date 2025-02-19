@@ -326,6 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d918b997570e74147a258864cad11c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 10
 --- !u!1 &527585732
 GameObject:
   m_ObjectHideFlags: 3
@@ -362,7 +363,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &527585734
 MonoBehaviour:
-  m_ObjectHideFlags: 3
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -374,7 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!114 &527585735
 MonoBehaviour:
-  m_ObjectHideFlags: 3
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -386,7 +387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!114 &527585736
 MonoBehaviour:
-  m_ObjectHideFlags: 3
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -1145,6 +1146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79eb2ed60ff3e8d45a21d432cde18e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   SO_Enemy: {fileID: 11400000, guid: 3919f91c710c0984a80bb6c4cf5cefe3, type: 2}
 --- !u!212 &1743401826
 SpriteRenderer:
