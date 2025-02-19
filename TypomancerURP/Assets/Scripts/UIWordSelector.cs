@@ -42,7 +42,7 @@ public class UIWordSelector : MonoBehaviour
     }
 
 
-    private void TogglCanSubmit(bool isWordCorrect)
+    private void TogglCanSubmit(Color color, bool isWordCorrect)
     {
         canSubmit = isWordCorrect;
     }

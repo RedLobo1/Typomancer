@@ -27,6 +27,9 @@ public class LoadInOwnedLetters : MonoBehaviour
             AvailableLetters = new string(letters.letters.ToArray());
         else
             letters.letters = AvailableLetters.ToCharArray().ToList();
+
+        if(letters.letters.Count == 0)
+            letters.letters = "*".ToCharArray().ToList();
     }
 
 

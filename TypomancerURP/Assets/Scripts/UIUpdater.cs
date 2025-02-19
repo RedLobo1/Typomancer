@@ -17,16 +17,16 @@ public class UIUpdater : MonoBehaviour
 
     private void UpdatePlayerName(char prizeLetter)
     {
-        foreach (var letterbox in PlayerName.GetComponentsInChildren<Transform>())
-        {
-            foreach(TMP_Text letter in letterbox)
-            {
-                if (letter.text == prizeLetter.ToString())
-                {
-                    letter.enabled = true;
-                }
-            }
-        }
+        //foreach (var letterbox in PlayerName.GetComponentsInChildren<Transform>())
+        //{
+        //    foreach(TMP_Text letter in letterbox)
+        //    {
+        //        if (letter.text == prizeLetter.ToString())
+        //        {
+        //            letter.enabled = true;
+        //        }
+        //    }
+        //}
     }
 
     // Update is called once per frame
