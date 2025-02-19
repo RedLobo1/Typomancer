@@ -31,7 +31,7 @@ public class BattleSimulator : MonoBehaviour
     //public event Action<char> OnPrizeLetterObtained;
 
     private string chosenWord;
-    private bool battleEnded = false;
+    private bool battlePaused = false;
 
     void Start()
     {
@@ -50,7 +50,7 @@ public class BattleSimulator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!battleEnded)
+        if (!battlePaused)
         {
             timeElapsed += Time.deltaTime;
             if (timeElapsed >= enemyAttackCooldown)
@@ -63,13 +63,13 @@ public class BattleSimulator : MonoBehaviour
             if (player.GetHealth() <= 0)
             {
                 OnGameOver?.Invoke();
-                battleEnded = true;
+                battlePaused = true;
             }
             if (enemy.GetHealth() <= 0)
             {
                 OnPrizeLetterObtained?.Invoke(enemy.GetPrizeLetter());
                 OnEnemyBeaten?.Invoke();
-                battleEnded = true;
+                battlePaused = true;
             }
         }
     }
