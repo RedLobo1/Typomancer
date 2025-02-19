@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d918b997570e74147a258864cad11c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  maxHealth: 0
 --- !u!1 &527585732
 GameObject:
   m_ObjectHideFlags: 3
@@ -1242,7 +1242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79eb2ed60ff3e8d45a21d432cde18e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  maxHealth: 0
   SO_Enemy: {fileID: 11400000, guid: 3919f91c710c0984a80bb6c4cf5cefe3, type: 2}
 --- !u!212 &1743401826
 SpriteRenderer:
@@ -1445,6 +1445,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerName
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086284208467155765, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_Value
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5225948429066593426, guid: 880f09c9dd9f7e94b956a071e922b859,
         type: 3}
