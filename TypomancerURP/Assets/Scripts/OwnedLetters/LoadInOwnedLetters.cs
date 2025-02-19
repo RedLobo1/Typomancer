@@ -1,12 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
 using UnityEngine;
 
 public class LoadInOwnedLetters : MonoBehaviour
 {
     [SerializeField]
-    private TMP_Text m_Text;
+    private string AvailableLetters;
 
     private LettersOwned letters;
 
@@ -25,16 +24,16 @@ public class LoadInOwnedLetters : MonoBehaviour
     private void LoadInKnownLetters()
     {
         if (letters.letters != null)
-            m_Text.text = new string(letters.letters.ToArray());
+            AvailableLetters = new string(letters.letters.ToArray());
         else
-            letters.letters = m_Text.text.ToCharArray().ToList();
+            letters.letters = AvailableLetters.ToCharArray().ToList();
     }
 
 
     private void AddLetterToOwnedLetters(char prizeLetter)
     {
-        m_Text.text += prizeLetter.ToString().ToUpper();
-        SaveKnownLetters(m_Text.text.ToCharArray().ToList());
+        AvailableLetters += prizeLetter.ToString().ToUpper();
+        SaveKnownLetters(AvailableLetters.ToCharArray().ToList());
     }
 
     private void SaveKnownLetters(List<char> saveData)
