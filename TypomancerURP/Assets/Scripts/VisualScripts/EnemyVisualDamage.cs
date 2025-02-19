@@ -23,11 +23,9 @@ public class EnemyVisualDamage : MonoBehaviour
     IEnumerator DamageTaking()
     {
 
-        GetComponent<SpriteRenderer>().color = Color.red;
         GetComponent<Animator>().Play("Shake");
         _coroutineRunning = true;
         yield return new WaitForSeconds(0.5f);
-        GetComponent<SpriteRenderer>().color = Color.white;
         _coroutineRunning = false;
 
     }
