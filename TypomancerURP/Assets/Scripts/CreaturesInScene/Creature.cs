@@ -7,7 +7,12 @@ public class Creature : MonoBehaviour
     protected short health;
     protected byte defence;
     protected EStatusEffect? StatusEffect = null;
+    protected float statusTimer;
 
+    private void Start()
+    {
+        health = maxHealth;
+    }
     public void ChangeHealth(sbyte modifier)
     {
         if (modifier < 0)
@@ -36,6 +41,10 @@ public class Creature : MonoBehaviour
     public float GetDefence()
     {
         return defence;
+    }
+    public EStatusEffect? GetStatusEffect()
+    {
+        return StatusEffect;
     }
 }
 

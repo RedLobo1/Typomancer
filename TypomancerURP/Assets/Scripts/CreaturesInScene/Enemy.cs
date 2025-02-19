@@ -48,6 +48,7 @@ public class Enemy : Creature
         {
             if (word.Value > Random.Range(0, OddsTotal + 1))
             {
+                Debug.Log(word.Key);
                 return word.Key; // Return the key (string) associated with the selected probability
             }
             OddsTotal -= word.Value; // Reduce the random value by the probability of the current item

@@ -14,7 +14,7 @@ public class BattleSimulator : MonoBehaviour
     [SerializeField]
     private float enemyAttackCooldownMinumum = 0.1f;
 
-    private float timeElapsed = 0f; // To track time
+    private float EnemyCooldownTimePassed = 0f; // To track time
 
     WordManager wordManager;
 
@@ -52,33 +52,67 @@ public class BattleSimulator : MonoBehaviour
     {
         if (!battlePaused)
         {
-            timeElapsed += Time.deltaTime;
-            if (timeElapsed >= enemyAttackCooldown)
-            {
-                MoveByEnemy(); // Call your function
-                timeElapsed = 0f;
-            }
-            //StatucEffectTick();
+            BattleFinishCheck();
 
-            if (player.GetHealth() <= 0)
-            {
-                OnGameOver?.Invoke();
-                battlePaused = true;
-            }
-            if (enemy.GetHealth() <= 0)
-            {
-                OnPrizeLetterObtained?.Invoke(enemy.GetPrizeLetter());
-                OnEnemyBeaten?.Invoke();
-                battlePaused = true;
-            }
+            EnemyCooldownTick();
             StatusTick(player);
             StatusTick(enemy); ;
         }
     }
 
-    private void StatusTick(Creature player)
+    private void BattleFinishCheck()
     {
-        
+        if (player.GetHealth() <= 0)
+        {
+            OnGameOver?.Invoke();
+            battlePaused = true;
+        }
+        if (enemy.GetHealth() <= 0)
+        {
+            OnPrizeLetterObtained?.Invoke(enemy.GetPrizeLetter());
+            OnEnemyBeaten?.Invoke();
+            battlePaused = true;
+        }
+    }
+
+    private void EnemyCooldownTick()
+    {
+        EnemyCooldownTimePassed += Time.deltaTime;
+        if (EnemyCooldownTimePassed >= enemyAttackCooldown)
+        {
+            MoveByEnemy(); // Call your function
+            EnemyCooldownTimePassed = 0f;
+        }
+    }
+
+    private void StatusTick(Creature creature)
+    {
+        switch (player.GetStatusEffect())
+        {
+            case EStatusEffect.Blind: OnBlind(creature); break;
+            case EStatusEffect.Sick: OnSick(creature); break;
+            case EStatusEffect.Stun: OnStun(creature); break;
+        }
+        //player.statusTimer
+    }
+    private void OnBlind(Creature creature)
+    {
+        if (creature is Player)
+        {
+            //rest letters, only restore after 3s
+        }
+        if (creature is Enemy enemy)
+        {
+            //roll back timer by 3s or until 0
+
+            //reroll chosen word
+            //heal stun
+        }
+    }
+    private void OnSick(Creature creature) { }
+    private void OnStun(Creature creature)
+    {
+
     }
 
     private void MoveByPlayer(SO_Word moveData)
@@ -117,7 +151,7 @@ public class BattleSimulator : MonoBehaviour
 
 
         OnPlayerStatUpdate?.Invoke(this, new CreatureUIStatUpdate(player.GetHealth()));
-        OnEnemyStatUpdate?.Invoke(new CreatureUIStatUpdate(enemy.GetHealth()), (timeElapsed / enemyAttackCooldown));
+        OnEnemyStatUpdate?.Invoke(new CreatureUIStatUpdate(enemy.GetHealth()), (EnemyCooldownTimePassed / enemyAttackCooldown));
     }
     private void UpdateHealth(Creature creature, sbyte healthModifier)
     {
