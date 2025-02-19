@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,43 +10,161 @@ public class UIUpdater : MonoBehaviour
     [SerializeField] private Slider EnemyAttackSlider;
 
     [SerializeField] private Slider EnemyHealthSlider;
+
+    [SerializeField] private Image Tab;
+    [SerializeField] private Transform Word;
     // Start is called before the first frame update
 
     private BattleSimulator battleSim;
+    private WordManager wordManager;
+
     void Start()
     {
         battleSim = FindObjectOfType<BattleSimulator>();
+        wordManager = FindObjectOfType<WordManager>();
+
+
+        //game end events
+        //battleSim.OnEnemyBeaten += LogicWhenEnemyDefeated;
+        //battleSim.OnGameOver += LogicWhenPlayerDefeated;
         battleSim.OnPrizeLetterObtained += UpdatePlayerName;
 
+
+        //stat events
+        //battleSim.OnHealthChanged += UIHealthAnimation; //general health update for SE or stat boost Animation
+        //battleSim.OnDefenceChanged += UIDefenceAnimation;
+        //battleSim.OnStatusEffectAfflicted += UIStatusEffectAnimation;
+
+
+        battleSim.OnEnemyCooldownTimePassed += UpdateEnemyAttackTimer;
+
+        battleSim.OnEnemyStatUpdate += UpdateEnemyHealth; //only HP visible in UI so it sends HP and Max HP only
+        battleSim.OnPlayerStatUpdate += UpdatePlayerHealth; //only HP visible in UI so it sends HP and Max HP only
+
         battleSim.OnEnemyWordPicked += UpdateEnemyAttack;
-        battleSim.OnEnemyStatUpdate += UpdateEnemyAttackTimer;
+
+        wordManager.OnWordchecked += UIActivateTab;
+
     }
 
-    private void UpdateEnemyAttackTimer(CreatureUIStatUpdate stats, float percentage)
+    private void UIActivateTab(Color color, bool canSubmit)
+    {
+        Tab.color = color;
+        Tab.gameObject.SetActive(canSubmit);
+    }
+
+    private void UIStatusEffectAnimation(Creature creature, EStatusEffect effect)
+    {
+        switch (effect)
+        {
+            case EStatusEffect.Blind: break; //pic
+            case EStatusEffect.Sick: break; //ill
+            case EStatusEffect.Stun: break; //eel
+        }
+        if (creature is Player)
+        {
+
+        }
+        else if (creature is Player)
+        {
+
+        }
+    }
+
+    private void UIHealthAnimation(Creature creature, sbyte healthChanged)
+    {
+        if (healthChanged < 0)
+        {
+            //the stat decreased
+        }
+        else if (healthChanged > 0)
+        {
+            //the stat increased
+        }
+        if (creature is Player)
+        {
+
+        }
+        else if (creature is Player)
+        {
+
+        }
+    }
+
+    private void UIDefenceAnimation(Creature creature, byte defenceChanged)
+    {
+        if (defenceChanged == 0)
+        {
+            //the defence got lifted
+        }
+        else if (defenceChanged > 0)
+        {
+            //the stat increased
+        }
+        if (creature is Player)
+        {
+
+        }
+        else if (creature is Player)
+        {
+
+        }
+    }
+
+    private void UpdatePlayerHealth(object sender, CreatureUIStatUpdate e)
+    {
+        var healthPercentage = e.Health / e.MaxHealth;
+    }
+
+    private void UpdateEnemyHealth(object sender, CreatureUIStatUpdate e)
+    {
+        var healthPercentage = e.Health / e.MaxHealth;
+        //EnemyHealthSlider.value = stats.Health;
+    }
+
+    private void UpdateEnemyAttackTimer(float percentage)
     {
         EnemyAttackSlider.value = percentage;
-        EnemyHealthSlider.value = stats.Health;
     }
 
     private void UpdateEnemyAttack(string attack)
     {
         attack.ToCharArray();
-
-        
+        var index = 0;
+        foreach (Transform LetterSlot in Word.transform)
+        {
+            LetterSlot.GetChild(0).GetComponent<TMP_Text>().text = attack.ToCharArray()[index].ToString();
+            index++;
+        }
     }
 
     private void UpdatePlayerName(char prizeLetter)
     {
-        //foreach (var letterbox in PlayerName.GetComponentsInChildren<Transform>())
-        //{
-        //    foreach(TMP_Text letter in letterbox)
-        //    {
-        //        if (letter.text == prizeLetter.ToString())
-        //        {
-        //            letter.enabled = true;
-        //        }
-        //    }
-        //}
+        foreach (Transform letterbox in PlayerName.transform)
+        {
+            foreach (Transform letter in letterbox)
+            {
+                TMP_Text LetterTxt = letter.GetComponent<TMP_Text>();
+                if (LetterTxt.text.ToLower() == prizeLetter.ToString().ToLower())
+                {
+                    letter.gameObject.SetActive(true);
+                }
+            }
+        }
+    }
+    public void UpdatePlayerName(LettersOwned lettersOwned)
+    {
+        foreach (Transform letterbox in PlayerName.transform)
+        {
+            foreach (Transform letter in letterbox)
+            {
+                TMP_Text LetterTxt = letter.GetComponent<TMP_Text>();
+                if (lettersOwned.letters.Contains(LetterTxt.text.ToCharArray()[0]))
+                {
+                    letter.gameObject.SetActive(true);
+                }
+            }
+        }
     }
 
     // Update is called once per frame

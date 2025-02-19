@@ -19,7 +19,8 @@ public class BattleSimulator : MonoBehaviour
     WordManager wordManager;
 
     public event EventHandler<CreatureUIStatUpdate> OnPlayerStatUpdate;
-    public event Action<CreatureUIStatUpdate, float> OnEnemyStatUpdate;
+    public event EventHandler<CreatureUIStatUpdate> OnEnemyStatUpdate;
+    public event Action<float> OnEnemyCooldownTimePassed;
     public event Action OnGameOver;
     public event Action OnEnemyBeaten;
 
@@ -89,10 +90,14 @@ public class BattleSimulator : MonoBehaviour
     {
         if (enemy.GetStatusEffect() != EStatusEffect.Stun)
             EnemyCooldownTimePassed += Time.deltaTime;
-        else EnemyCooldownTimePassed += Time.deltaTime / 2;
+        else
+            EnemyCooldownTimePassed += Time.deltaTime / 2;
+
+        OnEnemyCooldownTimePassed?.Invoke(EnemyCooldownTimePassed / enemyAttackCooldown);
 
         if (EnemyCooldownTimePassed >= enemyAttackCooldown)
         {
+
             MoveByEnemy(); // Call your function
             EnemyCooldownTimePassed = 0f;
         }
@@ -201,8 +206,8 @@ public class BattleSimulator : MonoBehaviour
 
 
 
-        OnPlayerStatUpdate?.Invoke(this, new CreatureUIStatUpdate(player.GetHealth()));
-        OnEnemyStatUpdate?.Invoke(new CreatureUIStatUpdate(enemy.GetHealth()), (EnemyCooldownTimePassed / enemyAttackCooldown));
+        OnPlayerStatUpdate?.Invoke(this, new CreatureUIStatUpdate(player.GetMaxHealth(), player.GetHealth()));
+        OnEnemyStatUpdate?.Invoke(this, new CreatureUIStatUpdate(enemy.GetMaxHealth(), enemy.GetHealth()));
     }
     private void UpdateHealth(Creature creature, sbyte healthModifier)
     {

@@ -39,6 +39,10 @@ public class Creature : MonoBehaviour
     {
         return this.health;
     }
+    public short GetMaxHealth()
+    {
+        return this.maxHealth;
+    }
     public float GetDefence()
     {
         return defence;

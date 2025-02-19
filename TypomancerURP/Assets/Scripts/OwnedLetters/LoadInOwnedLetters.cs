@@ -13,9 +13,13 @@ public class LoadInOwnedLetters : MonoBehaviour
     // Start is called before the first frame update
 
     BattleSimulator battleSim;
+    UIUpdater UI;
     void Awake()
     {
         LoadInKnownLetters();
+
+        UI = FindObjectOfType<UIUpdater>();
+        UI.UpdatePlayerName(letters);
 
         battleSim = FindObjectOfType<BattleSimulator>();
         battleSim.OnPrizeLetterObtained += AddLetterToOwnedLetters;

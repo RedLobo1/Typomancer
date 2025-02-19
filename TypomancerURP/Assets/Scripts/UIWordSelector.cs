@@ -36,7 +36,7 @@ public class UIWordSelector : MonoBehaviour
         LoadInStartSequence();
         OnValidateWord?.Invoke(this, GetWordEventArgs());
 
-        wordManager.onWordchecked += TogglCanSubmit;
+        wordManager.OnWordchecked += TogglCanSubmit;
 
 
     }
@@ -91,6 +91,7 @@ public class UIWordSelector : MonoBehaviour
             letter.text = "";
             letter.transform.parent.GetComponent<Image>().color = Color.white;
         }
+        wordManager.ResetTab();
     }
 
     private void CheckForCorrectWord()

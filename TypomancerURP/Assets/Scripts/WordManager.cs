@@ -19,7 +19,7 @@ public class WordManager : MonoBehaviour
     private string[] hexColors = { "#E31D2B", "#00A0FF", "#1DE276", "#E8DE1C", "#FFFFFF" };
     private List<Color> colors = new List<Color>();
 
-    public event Action<Color, bool> onWordchecked;
+    public event Action<Color, bool> OnWordchecked;
 
     void Awake()
     {
@@ -47,7 +47,7 @@ public class WordManager : MonoBehaviour
         {
             letter.transform.parent.GetComponent<Image>().color = color;
         }
-        onWordchecked?.Invoke(color, IsWordInDictionary(color));
+        OnWordchecked?.Invoke(color, IsWordInDictionary(color));
 
     }
 
@@ -123,5 +123,10 @@ public class WordManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    internal void ResetTab()
+    {
+        OnWordchecked?.Invoke(Color.black, false);
     }
 }
