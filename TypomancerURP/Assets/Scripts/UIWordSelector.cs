@@ -24,7 +24,7 @@ public class UIWordSelector : MonoBehaviour
 
     public Action<SO_Word> OnMove;
 
-
+    public bool IsMovementBlocked = false;
 
     void Start()
     {
@@ -56,7 +56,7 @@ public class UIWordSelector : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !IsMovementBlocked)
         {
             UpdateCurrentSelectedLetter();
             CheckForCorrectWord();
@@ -74,8 +74,14 @@ public class UIWordSelector : MonoBehaviour
     {
         canSubmit = false;
         OnMove?.Invoke(wordManager.GetWordDataFromWord(GetWord()));
+        ResetLetters();
+
+    }
+
+    public void ResetLetters(float time = 1f)
+    {
         ClearLetters();
-        Invoke("LoadInStartSequence", 1f);
+        Invoke("UpdateAllLetters", time);
     }
 
     private void ClearLetters()

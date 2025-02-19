@@ -33,6 +33,17 @@ public class BattleSimulator : MonoBehaviour
     private string chosenWord;
     private bool battlePaused = false;
 
+    [SerializeField]
+    private float stunTime = 5f;
+    [SerializeField]
+    private float sickTime = 5f;
+    [SerializeField]
+    private float sickDamageInterval = 1f;
+    [SerializeField]
+    private sbyte sickDamageAmount = 1;
+    [SerializeField]
+    private float blindSetBackamount = 3f;
+
     void Start()
     {
         wordManager = FindObjectOfType<WordManager>();
@@ -44,8 +55,7 @@ public class BattleSimulator : MonoBehaviour
         player = FindObjectOfType<Player>();
 
         enemyAttackCooldown = enemy.GetBaseAttackCooldown();
-        chosenWord = enemy.PickWord();
-        OnEnemyWordPicked?.Invoke(chosenWord);
+        RerollEnemyWord();
     }
     // Update is called once per frame
     void Update()
@@ -77,7 +87,10 @@ public class BattleSimulator : MonoBehaviour
 
     private void EnemyCooldownTick()
     {
-        EnemyCooldownTimePassed += Time.deltaTime;
+        if (enemy.GetStatusEffect() != EStatusEffect.Stun)
+            EnemyCooldownTimePassed += Time.deltaTime;
+        else EnemyCooldownTimePassed += Time.deltaTime / 2;
+
         if (EnemyCooldownTimePassed >= enemyAttackCooldown)
         {
             MoveByEnemy(); // Call your function
@@ -99,21 +112,60 @@ public class BattleSimulator : MonoBehaviour
     {
         if (creature is Player)
         {
-            //rest letters, only restore after 3s
+            userInput.ResetLetters(3f); //rest letters, only restore after 3s
         }
-        if (creature is Enemy enemy)
+        if (creature is Enemy)
         {
-            //roll back timer by 3s or until 0
-
-            //reroll chosen word
-            //heal stun
+            enemyAttackCooldown = MathF.Max(enemyAttackCooldown - blindSetBackamount, 0);//roll back timer by 3s or until 0
+            RerollEnemyWord();//reroll chosen word
+            RemoveStatusEffectFromCreature(creature);
         }
     }
-    private void OnSick(Creature creature) { }
-    private void OnStun(Creature creature)
+
+    private void RemoveStatusEffectFromCreature(Creature creature)
+    {
+        creature.SetStatusEffect(EStatusEffect.None);//heal stun
+    }
+
+    private void OnSick(Creature creature)
     {
 
+        //1 damage every second, heal after 5s
+        creature.statusTimer += Time.deltaTime;
+        if (creature.statusTimer >= sickDamageInterval)
+        {
+            creature.damagecounter++;
+            UpdateHealth(creature, (sbyte)-sickDamageAmount); //every 1 second afflict damage
+            creature.statusTimer = 0;
+        }
+        if (creature.damagecounter >= sickTime) //after 5s remove stun
+        {
+            creature.damagecounter = 0;
+            creature.statusTimer = 0; //reset status timer
+            RemoveStatusEffectFromCreature(creature);
+        }
     }
+    private void OnStun(Creature creature)
+    {
+        if (creature is Player)
+        {
+            userInput.IsMovementBlocked = true; //block player pointer until unstun
+        }
+
+        creature.statusTimer += Time.deltaTime;
+        if (creature.statusTimer >= stunTime) //after 5s remove stun
+        {
+            creature.statusTimer = 0; //reset status timer
+            if (creature is Player) userInput.IsMovementBlocked = false;
+            RemoveStatusEffectFromCreature(creature);
+        }
+    }
+    private void RerollEnemyWord()
+    {
+        chosenWord = enemy.PickWord();
+        OnEnemyWordPicked?.Invoke(chosenWord);
+    }
+
 
     private void MoveByPlayer(SO_Word moveData)
     {
@@ -127,8 +179,7 @@ public class BattleSimulator : MonoBehaviour
 
         ExecuteStatChanges(player, enemy, moveData);
 
-        chosenWord = enemy.PickWord(); //enemy picks new word after attacking
-        OnEnemyWordPicked?.Invoke(chosenWord);
+        RerollEnemyWord();
     }
 
     private void ExecuteStatChanges(Creature attacker, Creature defender, SO_Word MoveData)
@@ -145,7 +196,7 @@ public class BattleSimulator : MonoBehaviour
         if (MoveData.StatusEffect != EStatusEffect.None)
         {
             OnStatusEffectAfflicted?.Invoke(defender, MoveData.StatusEffect);
-            defender.AfflictStatusEffect(MoveData.StatusEffect);
+            defender.SetStatusEffect(MoveData.StatusEffect);
         }
 
 

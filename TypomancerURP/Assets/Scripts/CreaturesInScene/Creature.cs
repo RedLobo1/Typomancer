@@ -7,7 +7,8 @@ public class Creature : MonoBehaviour
     protected short health;
     protected byte defence;
     protected EStatusEffect? StatusEffect = null;
-    protected float statusTimer;
+    public float statusTimer;
+    public byte damagecounter;
 
     private void Start()
     {
@@ -28,7 +29,7 @@ public class Creature : MonoBehaviour
         defence = modifier; //defence is a one-time shield
     }
 
-    public void AfflictStatusEffect(EStatusEffect statusEffect)
+    public void SetStatusEffect(EStatusEffect statusEffect)
     {
         //Debug.Log($"{statusEffect} status applied");
         StatusEffect = statusEffect;
