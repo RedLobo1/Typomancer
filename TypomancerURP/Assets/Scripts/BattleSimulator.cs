@@ -8,7 +8,7 @@ public class BattleSimulator : MonoBehaviour
     private Enemy enemy;
     private Player player;
 
-    private float enemyAttackCooldown;
+    public float enemyAttackCooldown;
     [SerializeField]
     private float enemyAttackModifier = 0.9f;
     [SerializeField]
@@ -19,7 +19,7 @@ public class BattleSimulator : MonoBehaviour
     WordManager wordManager;
 
     public event EventHandler<CreatureUIStatUpdate> OnPlayerStatUpdate;
-    public event EventHandler<CreatureUIStatUpdate> OnEnemyStatUpdate;
+    public event Action<CreatureUIStatUpdate, float> OnEnemyStatUpdate;
     public event Action OnGameOver;
     public event Action OnEnemyBeaten;
 
@@ -71,12 +71,20 @@ public class BattleSimulator : MonoBehaviour
                 OnEnemyBeaten?.Invoke();
                 battlePaused = true;
             }
+            StatusTick(player);
+            StatusTick(enemy); ;
         }
+    }
+
+    private void StatusTick(Creature player)
+    {
+        
     }
 
     private void MoveByPlayer(SO_Word moveData)
     {
         ExecuteStatChanges(player, enemy, moveData);
+        enemyAttackCooldown = Math.Max(enemyAttackCooldownMinumum, enemyAttackCooldown * enemyAttackModifier);
     }
 
     private void MoveByEnemy()
@@ -84,8 +92,6 @@ public class BattleSimulator : MonoBehaviour
         var moveData = wordManager.GetWordDataFromWord(chosenWord);
 
         ExecuteStatChanges(player, enemy, moveData);
-
-        enemyAttackCooldown = Math.Max(enemyAttackCooldownMinumum, enemyAttackCooldown * enemyAttackModifier);
 
         chosenWord = enemy.PickWord(); //enemy picks new word after attacking
         OnEnemyWordPicked?.Invoke(chosenWord);
@@ -111,7 +117,7 @@ public class BattleSimulator : MonoBehaviour
 
 
         OnPlayerStatUpdate?.Invoke(this, new CreatureUIStatUpdate(player.GetHealth()));
-        OnEnemyStatUpdate?.Invoke(this, new CreatureUIStatUpdate(enemy.GetHealth()));
+        OnEnemyStatUpdate?.Invoke(new CreatureUIStatUpdate(enemy.GetHealth()), (timeElapsed / enemyAttackCooldown));
     }
     private void UpdateHealth(Creature creature, sbyte healthModifier)
     {
