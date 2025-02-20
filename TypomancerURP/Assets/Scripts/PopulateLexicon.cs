@@ -47,6 +47,7 @@ public class PopulateLexicon : MonoBehaviour
 
     private void AddWordToLexicon(string word)
     {
+
         if (!KnownWords.Contains(word.ToUpper()))
         {
             KnownWords.Add(word.ToUpper());
