@@ -18,8 +18,8 @@ MonoBehaviour:
   BasettackCooldown: 15
   wordList:
     entries:
-    - word: KICK
-      odds: 60
+    - word: CODE
+      odds: 100
     - word: COOK
-      odds: 40
+      odds: 0
   enemySprite: {fileID: 21300000, guid: 580b932b2cba48d45bffe105bdbf3f8c, type: 3}

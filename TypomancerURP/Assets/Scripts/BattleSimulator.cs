@@ -201,10 +201,10 @@ public class BattleSimulator : MonoBehaviour
 
     private void ExecuteStatChanges(Creature attacker, Creature defender, SO_Word MoveData)
     {
-        sbyte healthModifier = (sbyte)(Mathf.Min(0, -MoveData.attackModifier - enemy.GetDefence()));
+         sbyte healthModifier = (sbyte)(Mathf.Min(0, -MoveData.attackModifier + enemy.GetDefence()));
         UpdateHealth(defender, healthModifier);
         if (MoveData.attackModifier != 0)
-            UpdateDefence(defender, 0); //if the attack does damage, remove the defence
+            LiftDefence(defender); //if the attack does damage, remove the defence
 
         UpdateHealth(attacker, MoveData.HealthModifier);
         UpdateDefence(attacker, (byte)MoveData.DefenceModifier);
@@ -236,6 +236,11 @@ public class BattleSimulator : MonoBehaviour
             OnDefenceChanged?.Invoke(creature, DefenceModifier);
             creature.ChangeDefence(DefenceModifier);
         }
+    }
+
+    private void LiftDefence(Creature creature)
+    {
+        creature.ChangeDefence(0);
     }
     private bool GetPauseState()
     {
