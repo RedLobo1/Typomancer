@@ -18,8 +18,8 @@ MonoBehaviour:
   BasettackCooldown: 10
   wordList:
     entries:
-    - word: LOP
-      odds: 50
+    - word: ICED
+      odds: 100
     - word: POD
-      odds: 50
+      odds: 0
   enemySprite: {fileID: 21300000, guid: 580b932b2cba48d45bffe105bdbf3f8c, type: 3}

@@ -14,7 +14,7 @@ public class WordManager : MonoBehaviour
     UIWordSelector UI;
 
     private string[] types = { "Attacks", "Defence", "Health", "Status" };
-    private string[] wordGroups = { "3-LetterWords"/*, "4-LetterWords"*/};
+    private string[] wordGroups = { "3-LetterWords", "4-LetterWords"};
 
     private string[] hexColors = { "#E31D2B", "#00A0FF", "#1DE276", "#E8DE1C", "#FFFFFF" };
     private List<Color> colors = new List<Color>();

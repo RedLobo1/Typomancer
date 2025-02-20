@@ -1,5 +1,7 @@
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIUpdater : MonoBehaviour
@@ -10,6 +12,7 @@ public class UIUpdater : MonoBehaviour
     [SerializeField] private Slider EnemyAttackSlider;
 
     [SerializeField] private Slider EnemyHealthSlider;
+    [SerializeField] private Slider PlayerHealthSlider;
 
     [SerializeField] private Image Tab;
     [SerializeField] private Transform Word;
@@ -25,8 +28,8 @@ public class UIUpdater : MonoBehaviour
 
 
         //game end events
-        //battleSim.OnEnemyBeaten += LogicWhenEnemyDefeated;
-        //battleSim.OnGameOver += LogicWhenPlayerDefeated;
+        battleSim.OnEnemyBeaten += LogicWhenEnemyDefeated;
+        battleSim.OnGameOver += LogicWhenPlayerDefeated;
         battleSim.OnPrizeLetterObtained += UpdatePlayerName;
 
 
@@ -47,6 +50,16 @@ public class UIUpdater : MonoBehaviour
 
     }
 
+    private void LogicWhenPlayerDefeated()
+    {
+        
+    }
+
+    private void LogicWhenEnemyDefeated()
+    {
+        SceneManager.LoadScene(SceneManager.sceneCount);
+    }
+
     private void UIActivateTab(Color color, bool canSubmit)
     {
         Tab.color = color;
@@ -65,7 +78,7 @@ public class UIUpdater : MonoBehaviour
         {
 
         }
-        else if (creature is Player)
+        else if (creature is Enemy)
         {
 
         }
@@ -113,13 +126,16 @@ public class UIUpdater : MonoBehaviour
 
     private void UpdatePlayerHealth(object sender, CreatureUIStatUpdate e)
     {
-        var healthPercentage = e.Health / e.MaxHealth;
+        float healthPercentage = (float)e.Health / (float)e.MaxHealth;
+        
+        PlayerHealthSlider.value = 1 - healthPercentage;
     }
 
     private void UpdateEnemyHealth(object sender, CreatureUIStatUpdate e)
     {
-        var healthPercentage = e.Health / e.MaxHealth;
-        //EnemyHealthSlider.value = stats.Health;
+        float healthPercentage = (float)e.Health / (float)e.MaxHealth;
+
+        EnemyHealthSlider.value = 1 - healthPercentage;
     }
 
     private void UpdateEnemyAttackTimer(float percentage)
