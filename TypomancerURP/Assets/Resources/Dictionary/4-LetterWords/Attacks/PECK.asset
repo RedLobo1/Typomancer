@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 920678fd3830e154bbc9014f28cef5de, type: 3}
-  m_Name: LOP
+  m_Name: PECK
   m_EditorClassIdentifier: 
-  Word: Lop
+  Word: PECK
   Phrase: attempted to lop off a body part.
   attackModifier: 3
   DefenceModifier: 0

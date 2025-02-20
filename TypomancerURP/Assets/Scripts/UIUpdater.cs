@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -49,15 +50,35 @@ public class UIUpdater : MonoBehaviour
         wordManager.OnWordchecked += UIActivateTab;
 
     }
-
     private void LogicWhenPlayerDefeated()
     {
-        
+        StartCoroutine(RestartLevelTimer());
+    }
+
+    IEnumerator RestartLevelTimer()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Restart the current level
     }
 
     private void LogicWhenEnemyDefeated()
     {
-        SceneManager.LoadScene(SceneManager.sceneCount);
+        StartCoroutine(NextLevelTimer());
+    }
+
+    IEnumerator NextLevelTimer()
+    {
+        yield return new WaitForSeconds(3f);
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings) // Prevents loading out-of-range scene
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            Debug.Log("No more levels!"); // You can handle game completion here
+        }
     }
 
     private void UIActivateTab(Color color, bool canSubmit)
