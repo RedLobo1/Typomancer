@@ -11,7 +11,7 @@ public class UIWordSelector : MonoBehaviour
     [SerializeField] private GameObject _pointer;
 
     public LoadInOwnedLetters loadInOwnedLetters;
-
+    private BattleSimulator battleSim;
     private LettersOwned letters;
 
     private float tolerance = 0.01f;
@@ -31,6 +31,7 @@ public class UIWordSelector : MonoBehaviour
     void Start()
     {
         loadInOwnedLetters = FindObjectOfType<LoadInOwnedLetters>();
+        battleSim = FindObjectOfType<BattleSimulator>();
         wordManager = FindObjectOfType<WordManager>();
 
         letters = loadInOwnedLetters.Letters;
@@ -58,22 +59,24 @@ public class UIWordSelector : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space) && !IsMovementBlocked)
+        if (!battleSim.GetPauseState())
         {
-            UpdateCurrentSelectedLetter();
+            if (Input.GetKeyDown(KeyCode.Space) && !IsMovementBlocked)
+            {
+                UpdateCurrentSelectedLetter();
 
+            }
+            if (canSubmit)
+                if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
+                {
+                    SubmitWord();
+                }
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Lexicon.SetActive(!Lexicon.activeInHierarchy); //toggle visibility
             OnPauseStateUpdate?.Invoke(Lexicon.activeInHierarchy); //Toggle pause
         }
-
-        if (canSubmit)
-            if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
-            {
-                SubmitWord();
-            }
 
     }
 
@@ -82,7 +85,6 @@ public class UIWordSelector : MonoBehaviour
         canSubmit = false;
         OnMove?.Invoke(wordManager.GetWordDataFromWord(GetWord()));
         ResetLetters();
-
     }
 
     public void ResetLetters(float time = 1f)

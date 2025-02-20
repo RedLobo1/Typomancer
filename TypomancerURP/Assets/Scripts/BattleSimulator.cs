@@ -265,7 +265,7 @@ public class BattleSimulator : MonoBehaviour
         OnDefenceChanged?.Invoke(creature, 0);
         creature.ChangeDefence(0);
     }
-    private bool GetPauseState()
+    public bool GetPauseState()
     {
         return battlePaused;
     }

@@ -33,6 +33,8 @@ public class PopulateLexicon : MonoBehaviour
 
         userInput = FindObjectOfType<UIWordSelector>();
         userInput.OnMove += AddWordToLexicon;
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void AddWordToLexicon(SO_Word word)
