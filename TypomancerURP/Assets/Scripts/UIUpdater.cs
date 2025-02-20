@@ -19,6 +19,15 @@ public class UIUpdater : MonoBehaviour
     [SerializeField] private Image Tab;
     [SerializeField] private Transform Word;
 
+
+    [SerializeField] private Transform _messagePanel;
+
+    private float messageLogTimer;
+
+    [SerializeField]
+    private float MessageAliveTime = 4;
+
+
     [Header("Player effects")]
 
 
@@ -36,10 +45,12 @@ public class UIUpdater : MonoBehaviour
     [SerializeField] private GameObject _enemyStun;
     [SerializeField] private GameObject _enemyBlind;
 
+
     // Start is called before the first frame update
 
     private BattleSimulator battleSim;
     private WordManager wordManager;
+
 
     void Start()
     {
@@ -67,9 +78,46 @@ public class UIUpdater : MonoBehaviour
 
         battleSim.OnEnemyWordPicked += UpdateEnemyWord;
 
+
+        battleSim.OnAddToMessageLog += WriteToLog;
+
         wordManager.OnWordchecked += UIActivateTab;
 
     }
+    //var childGameObject = WordPanels[i].GetChild(0).gameObject;
+    //GameObject newText = Instantiate(childGameObject, WordPanels[i]);
+    //newText.GetComponent<TMP_Text>().text = word.name.ToUpper();
+    //                newText.SetActive(true);
+    private void WriteToLog(string message)
+    {
+        var childGameObject = _messagePanel.GetChild(0).gameObject;
+        GameObject newMessage = Instantiate(childGameObject, _messagePanel);
+        newMessage.GetComponent<TMP_Text>().text = message;
+        newMessage.SetActive(true);
+        _messagePanel.gameObject.SetActive(true);
+        if (_messagePanel.transform.childCount > 6)
+        {
+            Transform child = _messagePanel.GetChild(1);
+            child.SetParent(null);
+            Destroy(child.gameObject);
+        }
+        //if (_messagePanel.transform.childCount == 1)
+        //    _messagePanel.gameObject.SetActive(false);
+    }
+
+    private void RemoveFromLog()
+    {
+        if (_messagePanel.childCount > 1)
+        {
+            var child = _messagePanel.GetChild(1);
+            child.SetParent(null);
+            Destroy(child.gameObject);
+        }
+        if (_messagePanel.childCount == 1)
+            _messagePanel.gameObject.SetActive(false);
+
+    }
+
     private void LogicWhenPlayerDefeated()
     {
         StartCoroutine(RestartLevelTimer());
@@ -314,6 +362,11 @@ public class UIUpdater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        messageLogTimer += Time.deltaTime;
+        if (messageLogTimer >= MessageAliveTime)
+        {
+            RemoveFromLog();
+            messageLogTimer = 0;
+        }
     }
 }
