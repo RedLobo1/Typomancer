@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -46,7 +45,7 @@ public class UIUpdater : MonoBehaviour
     {
         battleSim = FindObjectOfType<BattleSimulator>();
         wordManager = FindObjectOfType<WordManager>();
-        
+
 
 
         //game end events
@@ -116,69 +115,69 @@ public class UIUpdater : MonoBehaviour
             case EStatusEffect.Blind:
 
 
-                if (creature is Player)
-                {
-                    _playerBlind.SetActive(true);
-                    CameraAnimator.Play("Damage");
-                }
-                if (creature is Enemy)
-                {
-                    _enemyBlind.SetActive(false);
-                    CameraAnimator.Play("Attack");
-                }
+                //if (creature is Player)
+                //{
+                //    _playerBlind.SetActive(true);
+                //    CameraAnimator.Play("Damage");
+                //}
+                //if (creature is Enemy)
+                //{
+                //    _enemyBlind.SetActive(false);
+                //    CameraAnimator.Play("Attack");
+                //}
 
-            break; //pic
+                break; //pic
 
             case EStatusEffect.Sick:
 
-                if (creature is Player)
-                {
-                    _playerPoison.SetActive(true);
-                    CameraAnimator.Play("Damage");
+                //if (creature is Player)
+                //{
+                //    _playerPoison.SetActive(true);
+                //    CameraAnimator.Play("Damage");
 
-                }
-                if (creature is Enemy)
-                {
-                    _enemyPoison.SetActive(false);
-                    CameraAnimator.Play("Attack");
+                //}
+                //if (creature is Enemy)
+                //{
+                //    _enemyPoison.SetActive(false);
+                //    CameraAnimator.Play("Attack");
 
-                }
+                //}
 
 
-            break; //ill
+                break; //ill
 
             case EStatusEffect.Stun:
 
-                if (creature is Player)
-                {
-                    _playerStun.SetActive(true);
-                    CameraAnimator.Play("Damage");
-                }
-                if (creature is Enemy)
-                {
-                    _enemyStun.SetActive(false);
-                    CameraAnimator.Play("Attack");
-                }
+                //if (creature is Player)
+                //{
+                //    _playerStun.SetActive(true);
+                //    CameraAnimator.Play("Damage");
+                //}
+                //if (creature is Enemy)
+                //{
+                //    _enemyStun.SetActive(false);
+                //    CameraAnimator.Play("Attack");
+                //}
 
 
-            break; //eel
+                break; //eel
 
             case EStatusEffect.None:
 
 
-                if (creature is Player)
-                {
-                    _playerBlind.SetActive(false);
-                    _playerPoison.SetActive(false);
-                    _playerStun.SetActive(false);
-                    
-                }
-                if (creature is Enemy)
-                {
-                    _enemyBlind.SetActive(false);
-                    _enemyPoison.SetActive(false);
-                    _enemyStun.SetActive(false);
-                }
+                //if (creature is Player)
+                //{
+                //    _playerBlind.SetActive(false);
+                //    _playerPoison.SetActive(false);
+                //    _playerStun.SetActive(false);
+
+                //}
+                //if (creature is Enemy)
+                //{
+                //    _enemyBlind.SetActive(false);
+                //    _enemyPoison.SetActive(false);
+                //    _enemyStun.SetActive(false);
+                //}
 
                 break;
 
@@ -197,14 +196,14 @@ public class UIUpdater : MonoBehaviour
     {
         if (healthChanged < 0)
         {
-            if (creature is Player)
-            {
-                CameraAnimator.Play("Damage");
-            }
-            if (creature is Enemy)
-            {
-                CameraAnimator.Play("Attack");
-            }
+            //if (creature is Player)
+            //{
+            //    CameraAnimator.Play("Damage");
+            //}
+            //if (creature is Enemy)
+            //{
+            //    CameraAnimator.Play("Attack");
+            //}
         }
         else if (healthChanged > 0)
         {
@@ -224,28 +223,28 @@ public class UIUpdater : MonoBehaviour
     {
         if (defenceChanged == 0)
         {
-            if (creature is Player)
-            {
-                _playerShield.SetActive(false);
-                CameraAnimator.Play("Damage");
-            }
-            if (creature is Enemy)
-            {
-                _enemyShield.SetActive(false);
-                CameraAnimator.Play("Attack");
-            }
+            //if (creature is Player)
+            //{
+            //    _playerShield.SetActive(false);
+            //    CameraAnimator.Play("Damage");
+            //}
+            //if (creature is Enemy)
+            //{
+            //    _enemyShield.SetActive(false);
+            //    CameraAnimator.Play("Attack");
+            //}
         }
 
         else if (defenceChanged > 0)
         {
-            if (creature is Player)
-            {
-                _playerShield.SetActive(true);
-            }
-            if (creature is Enemy)
-            {
-                _enemyShield.SetActive(true);
-            }
+            //if (creature is Player)
+            //{
+            //    _playerShield.SetActive(true);
+            //}
+            //if (creature is Enemy)
+            //{
+            //    _enemyShield.SetActive(true);
+            //}
         }
 
     }
