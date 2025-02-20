@@ -14,7 +14,7 @@ public class UIWordSelector : MonoBehaviour
 
     private LettersOwned letters;
 
-    private float tolerance = 0.01f;
+    private float tolerance = 15f;
 
     public event EventHandler<WordEventArgs> OnValidateWord;
     public event Action<bool> OnPauseStateUpdate;
