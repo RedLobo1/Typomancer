@@ -88,17 +88,17 @@ public class UIUpdater : MonoBehaviour
     {
         if (healthChanged < 0)
         {
-            //the stat decreased
+            //the stat decreased check
         }
         else if (healthChanged > 0)
         {
-            //the stat increased
+            //the stat increased check
         }
         if (creature is Player)
         {
-
+            //´this is for the location of the animation
         }
-        else if (creature is Player)
+        else if (creature is Enemy)
         {
 
         }
