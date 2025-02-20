@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 920678fd3830e154bbc9014f28cef5de, type: 3}
-  m_Name: COP
+  m_Name: COPE
   m_EditorClassIdentifier: 
-  Word: Cop
-  Phrase: called the cops to protect against attacks this turn.
+  Word: COPE
+  Phrase: formed a pod to defend.
   attackModifier: 0
   DefenceModifier: 3
   HealthModifier: 0

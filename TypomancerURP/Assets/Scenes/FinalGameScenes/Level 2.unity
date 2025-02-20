@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28e0aa67aaf91e43b5de024a85a698e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AvailableLetters: ICED
+  AvailableLetters: KICO
 --- !u!4 &360080414
 Transform:
   m_ObjectHideFlags: 0

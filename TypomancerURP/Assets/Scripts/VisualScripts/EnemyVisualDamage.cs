@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,28 +6,39 @@ using UnityEngine;
 public class EnemyVisualDamage : MonoBehaviour
 {
     private bool _coroutineRunning;
+    private BattleSimulator battleSim;
+
+    private Animator _animator;
     void Start()
     {
-        
+        _animator = GetComponent<Animator>();
+        battleSim = FindObjectOfType<BattleSimulator>();
+
+        battleSim.OnHealthChanged += EnemyAnimations;
+        battleSim.OnEnemyBeaten += EnemyDeath;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void EnemyDeath()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        _animator.Play("Death");
+    }
+
+    private void EnemyAnimations(Creature creature, sbyte healthChanged)
+    {
+        if (healthChanged < 0)
         {
-            if (_coroutineRunning) return;
-            StartCoroutine(DamageTaking());
+            if (creature is Enemy)
+            {
+                _animator.Play("Shake");
+            }
         }
-
-    }
-    IEnumerator DamageTaking()
-    {
-
-        GetComponent<Animator>().Play("Shake");
-        _coroutineRunning = true;
-        yield return new WaitForSeconds(0.5f);
-        _coroutineRunning = false;
+        else if (healthChanged > 0)
+        {
+            if (creature is Enemy)
+            {
+                _animator.Play("Healed");
+            }
+        }
 
     }
 }
