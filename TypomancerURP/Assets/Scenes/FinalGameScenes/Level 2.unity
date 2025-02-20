@@ -1722,8 +1722,9 @@ MonoBehaviour:
   - {fileID: 322764355}
   - {fileID: 576149709}
   - {fileID: 1552690939}
+  Lexicon: {fileID: 0}
   _pointer: {fileID: 1532793277}
-  loadInOwnedLetters: {fileID: 0}
+  loadInOwnedLetters: {fileID: 360080413}
   IsMovementBlocked: 0
 --- !u!4 &1151172058
 Transform:
@@ -1885,6 +1886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerName: {fileID: 1104155971}
   EnemyAttackSlider: {fileID: 1281556559}
+  CameraAnimator: {fileID: 2066022569}
   EnemyHealthSlider: {fileID: 1375875354}
   PlayerHealthSlider: {fileID: 508336093}
   Tab: {fileID: 1380469307}
@@ -2259,6 +2261,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 1277.1061
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356202201113676940, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6853357471323692298, guid: 880f09c9dd9f7e94b956a071e922b859,
         type: 3}

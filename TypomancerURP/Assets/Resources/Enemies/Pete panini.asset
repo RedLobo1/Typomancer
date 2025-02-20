@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Panini
   PrizeLetter: 112
-  MaxHealth: 10
-  BasettackCooldown: 10
+  MaxHealth: 12
+  BasettackCooldown: 12
   wordList:
     entries:
     - word: KICK

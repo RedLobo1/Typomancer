@@ -48,7 +48,7 @@ public class UIUpdater : MonoBehaviour
         battleSim.OnEnemyStatUpdate += UpdateEnemyHealth; //only HP visible in UI so it sends HP and Max HP only
         battleSim.OnPlayerStatUpdate += UpdatePlayerHealth; //only HP visible in UI so it sends HP and Max HP only
 
-        battleSim.OnEnemyWordPicked += UpdateEnemyAttack;
+        battleSim.OnEnemyWordPicked += UpdateEnemyWord;
 
         wordManager.OnWordchecked += UIActivateTab;
 
@@ -174,7 +174,7 @@ public class UIUpdater : MonoBehaviour
         EnemyAttackSlider.value = percentage;
     }
 
-    private void UpdateEnemyAttack(string attack)
+    private void UpdateEnemyWord(string attack)
     {
         attack.ToCharArray();
         var index = 0;

@@ -1722,6 +1722,7 @@ MonoBehaviour:
   - {fileID: 322764355}
   - {fileID: 576149709}
   - {fileID: 1552690939}
+  Lexicon: {fileID: 0}
   _pointer: {fileID: 1532793277}
   loadInOwnedLetters: {fileID: 0}
   IsMovementBlocked: 0
@@ -2280,6 +2281,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6356202201113676940, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6853357471323692298, guid: 880f09c9dd9f7e94b956a071e922b859,
         type: 3}
