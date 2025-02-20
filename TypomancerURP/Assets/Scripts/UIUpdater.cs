@@ -322,7 +322,7 @@ public class UIUpdater : MonoBehaviour
         var index = 0;
         foreach (Transform LetterSlot in Word.transform)
         {
-            if (LetterSlot != null) //here
+            if (LetterSlot != null && LetterSlot.childCount > 0) //here
             {
                 LetterSlot.GetChild(0).GetComponent<TMP_Text>().text = attack.ToCharArray()[index].ToString();
                 index++;

@@ -802,6 +802,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &603980116 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6666418407912266834, guid: 880f09c9dd9f7e94b956a071e922b859,
+    type: 3}
+  m_PrefabInstance: {fileID: 1533307382694497861}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,12 +1798,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1533307382694497861}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &1539835585 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6951086276343056321, guid: 880f09c9dd9f7e94b956a071e922b859,
-    type: 3}
-  m_PrefabInstance: {fileID: 1533307382694497861}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1552690939 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1576092107938671024, guid: 880f09c9dd9f7e94b956a071e922b859,
@@ -2264,7 +2264,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _messagePanel
       value: 
-      objectReference: {fileID: 1539835585}
+      objectReference: {fileID: 603980116}
     - target: {fileID: 5268774715839416591, guid: 6a52cb6001eec784f9cda8c21df79ac3,
         type: 3}
       propertyPath: CameraAnimator
@@ -2308,9 +2308,25 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2482367813071035592, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3012249590110265121, guid: 880f09c9dd9f7e94b956a071e922b859,
         type: 3}
       propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3362644579291590199, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -750679757, guid: e438c1bd04d0716439fe04714ff9bc0a,
+        type: 3}
+    - target: {fileID: 5047189568311269323, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_ReverseArrangement
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5225948429066593426, guid: 880f09c9dd9f7e94b956a071e922b859,
