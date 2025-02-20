@@ -8,7 +8,8 @@ public class BattleSimulator : MonoBehaviour
     private Enemy enemy;
     private Player player;
 
-    public float enemyAttackCooldown;
+    private float enemyAttackCooldownCurrent;
+    private float enemyAttackCooldownStartTurn;
     [SerializeField]
     private float enemyAttackModifier = 0.9f;
     [SerializeField]
@@ -55,7 +56,8 @@ public class BattleSimulator : MonoBehaviour
         enemy = FindObjectOfType<Enemy>();
         player = FindObjectOfType<Player>();
 
-        enemyAttackCooldown = enemy.GetBaseAttackCooldown();
+        enemyAttackCooldownCurrent = enemy.GetBaseAttackCooldown();
+        enemyAttackCooldownStartTurn = enemyAttackCooldownCurrent;
         RerollEnemyWord();
     }
     // Update is called once per frame
@@ -93,13 +95,14 @@ public class BattleSimulator : MonoBehaviour
         else
             EnemyCooldownTimePassed += Time.deltaTime / 2;
 
-        OnEnemyCooldownTimePassed?.Invoke(EnemyCooldownTimePassed / enemyAttackCooldown);
+        OnEnemyCooldownTimePassed?.Invoke(EnemyCooldownTimePassed / enemyAttackCooldownStartTurn);
 
-        if (EnemyCooldownTimePassed >= enemyAttackCooldown)
+        if (EnemyCooldownTimePassed >= enemyAttackCooldownCurrent)
         {
 
             MoveByEnemy(); // Call your function
             EnemyCooldownTimePassed = 0f;
+            enemyAttackCooldownStartTurn = enemyAttackCooldownCurrent;
         }
     }
 
@@ -121,7 +124,7 @@ public class BattleSimulator : MonoBehaviour
         }
         if (creature is Enemy)
         {
-            enemyAttackCooldown = MathF.Max(enemyAttackCooldown - blindSetBackamount, 0);//roll back timer by 3s or until 0
+            enemyAttackCooldownCurrent = MathF.Max(enemyAttackCooldownCurrent - blindSetBackamount, 0);//roll back timer by 3s or until 0
             RerollEnemyWord();//reroll chosen word
             RemoveStatusEffectFromCreature(creature);
         }
@@ -175,7 +178,7 @@ public class BattleSimulator : MonoBehaviour
     private void MoveByPlayer(SO_Word moveData)
     {
         ExecuteStatChanges(player, enemy, moveData);
-        enemyAttackCooldown = Math.Max(enemyAttackCooldownMinumum, enemyAttackCooldown * enemyAttackModifier);
+        enemyAttackCooldownCurrent = Math.Max(enemyAttackCooldownMinumum, enemyAttackCooldownCurrent * enemyAttackModifier);
     }
 
     private void MoveByEnemy()
