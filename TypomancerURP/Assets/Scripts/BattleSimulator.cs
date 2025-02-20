@@ -133,7 +133,7 @@ public class BattleSimulator : MonoBehaviour
 
     private void StatusTick(Creature creature)
     {
-        switch (player.GetStatusEffect())
+        switch (creature.GetStatusEffect())
         {
             case EStatusEffect.Blind: OnBlind(creature); break;
             case EStatusEffect.Sick: OnSick(creature); break;
