@@ -1,0 +1,265 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6603617869214924448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3911989539870119548}
+  - component: {fileID: 4734942098307066553}
+  - component: {fileID: 7097770812918995009}
+  m_Layer: 0
+  m_Name: AudioManagerDefault
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3911989539870119548
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6603617869214924448}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.96, y: -2.7095149, z: -0.19}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4734942098307066553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6603617869214924448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b550a04f748e580438e5bd5d848e8811, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FindAllObjectsOnReload: 0
+  QuitPressingStartSelect: 1
+  PlayerName: {fileID: 0}
+  EnemyAttackSlider: {fileID: 0}
+  CameraAnimator: {fileID: 0}
+  EnemyHealthSlider: {fileID: 0}
+  PlayerHealthSlider: {fileID: 0}
+  Tab: {fileID: 0}
+  Word: {fileID: 0}
+--- !u!114 &7097770812918995009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6603617869214924448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f0762d95fde97a449ec7060085a0d2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundCollection:
+  - name: Music
+    sounds:
+    - name: Music
+      clip: {fileID: 8300000, guid: 04741e3fa176ad34dac8577700f18b3c, type: 3}
+      volume: 0.5
+      pitch: 1
+      source: {fileID: 0}
+      loop: 1
+      playOnAwake: 0
+      randomPitch: 0
+      randomClip: 0
+      canInterrupt: 0
+      minRandomPitch: 0
+      maxRandomPitch: 0
+      randomClips: []
+  - name: Slow
+    sounds:
+    - name: Slow
+      clip: {fileID: 8300000, guid: cdd1a48e4466de544831bcc70ef2ee5a, type: 3}
+      volume: 1
+      pitch: 1
+      source: {fileID: 0}
+      loop: 0
+      playOnAwake: 0
+      randomPitch: 1
+      randomClip: 0
+      canInterrupt: 0
+      minRandomPitch: 0.7
+      maxRandomPitch: 1.3
+      randomClips: []
+  - name: Slow
+    sounds:
+    - name: Slow
+      clip: {fileID: 8300000, guid: cdd1a48e4466de544831bcc70ef2ee5a, type: 3}
+      volume: 1
+      pitch: 1
+      source: {fileID: 0}
+      loop: 0
+      playOnAwake: 0
+      randomPitch: 1
+      randomClip: 0
+      canInterrupt: 0
+      minRandomPitch: 0.7
+      maxRandomPitch: 1.3
+      randomClips: []
+  - name: Defend
+    sounds:
+    - name: Defend
+      clip: {fileID: 8300000, guid: bd5a8c0bdbd2d7a4eb942b54449c6384, type: 3}
+      volume: 1
+      pitch: 1
+      source: {fileID: 0}
+      loop: 0
+      playOnAwake: 0
+      randomPitch: 1
+      randomClip: 0
+      canInterrupt: 0
+      minRandomPitch: 0.7
+      maxRandomPitch: 1.3
+      randomClips: []
+  - name: Stun
+    sounds:
+    - name: Stun
+      clip: {fileID: 8300000, guid: f300ae414275c67439beb9fc703ef6d2, type: 3}
+      volume: 1
+      pitch: 1
+      source: {fileID: 0}
+      loop: 0
+      playOnAwake: 0
+      randomPitch: 1
+      randomClip: 0
+      canInterrupt: 0
+      minRandomPitch: 0.7
+      maxRandomPitch: 1.3
+      randomClips: []
+  - name: Sick
+    sounds:
+    - name: Sick
+      clip: {fileID: 8300000, guid: c6d89c8ae72e5e645b0dcd8620aa8f62, type: 3}
+      volume: 1
+      pitch: 1
+      source: {fileID: 0}
+      loop: 0
+      playOnAwake: 0
+      randomPitch: 1
+      randomClip: 0
+      canInterrupt: 0
+      minRandomPitch: 0.7
+      maxRandomPitch: 1.3
+      randomClips: []
+  - name: Debuff
+    sounds:
+    - name: Debuff
+      clip: {fileID: 8300000, guid: 24cfb97b68580504cb156cdc18a90d73, type: 3}
+      volume: 1
+      pitch: 1
+      source: {fileID: 0}
+      loop: 0
+      playOnAwake: 0
+      randomPitch: 1
+      randomClip: 0
+      canInterrupt: 0
+      minRandomPitch: 0.7
+      maxRandomPitch: 1.3
+      randomClips: []
+  - name: Shuffle
+    sounds:
+    - name: Shuffle
+      clip: {fileID: 8300000, guid: e4c7cd4e31411f941bab3ff436afe10e, type: 3}
+      volume: 1
+      pitch: 1
+      source: {fileID: 0}
+      loop: 0
+      playOnAwake: 0
+      randomPitch: 1
+      randomClip: 0
+      canInterrupt: 0
+      minRandomPitch: 0.7
+      maxRandomPitch: 1.3
+      randomClips: []
+  - name: Attack
+    sounds:
+    - name: Attack
+      clip: {fileID: 8300000, guid: 25fdf415675ff594ea950302bcb0722c, type: 3}
+      volume: 1
+      pitch: 1
+      source: {fileID: 0}
+      loop: 0
+      playOnAwake: 0
+      randomPitch: 1
+      randomClip: 0
+      canInterrupt: 0
+      minRandomPitch: 0.7
+      maxRandomPitch: 1.3
+      randomClips: []
+  - name: Heal
+    sounds:
+    - name: Heal
+      clip: {fileID: 8300000, guid: e8434a32e93314b40950aaad58e0092d, type: 3}
+      volume: 1
+      pitch: 1
+      source: {fileID: 0}
+      loop: 0
+      playOnAwake: 0
+      randomPitch: 1
+      randomClip: 0
+      canInterrupt: 0
+      minRandomPitch: 0.7
+      maxRandomPitch: 1.3
+      randomClips: []
+  - name: Click
+    sounds:
+    - name: Click
+      clip: {fileID: 8300000, guid: 6f5f1b785fa22334fbfcbd20d1559109, type: 3}
+      volume: 1
+      pitch: 1
+      source: {fileID: 0}
+      loop: 0
+      playOnAwake: 0
+      randomPitch: 1
+      randomClip: 0
+      canInterrupt: 0
+      minRandomPitch: 0.7
+      maxRandomPitch: 1.3
+      randomClips: []
+  - name: Damage
+    sounds:
+    - name: Damage
+      clip: {fileID: 8300000, guid: b511c60882b214844b070f726fd4b3eb, type: 3}
+      volume: 1
+      pitch: 1
+      source: {fileID: 0}
+      loop: 0
+      playOnAwake: 0
+      randomPitch: 1
+      randomClip: 0
+      canInterrupt: 0
+      minRandomPitch: 0.7
+      maxRandomPitch: 1.3
+      randomClips: []
+  - name: Wave
+    sounds:
+    - name: Wave
+      clip: {fileID: 8300000, guid: 6657c57539383cd4eaf003a9bd87c272, type: 3}
+      volume: 1
+      pitch: 1
+      source: {fileID: 0}
+      loop: 0
+      playOnAwake: 0
+      randomPitch: 1
+      randomClip: 0
+      canInterrupt: 0
+      minRandomPitch: 0.7
+      maxRandomPitch: 1.3
+      randomClips: []
+  mute: 0
