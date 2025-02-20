@@ -24,6 +24,9 @@ public class UIUpdater : MonoBehaviour
 
     private float messageLogTimer;
 
+    [SerializeField]
+    private float MessageAliveTime = 4;
+
 
     [Header("Player effects")]
 
@@ -98,6 +101,8 @@ public class UIUpdater : MonoBehaviour
             child.SetParent(null);
             Destroy(child.gameObject);
         }
+        //if (_messagePanel.transform.childCount == 1)
+        //    _messagePanel.gameObject.SetActive(false);
     }
 
     private void RemoveFromLog()
@@ -108,7 +113,8 @@ public class UIUpdater : MonoBehaviour
             child.SetParent(null);
             Destroy(child.gameObject);
         }
-        else _messagePanel.gameObject.SetActive(false);
+        if (_messagePanel.childCount == 1)
+            _messagePanel.gameObject.SetActive(false);
 
     }
 
@@ -357,7 +363,7 @@ public class UIUpdater : MonoBehaviour
     void Update()
     {
         messageLogTimer += Time.deltaTime;
-        if (messageLogTimer >= 4)
+        if (messageLogTimer >= MessageAliveTime)
         {
             RemoveFromLog();
             messageLogTimer = 0;
