@@ -3012,7 +3012,6 @@ MonoBehaviour:
   autoAdvanceTime: 1.5
   dialogueLines:
   - Yeah thats me Clopidek
-  - walking peacefully in the forest
   - ...
   - Oh no its the Magical Goblin squad
   - they want to steal my letters !!!
@@ -3486,7 +3485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfdbe226f7b530b4d9285b707528aa53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switchDelay: 8
+  switchDelay: 18
   animator: {fileID: 0}
   autoswitch: 1
 --- !u!4 &1574112874
