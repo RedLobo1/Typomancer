@@ -15,11 +15,11 @@ MonoBehaviour:
   Name: Oliver
   PrizeLetter: 111
   MaxHealth: 10
-  BasettackCooldown: 15
+  BasettackCooldown: 3
   wordList:
     entries:
-    - word: DICK
-      odds: 100
-    - word: COOK
-      odds: 0
+    - word: CODE
+      odds: 50
+    - word: COPE
+      odds: 50
   enemySprite: {fileID: 21300000, guid: 580b932b2cba48d45bffe105bdbf3f8c, type: 3}
