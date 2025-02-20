@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SelectionVisual : MonoBehaviour
@@ -6,6 +7,8 @@ public class SelectionVisual : MonoBehaviour
     [SerializeField] public GameObject Pointer;
     [SerializeField] private GameObject _pointer2;
     private int _currentSelected = 1;
+
+    public event Action OnChangedSelection;
 
     void Start()
     {
@@ -39,6 +42,7 @@ public class SelectionVisual : MonoBehaviour
                     Pointer.transform.position = Selectables[i].transform.position;
                     Pointer.transform.rotation = Selectables[i].transform.rotation;
 
+                    OnChangedSelection?.Invoke();
                 }
 
 

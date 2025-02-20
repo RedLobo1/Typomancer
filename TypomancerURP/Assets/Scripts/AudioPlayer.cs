@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 using UnityEngine.SceneManagement;
+using UnityEditor.Experimental.GraphView;
 
 public class AudioPlayer : MonoBehaviour
 {
@@ -24,12 +25,22 @@ public class AudioPlayer : MonoBehaviour
     private BattleSimulator battleSim;
     private WordManager wordManager;
 
+    private UIWordSelector userInput;
+    private SelectionVisual selectables;
+
+
     void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         FindAllObjectsOfType();
         PlayAmbiance();
+
+        userInput.OnPauseStateUpdate += PlayLexiconOpenClose;
+
+        selectables.OnChangedSelection += PlaySelectionSoundEffect;
     }
+
+
 
     private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
@@ -78,11 +89,21 @@ public class AudioPlayer : MonoBehaviour
         }
     }
 
+    private void PlaySelectionSoundEffect()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void PlayLexiconOpenClose(bool obj)
+    {
+        throw new NotImplementedException();
+    }
 
     private void OnPrizeLetterObtained(char obj)
     {
         throw new NotImplementedException();
     }
+
 
     private void LogicWhenPlayerDefeated()
     {
