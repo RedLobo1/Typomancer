@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DIKE
   m_EditorClassIdentifier: 
   Word: DIKE
-  Phrase: attempted to pop off a head.
+  Phrase: Insulted the opponent.
   attackModifier: 3
   DefenceModifier: 0
   HealthModifier: 0

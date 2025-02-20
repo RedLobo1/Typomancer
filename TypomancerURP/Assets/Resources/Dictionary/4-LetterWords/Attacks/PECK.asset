@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PECK
   m_EditorClassIdentifier: 
   Word: PECK
-  Phrase: attempted to lop off a body part.
+  Phrase: grew a beek and pecked the opponent.
   attackModifier: 3
   DefenceModifier: 0
   HealthModifier: 0

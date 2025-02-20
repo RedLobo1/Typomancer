@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 920678fd3830e154bbc9014f28cef5de, type: 3}
-  m_Name: PEEK
+  m_Name: DEED
   m_EditorClassIdentifier: 
-  Word: PEEK
-  Phrase: ate the most delicious pie.
-  attackModifier: 0
+  Word: DEED
+  Phrase: did a bad deed and dealt damage.
+  attackModifier: 3
   DefenceModifier: 0
-  HealthModifier: 4
+  HealthModifier: 0
   TextColor: {r: 0, g: 0, b: 0, a: 0}
   StatusEffect: 0
   enemySprite: {fileID: 0}

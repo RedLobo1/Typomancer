@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: COKE
   m_EditorClassIdentifier: 
   Word: COKE
-  Phrase: Spread disease to entities nearby.
+  Phrase: gave coke to the opponent even though its full of toxins.
   attackModifier: 0
   DefenceModifier: 0
   HealthModifier: 0

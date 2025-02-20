@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ICED
   m_EditorClassIdentifier: 
   Word: ICED
-  Phrase: took a picture and blinded the oppontent temporarily.
+  Phrase: froze the opponet's eyes.
   attackModifier: 0
   DefenceModifier: 0
   HealthModifier: 0

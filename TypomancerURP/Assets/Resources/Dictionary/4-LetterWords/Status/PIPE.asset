@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PIPE
   m_EditorClassIdentifier: 
   Word: PIPE
-  Phrase: Stunned the opponent with an electric eel
+  Phrase: narrowed the opponent's field of vision.
   attackModifier: 0
   DefenceModifier: 0
   HealthModifier: 0
   TextColor: {r: 0, g: 0, b: 0, a: 0}
-  StatusEffect: 2
+  StatusEffect: 1
   enemySprite: {fileID: 0}
