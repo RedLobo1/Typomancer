@@ -1,30 +1,15 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 using UnityEngine.SceneManagement;
-using UnityEditor.Experimental.GraphView;
 
 public class AudioPlayer : MonoBehaviour
 {
     [SerializeField] private bool FindAllObjectsOnReload = false;
     [SerializeField] private bool QuitPressingStartSelect = true;
 
-    //list of objects
-    private CharacterController character;
-    [SerializeField] private GameObject PlayerName;
-    [SerializeField] private Slider EnemyAttackSlider;
-    [SerializeField] private Animator CameraAnimator;
-    [SerializeField] private Slider EnemyHealthSlider;
-    [SerializeField] private Slider PlayerHealthSlider;
-    [SerializeField] private Image Tab;
-    [SerializeField] private Transform Word;
-
+    //lists of objects
     private BattleSimulator battleSim;
     private WordManager wordManager;
-
     private UIWordSelector userInput;
     private SelectionVisual selectables;
 
@@ -34,17 +19,25 @@ public class AudioPlayer : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
         FindAllObjectsOfType();
         PlayAmbiance();
+        if (wordManager != null)
+            wordManager.OnWordchecked += ActivateTabSound;
 
-        userInput.OnPauseStateUpdate += PlayLexiconOpenClose;
-
-        selectables.OnChangedSelection += PlaySelectionSoundEffect;
+        if (userInput != null)
+            userInput.OnPauseStateUpdate += PlayLexiconOpenClose;
+        if (selectables != null)
+            selectables.OnChangedSelection += PlayUIMovingSound;
     }
 
-
+    private void ActivateTabSound(Color color, bool arg2) ///////
+    {
+        if (arg2)
+            AudioManager.Instance.Play("Shuffle");
+    }
 
     private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
         FindAllObjectsOfType();
+        AudioManager.Instance.Play("Bell");
     }
 
     private void Update()
@@ -59,11 +52,12 @@ public class AudioPlayer : MonoBehaviour
     private void FindAllObjectsOfType()
     {
         //character = GameObject.FindObjectOfType<CharacterController>();
-
+        selectables = FindObjectOfType<SelectionVisual>();
         battleSim = FindObjectOfType<BattleSimulator>();
+        userInput = FindObjectOfType<UIWordSelector>();
         wordManager = FindObjectOfType<WordManager>();
-        
-        if(battleSim != null)
+
+        if (battleSim != null)
         {
             battleSim.OnHealthChanged += HealSound; //general health update for SE or stat boost Animation
                                                     //game end events
@@ -73,7 +67,7 @@ public class AudioPlayer : MonoBehaviour
             battleSim.OnDefenceChanged += DefenceSound;
             battleSim.OnStatusEffectAfflicted += StatusEffectSound;
         }
-        if(wordManager != null)
+        if (wordManager != null)
         {
             wordManager.OnWordchecked += WordFormedSE;
         }
@@ -89,14 +83,14 @@ public class AudioPlayer : MonoBehaviour
         }
     }
 
-    private void PlaySelectionSoundEffect()
+    private void PlayUIMovingSound()
     {
-        throw new NotImplementedException();
+        AudioManager.Instance.Play("Click");
     }
 
     private void PlayLexiconOpenClose(bool obj)
     {
-        throw new NotImplementedException();
+        AudioManager.Instance.Play("Paper");
     }
 
     private void OnPrizeLetterObtained(char obj)
@@ -104,15 +98,14 @@ public class AudioPlayer : MonoBehaviour
         throw new NotImplementedException();
     }
 
-
     private void LogicWhenPlayerDefeated()
     {
-        AudioManager.Instance.Play("Debuff");
+        AudioManager.Instance.Play("Bell");
     }
 
     private void LogicWhenEnemyDefeated()
     {
-        AudioManager.Instance.Play("Attack");
+        AudioManager.Instance.Play("Bell");
     }
 
     private void PlayOnNextLevel()
@@ -126,10 +119,10 @@ public class AudioPlayer : MonoBehaviour
     }
     private void WordFormedSE(Color color, bool IsCorrect)
     {
-        if(IsCorrect)
+        if (IsCorrect)
             AudioManager.Instance.Play("Spell");
         else
-            AudioManager.Instance.Play("Click");
+            AudioManager.Instance.Play("Wave");
 
     }
     private void HealSound(Creature creature, sbyte healthChanged)

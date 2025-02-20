@@ -47,13 +47,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FindAllObjectsOnReload: 0
   QuitPressingStartSelect: 1
-  PlayerName: {fileID: 0}
-  EnemyAttackSlider: {fileID: 0}
-  CameraAnimator: {fileID: 0}
-  EnemyHealthSlider: {fileID: 0}
-  PlayerHealthSlider: {fileID: 0}
-  Tab: {fileID: 0}
-  Word: {fileID: 0}
 --- !u!114 &7097770812918995009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,7 +64,7 @@ MonoBehaviour:
     sounds:
     - name: Music
       clip: {fileID: 8300000, guid: 04741e3fa176ad34dac8577700f18b3c, type: 3}
-      volume: 0.5
+      volume: 1
       pitch: 1
       source: {fileID: 0}
       loop: 1
@@ -93,7 +86,7 @@ MonoBehaviour:
       playOnAwake: 0
       randomPitch: 1
       randomClip: 0
-      canInterrupt: 0
+      canInterrupt: 1
       minRandomPitch: 0.7
       maxRandomPitch: 1.3
       randomClips: []
@@ -101,14 +94,14 @@ MonoBehaviour:
     sounds:
     - name: Slow
       clip: {fileID: 8300000, guid: cdd1a48e4466de544831bcc70ef2ee5a, type: 3}
-      volume: 1
+      volume: 0.3
       pitch: 1
       source: {fileID: 0}
       loop: 0
       playOnAwake: 0
       randomPitch: 1
       randomClip: 0
-      canInterrupt: 0
+      canInterrupt: 1
       minRandomPitch: 0.7
       maxRandomPitch: 1.3
       randomClips: []
@@ -123,7 +116,7 @@ MonoBehaviour:
       playOnAwake: 0
       randomPitch: 1
       randomClip: 0
-      canInterrupt: 0
+      canInterrupt: 1
       minRandomPitch: 0.7
       maxRandomPitch: 1.3
       randomClips: []
@@ -138,7 +131,7 @@ MonoBehaviour:
       playOnAwake: 0
       randomPitch: 1
       randomClip: 0
-      canInterrupt: 0
+      canInterrupt: 1
       minRandomPitch: 0.7
       maxRandomPitch: 1.3
       randomClips: []
@@ -153,7 +146,7 @@ MonoBehaviour:
       playOnAwake: 0
       randomPitch: 1
       randomClip: 0
-      canInterrupt: 0
+      canInterrupt: 1
       minRandomPitch: 0.7
       maxRandomPitch: 1.3
       randomClips: []
@@ -168,7 +161,7 @@ MonoBehaviour:
       playOnAwake: 0
       randomPitch: 1
       randomClip: 0
-      canInterrupt: 0
+      canInterrupt: 1
       minRandomPitch: 0.7
       maxRandomPitch: 1.3
       randomClips: []
@@ -183,14 +176,14 @@ MonoBehaviour:
       playOnAwake: 0
       randomPitch: 1
       randomClip: 0
-      canInterrupt: 0
+      canInterrupt: 1
       minRandomPitch: 0.7
       maxRandomPitch: 1.3
       randomClips: []
   - name: Attack
     sounds:
     - name: Attack
-      clip: {fileID: 8300000, guid: 25fdf415675ff594ea950302bcb0722c, type: 3}
+      clip: {fileID: 8300000, guid: dad6e0493de632b488c23b4fd04ddf5e, type: 3}
       volume: 1
       pitch: 1
       source: {fileID: 0}
@@ -198,7 +191,7 @@ MonoBehaviour:
       playOnAwake: 0
       randomPitch: 1
       randomClip: 0
-      canInterrupt: 0
+      canInterrupt: 1
       minRandomPitch: 0.7
       maxRandomPitch: 1.3
       randomClips: []
@@ -213,7 +206,7 @@ MonoBehaviour:
       playOnAwake: 0
       randomPitch: 1
       randomClip: 0
-      canInterrupt: 0
+      canInterrupt: 1
       minRandomPitch: 0.7
       maxRandomPitch: 1.3
       randomClips: []
@@ -228,7 +221,7 @@ MonoBehaviour:
       playOnAwake: 0
       randomPitch: 1
       randomClip: 0
-      canInterrupt: 0
+      canInterrupt: 1
       minRandomPitch: 0.7
       maxRandomPitch: 1.3
       randomClips: []
@@ -243,7 +236,7 @@ MonoBehaviour:
       playOnAwake: 0
       randomPitch: 1
       randomClip: 0
-      canInterrupt: 0
+      canInterrupt: 1
       minRandomPitch: 0.7
       maxRandomPitch: 1.3
       randomClips: []
@@ -258,8 +251,40 @@ MonoBehaviour:
       playOnAwake: 0
       randomPitch: 1
       randomClip: 0
-      canInterrupt: 0
+      canInterrupt: 1
       minRandomPitch: 0.7
       maxRandomPitch: 1.3
+      randomClips: []
+  - name: Paper
+    sounds:
+    - name: Paper
+      clip: {fileID: 8300000, guid: 6657c57539383cd4eaf003a9bd87c272, type: 3}
+      volume: 1
+      pitch: 1
+      source: {fileID: 0}
+      loop: 0
+      playOnAwake: 0
+      randomPitch: 1
+      randomClip: 1
+      canInterrupt: 1
+      minRandomPitch: 0.7
+      maxRandomPitch: 1.3
+      randomClips:
+      - {fileID: 8300000, guid: 64db221025990324098fde013909b299, type: 3}
+      - {fileID: 8300000, guid: c44506a34630e0646883a416d9e2135d, type: 3}
+  - name: Bell
+    sounds:
+    - name: Bell
+      clip: {fileID: 8300000, guid: 6678f5916a6dba94c9b8dbb17cce4078, type: 3}
+      volume: 1
+      pitch: 1
+      source: {fileID: 0}
+      loop: 0
+      playOnAwake: 0
+      randomPitch: 1
+      randomClip: 0
+      canInterrupt: 1
+      minRandomPitch: 0.8
+      maxRandomPitch: 1.2
       randomClips: []
   mute: 0
