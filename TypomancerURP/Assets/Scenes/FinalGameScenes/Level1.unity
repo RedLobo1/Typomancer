@@ -1847,6 +1847,7 @@ MonoBehaviour:
   Lexicon: {fileID: 829114353}
   _pointer: {fileID: 1532793277}
   loadInOwnedLetters: {fileID: 0}
+  PointerOverlapTolerance: 15
   IsMovementBlocked: 0
 --- !u!4 &1151172058
 Transform:
