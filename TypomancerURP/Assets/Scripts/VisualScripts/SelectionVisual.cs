@@ -19,7 +19,7 @@ public class SelectionVisual : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!battleSim.GetPauseState())
+        if (battleSim == null || !battleSim.GetPauseState())
         {
             if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {

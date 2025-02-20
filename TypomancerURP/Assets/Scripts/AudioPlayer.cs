@@ -1,11 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 using UnityEngine.SceneManagement;
-using UnityEditor.Experimental.GraphView;
 
 public class AudioPlayer : MonoBehaviour
 {
@@ -24,7 +19,8 @@ public class AudioPlayer : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
         FindAllObjectsOfType();
         PlayAmbiance();
-        wordManager.OnWordchecked += ActivateTabSound;
+        if (wordManager != null)
+            wordManager.OnWordchecked += ActivateTabSound;
 
         if (userInput != null)
             userInput.OnPauseStateUpdate += PlayLexiconOpenClose;
@@ -34,7 +30,7 @@ public class AudioPlayer : MonoBehaviour
 
     private void ActivateTabSound(Color color, bool arg2) ///////
     {
-        if(arg2)
+        if (arg2)
             AudioManager.Instance.Play("Shuffle");
     }
 
@@ -60,8 +56,8 @@ public class AudioPlayer : MonoBehaviour
         battleSim = FindObjectOfType<BattleSimulator>();
         userInput = FindObjectOfType<UIWordSelector>();
         wordManager = FindObjectOfType<WordManager>();
-        
-        if(battleSim != null)
+
+        if (battleSim != null)
         {
             battleSim.OnHealthChanged += HealSound; //general health update for SE or stat boost Animation
                                                     //game end events
@@ -71,7 +67,7 @@ public class AudioPlayer : MonoBehaviour
             battleSim.OnDefenceChanged += DefenceSound;
             battleSim.OnStatusEffectAfflicted += StatusEffectSound;
         }
-        if(wordManager != null)
+        if (wordManager != null)
         {
             wordManager.OnWordchecked += WordFormedSE;
         }
@@ -123,7 +119,7 @@ public class AudioPlayer : MonoBehaviour
     }
     private void WordFormedSE(Color color, bool IsCorrect)
     {
-        if(IsCorrect)
+        if (IsCorrect)
             AudioManager.Instance.Play("Spell");
         else
             AudioManager.Instance.Play("Wave");

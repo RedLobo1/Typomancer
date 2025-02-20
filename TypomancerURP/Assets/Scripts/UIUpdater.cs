@@ -197,16 +197,16 @@ public class UIUpdater : MonoBehaviour
 
             case EStatusEffect.Stun:
 
-                //if (creature is Player)
-                //{
-                //    _playerStun.SetActive(true);
-                //    CameraAnimator.Play("Damage");
-                //}
-                //if (creature is Enemy)
-                //{
-                //    _enemyStun.SetActive(false);
-                //    CameraAnimator.Play("Attack");
-                //}
+                if (creature is Player)
+                {
+                    _playerStun.SetActive(true);
+                    CameraAnimator.Play("Damage");
+                }
+                if (creature is Enemy)
+                {
+                    _enemyStun.SetActive(false);
+                    CameraAnimator.Play("Attack");
+                }
 
 
                 break; //eel
