@@ -40,8 +40,10 @@ public class AudioPlayer : MonoBehaviour
     {
 
         if (QuitPressingStartSelect)
-            if (Input.GetButton("JoystickButton6") && Input.GetButton("JoystickButton7"))
-                Application.Quit();
+        {
+            //if (Input.GetButton("JoystickButton6") && Input.GetButton("JoystickButton7"))
+            //    Application.Quit();
+        }
     }
     private void FindAllObjectsOfType()
     {
@@ -51,8 +53,39 @@ public class AudioPlayer : MonoBehaviour
         wordManager = FindObjectOfType<WordManager>();
         battleSim.OnHealthChanged += HealSound; //general health update for SE or stat boost Animation
         wordManager.OnWordchecked += WordFormedSE;
-        //foreach (var button in buttons)
-        //    button.OnButtonPressed += PlayOnButtonPressed;
+
+        //game end events
+        battleSim.OnEnemyBeaten += LogicWhenEnemyDefeated;
+        battleSim.OnGameOver += LogicWhenPlayerDefeated;
+        //battleSim.OnPrizeLetterObtained += OnPrizeLetterObtained;
+        battleSim.OnDefenceChanged += DefenceSound;
+        battleSim.OnStatusEffectAfflicted += StatusEffectSound;
+    }
+
+    private void StatusEffectSound(Creature creature, EStatusEffect effect)
+    {
+        switch (effect)
+        {
+            case EStatusEffect.Blind: AudioManager.Instance.Play("Slow"); break; //pic
+            case EStatusEffect.Sick: AudioManager.Instance.Play("Sick"); break; //ill
+            case EStatusEffect.Stun: AudioManager.Instance.Play("Stun"); break; //eel
+        }
+    }
+
+
+    private void OnPrizeLetterObtained(char obj)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void LogicWhenPlayerDefeated()
+    {
+        AudioManager.Instance.Play("Debuff");
+    }
+
+    private void LogicWhenEnemyDefeated()
+    {
+        AudioManager.Instance.Play("Attack");
     }
 
     private void PlayOnNextLevel()
@@ -66,7 +99,11 @@ public class AudioPlayer : MonoBehaviour
     }
     private void WordFormedSE(Color color, bool IsCorrect)
     {
-        AudioManager.Instance.Play("Spell");
+        if(IsCorrect)
+            AudioManager.Instance.Play("Spell");
+        else
+            AudioManager.Instance.Play("Click");
+
     }
     private void HealSound(Creature creature, sbyte healthChanged)
     {
