@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b679afd6ee03dad4bbeff61e2b51c185, type: 3}
-  m_Name: Elemental Cheese Man
+  m_Name: Pip Pipsqueak
   m_EditorClassIdentifier: 
-  Name: Elemental Cheese Man
-  PrizeLetter: 111
-  MaxHealth: 10
-  BasettackCooldown: 15
+  Name: Pip Pipsqueak
+  PrizeLetter: 112
+  MaxHealth: 12
+  BasettackCooldown: 12
   wordList:
     entries:
-    - word: COCK
-      odds: 0
-    - word: PIPE
-      odds: 0
-    - word: PICO
-      odds: 100
+    - word: KICK
+      odds: 40
+    - word: PICK
+      odds: 75
+    - word: KOKO
+      odds: 30
+    - word: COPE
+      odds: 50
   enemySprite: {fileID: 21300000, guid: 580b932b2cba48d45bffe105bdbf3f8c, type: 3}

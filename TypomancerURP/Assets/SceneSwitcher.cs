@@ -17,7 +17,7 @@ public class SceneSwitcher : MonoBehaviour
         }
 
         if (autoswitch)
-        {
+        { 
             StartCoroutine(AutoSwitchWithFadeOut());
             autoswitch = false;
         }
@@ -42,7 +42,11 @@ public class SceneSwitcher : MonoBehaviour
     private IEnumerator AutoSwitchWithFadeOut()
     {
         yield return new WaitForSeconds(switchDelay - 1f); // Trigger fade-out 1 second before switching
-        animator.Play("FadeOut");
+        if (animator != null)
+        {
+            animator.Play("FadeOut");
+        }
+
 
         yield return new WaitForSeconds(1f); // Wait the last second for fade-out animation
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;

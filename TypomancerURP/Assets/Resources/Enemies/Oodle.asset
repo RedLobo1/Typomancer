@@ -10,20 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b679afd6ee03dad4bbeff61e2b51c185, type: 3}
-  m_Name: Pete panini
+  m_Name: Oodle
   m_EditorClassIdentifier: 
-  Name: Panini
-  PrizeLetter: 112
-  MaxHealth: 12
-  BasettackCooldown: 12
+  Name: 'Oodle '
+  PrizeLetter: 111
+  MaxHealth: 10
+  BasettackCooldown: 5
   wordList:
     entries:
-    - word: KICK
-      odds: 40
-    - word: PICK
-      odds: 75
-    - word: KOKO
-      odds: 30
+    - word: CODE
+      odds: 0
     - word: COPE
-      odds: 50
+      odds: 0
+    - word: KICK
+      odds: 255
   enemySprite: {fileID: 21300000, guid: 8efe75ae77e9b5744aeb42eec564cd2e, type: 3}
