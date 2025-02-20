@@ -240,6 +240,7 @@ public class BattleSimulator : MonoBehaviour
 
     private void LiftDefence(Creature creature)
     {
+        OnDefenceChanged?.Invoke(creature,0);
         creature.ChangeDefence(0);
     }
     private bool GetPauseState()

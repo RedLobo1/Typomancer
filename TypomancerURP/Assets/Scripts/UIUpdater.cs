@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -18,6 +19,24 @@ public class UIUpdater : MonoBehaviour
 
     [SerializeField] private Image Tab;
     [SerializeField] private Transform Word;
+
+    [Header("Player effects")]
+
+
+    [SerializeField] private GameObject _playerDead;
+
+    [SerializeField] private GameObject _playerShield;
+    [SerializeField] private GameObject _playerPoison;
+    [SerializeField] private GameObject _playerStun;
+    [SerializeField] private GameObject _playerBlind;
+
+    [Header("Enemy effects")]
+
+    [SerializeField] private GameObject _enemyShield;
+    [SerializeField] private GameObject _enemyPoison;
+    [SerializeField] private GameObject _enemyStun;
+    [SerializeField] private GameObject _enemyBlind;
+
     // Start is called before the first frame update
 
     private BattleSimulator battleSim;
@@ -37,8 +56,8 @@ public class UIUpdater : MonoBehaviour
 
         //stat events
         battleSim.OnHealthChanged += UIHealthAnimation; //general health update for SE or stat boost Animation
-        //battleSim.OnDefenceChanged += UIDefenceAnimation;
-        //battleSim.OnStatusEffectAfflicted += UIStatusEffectAnimation;
+        battleSim.OnDefenceChanged += UIDefenceAnimation;
+        battleSim.OnStatusEffectAfflicted += UIStatusEffectAnimation;
 
 
         battleSim.OnEnemyCooldownTimePassed += UpdateEnemyAttackTimer;
@@ -58,6 +77,7 @@ public class UIUpdater : MonoBehaviour
 
     IEnumerator RestartLevelTimer()
     {
+        _playerDead.SetActive(true);
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Restart the current level
     }
@@ -92,9 +112,75 @@ public class UIUpdater : MonoBehaviour
     {
         switch (effect)
         {
-            case EStatusEffect.Blind: break; //pic
-            case EStatusEffect.Sick: break; //ill
-            case EStatusEffect.Stun: break; //eel
+            case EStatusEffect.Blind:
+
+
+                if (creature is Player)
+                {
+                    _playerBlind.SetActive(true);
+                    CameraAnimator.Play("Damage");
+                }
+                if (creature is Enemy)
+                {
+                    _enemyBlind.SetActive(false);
+                    CameraAnimator.Play("Attack");
+                }
+
+            break; //pic
+
+            case EStatusEffect.Sick:
+
+                if (creature is Player)
+                {
+                    _playerPoison.SetActive(true);
+                    CameraAnimator.Play("Damage");
+
+                }
+                if (creature is Enemy)
+                {
+                    _enemyPoison.SetActive(false);
+                    CameraAnimator.Play("Attack");
+
+                }
+
+
+            break; //ill
+
+            case EStatusEffect.Stun:
+
+                if (creature is Player)
+                {
+                    _playerStun.SetActive(true);
+                    CameraAnimator.Play("Damage");
+                }
+                if (creature is Enemy)
+                {
+                    _enemyStun.SetActive(false);
+                    CameraAnimator.Play("Attack");
+                }
+
+
+            break; //eel
+
+            case EStatusEffect.None:
+
+
+                if (creature is Player)
+                {
+                    _playerBlind.SetActive(false);
+                    _playerPoison.SetActive(false);
+                    _playerStun.SetActive(false);
+                    
+                }
+                if (creature is Enemy)
+                {
+                    _enemyBlind.SetActive(false);
+                    _enemyPoison.SetActive(false);
+                    _enemyStun.SetActive(false);
+                }
+
+                break;
+
         }
         if (creature is Player)
         {
@@ -137,20 +223,30 @@ public class UIUpdater : MonoBehaviour
     {
         if (defenceChanged == 0)
         {
-            //the defence got lifted
+            if (creature is Player)
+            {
+                _playerShield.SetActive(false);
+                CameraAnimator.Play("Damage");
+            }
+            if (creature is Enemy)
+            {
+                _enemyShield.SetActive(false);
+                CameraAnimator.Play("Attack");
+            }
         }
+
         else if (defenceChanged > 0)
         {
-            //the stat increased
+            if (creature is Player)
+            {
+                _playerShield.SetActive(true);
+            }
+            if (creature is Enemy)
+            {
+                _enemyShield.SetActive(true);
+            }
         }
-        if (creature is Player)
-        {
 
-        }
-        else if (creature is Player)
-        {
-
-        }
     }
 
     private void UpdatePlayerHealth(object sender, CreatureUIStatUpdate e)
@@ -178,8 +274,11 @@ public class UIUpdater : MonoBehaviour
         var index = 0;
         foreach (Transform LetterSlot in Word.transform)
         {
-            LetterSlot.GetChild(0).GetComponent<TMP_Text>().text = attack.ToCharArray()[index].ToString();
-            index++;
+            if (LetterSlot != null) //here
+            {
+                LetterSlot.GetChild(0).GetComponent<TMP_Text>().text = attack.ToCharArray()[index].ToString();
+                index++;
+            }
         }
     }
 
