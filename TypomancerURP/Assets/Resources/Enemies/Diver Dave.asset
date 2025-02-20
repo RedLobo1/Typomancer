@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b679afd6ee03dad4bbeff61e2b51c185, type: 3}
-  m_Name: Krusty Krag
+  m_Name: Diver Dave
   m_EditorClassIdentifier: 
-  Name: Krusty Krag
+  Name: Diver Dave
   PrizeLetter: 101
   MaxHealth: 15
-  BasettackCooldown: 14
+  BasettackCooldown: 16
   wordList:
     entries:
     - word: CODE
