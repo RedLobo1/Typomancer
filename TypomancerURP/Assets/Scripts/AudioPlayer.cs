@@ -55,7 +55,7 @@ public class AudioPlayer : MonoBehaviour
     private void FindAllObjectsOfType()
     {
         //character = GameObject.FindObjectOfType<CharacterController>();
-
+        selectables = FindObjectOfType<SelectionVisual>();
         battleSim = FindObjectOfType<BattleSimulator>();
         userInput = FindObjectOfType<UIWordSelector>();
         wordManager = FindObjectOfType<WordManager>();
