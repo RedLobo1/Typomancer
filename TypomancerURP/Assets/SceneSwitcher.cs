@@ -18,7 +18,7 @@ public class SceneSwitcher : MonoBehaviour
 
         if (autoswitch)
         {
-            StartCoroutine(SwitchSceneWithDelay());
+            StartCoroutine(AutoSwitchWithFadeOut());
             autoswitch = false;
         }
     }
@@ -29,13 +29,31 @@ public class SceneSwitcher : MonoBehaviour
 
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
-        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings) // Prevents loading out-of-range scene
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
             SceneManager.LoadScene(nextSceneIndex);
         }
         else
         {
-            Debug.Log("No more levels!"); // You can handle game completion here
+            Debug.Log("No more levels!");
+        }
+    }
+
+    private IEnumerator AutoSwitchWithFadeOut()
+    {
+        yield return new WaitForSeconds(switchDelay - 1f); // Trigger fade-out 1 second before switching
+        animator.Play("FadeOut");
+
+        yield return new WaitForSeconds(1f); // Wait the last second for fade-out animation
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            Debug.Log("No more levels!");
         }
     }
 }
