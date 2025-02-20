@@ -29,6 +29,7 @@ public class UIUpdater : MonoBehaviour
     {
         battleSim = FindObjectOfType<BattleSimulator>();
         wordManager = FindObjectOfType<WordManager>();
+        
 
 
         //game end events
