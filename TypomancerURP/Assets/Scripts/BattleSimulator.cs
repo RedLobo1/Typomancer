@@ -31,6 +31,8 @@ public class BattleSimulator : MonoBehaviour
     public event Action<Creature, EStatusEffect> OnStatusEffectAfflicted;
     public event Action<char> OnPrizeLetterObtained;
     public event Action<string> OnEnemyWordPicked;
+
+    public event Action<string> OnAddToMessageLog;
     //public event Action<char> OnPrizeLetterObtained;
 
     private string chosenWord;
@@ -55,6 +57,7 @@ public class BattleSimulator : MonoBehaviour
 
         userInput = FindObjectOfType<UIWordSelector>();
         userInput.OnMove += MoveByPlayer;
+        userInput.OnMove += AddToMessageLogPlayer;
 
         enemy = FindObjectOfType<Enemy>();
         player = FindObjectOfType<Player>();
@@ -62,6 +65,19 @@ public class BattleSimulator : MonoBehaviour
         enemyAttackCooldownCurrent = enemy.GetBaseAttackCooldown();
         enemyAttackCooldownStartTurn = enemyAttackCooldownCurrent;
         RerollEnemyWord();
+    }
+
+    private void AddToMessageLogPlayer(SO_Word word)
+    {
+        AddToMessageLog(player, word);
+    }
+
+    private void AddToMessageLog(Creature creature, SO_Word word)
+    {
+        if (creature is Player)
+            OnAddToMessageLog?.Invoke("<color=green>You</color> " + word.Phrase);
+        if (creature is Enemy)
+            OnAddToMessageLog?.Invoke("<color=red>Enemy</color> " + word.Phrase);
     }
 
     private void PauseToggle(bool state)
@@ -135,7 +151,7 @@ public class BattleSimulator : MonoBehaviour
         {
             enemyAttackCooldownCurrent = MathF.Max(enemyAttackCooldownCurrent - blindSetBackamount, 0);//roll back timer by 3s or until 0
             RerollEnemyWord();//reroll chosen word
-            
+
         }
         RemoveStatusEffectFromCreature(creature);
     }
@@ -197,6 +213,8 @@ public class BattleSimulator : MonoBehaviour
         var moveData = wordManager.GetWordDataFromWord(chosenWord);
 
         ExecuteStatChanges(enemy, player, moveData);
+
+        AddToMessageLog(enemy, moveData);
 
         RerollEnemyWord();
     }
