@@ -51,15 +51,21 @@ public class AudioPlayer : MonoBehaviour
 
         battleSim = FindObjectOfType<BattleSimulator>();
         wordManager = FindObjectOfType<WordManager>();
-        battleSim.OnHealthChanged += HealSound; //general health update for SE or stat boost Animation
-        wordManager.OnWordchecked += WordFormedSE;
-
-        //game end events
-        battleSim.OnEnemyBeaten += LogicWhenEnemyDefeated;
-        battleSim.OnGameOver += LogicWhenPlayerDefeated;
-        //battleSim.OnPrizeLetterObtained += OnPrizeLetterObtained;
-        battleSim.OnDefenceChanged += DefenceSound;
-        battleSim.OnStatusEffectAfflicted += StatusEffectSound;
+        
+        if(battleSim != null)
+        {
+            battleSim.OnHealthChanged += HealSound; //general health update for SE or stat boost Animation
+                                                    //game end events
+            battleSim.OnEnemyBeaten += LogicWhenEnemyDefeated;
+            battleSim.OnGameOver += LogicWhenPlayerDefeated;
+            //battleSim.OnPrizeLetterObtained += OnPrizeLetterObtained;
+            battleSim.OnDefenceChanged += DefenceSound;
+            battleSim.OnStatusEffectAfflicted += StatusEffectSound;
+        }
+        if(wordManager != null)
+        {
+            wordManager.OnWordchecked += WordFormedSE;
+        }
     }
 
     private void StatusEffectSound(Creature creature, EStatusEffect effect)
