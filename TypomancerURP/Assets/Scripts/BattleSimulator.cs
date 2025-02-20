@@ -182,7 +182,7 @@ public class BattleSimulator : MonoBehaviour
     {
         var moveData = wordManager.GetWordDataFromWord(chosenWord);
 
-        ExecuteStatChanges(player, enemy, moveData);
+        ExecuteStatChanges(enemy, player, moveData);
 
         RerollEnemyWord();
     }
