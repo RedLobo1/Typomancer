@@ -183,7 +183,7 @@ MonoBehaviour:
   - name: Attack
     sounds:
     - name: Attack
-      clip: {fileID: 8300000, guid: 25fdf415675ff594ea950302bcb0722c, type: 3}
+      clip: {fileID: 8300000, guid: dad6e0493de632b488c23b4fd04ddf5e, type: 3}
       volume: 1
       pitch: 1
       source: {fileID: 0}
