@@ -46,7 +46,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerName: {fileID: 0}
   EnemyAttackSlider: {fileID: 0}
+  CameraAnimator: {fileID: 0}
   EnemyHealthSlider: {fileID: 0}
   PlayerHealthSlider: {fileID: 0}
   Tab: {fileID: 0}
   Word: {fileID: 0}
+  _messagePanel: {fileID: 0}
+  MessageAliveTime: 8
+  _playerDead: {fileID: 0}
+  _playerShield: {fileID: 0}
+  _playerPoison: {fileID: 0}
+  _playerStun: {fileID: 0}
+  _playerBlind: {fileID: 0}
+  _enemyShield: {fileID: 0}
+  _enemyPoison: {fileID: 0}
+  _enemyStun: {fileID: 0}
+  _enemyBlind: {fileID: 0}

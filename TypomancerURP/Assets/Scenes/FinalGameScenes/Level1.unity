@@ -2461,6 +2461,12 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3362644579291590199, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -750679757, guid: e438c1bd04d0716439fe04714ff9bc0a,
+        type: 3}
     - target: {fileID: 3629789481131723666, guid: 880f09c9dd9f7e94b956a071e922b859,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2484,6 +2490,11 @@ PrefabInstance:
     - target: {fileID: 3986844513426566278, guid: 880f09c9dd9f7e94b956a071e922b859,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047189568311269323, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_ReverseArrangement
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5225948429066593426, guid: 880f09c9dd9f7e94b956a071e922b859,
@@ -2686,54 +2697,14 @@ PrefabInstance:
       objectReference: {fileID: 1104155971}
     - target: {fileID: 3204577408874443559, guid: 9be5726c40c28b049a15f715ee30f08d,
         type: 3}
-      propertyPath: _enemyStun
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3204577408874443559, guid: 9be5726c40c28b049a15f715ee30f08d,
-        type: 3}
-      propertyPath: _enemyBlind
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3204577408874443559, guid: 9be5726c40c28b049a15f715ee30f08d,
-        type: 3}
       propertyPath: _playerDead
       value: 
       objectReference: {fileID: 119591106}
     - target: {fileID: 3204577408874443559, guid: 9be5726c40c28b049a15f715ee30f08d,
         type: 3}
-      propertyPath: _playerStun
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3204577408874443559, guid: 9be5726c40c28b049a15f715ee30f08d,
-        type: 3}
-      propertyPath: _enemyPoison
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3204577408874443559, guid: 9be5726c40c28b049a15f715ee30f08d,
-        type: 3}
-      propertyPath: _enemyShield
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3204577408874443559, guid: 9be5726c40c28b049a15f715ee30f08d,
-        type: 3}
-      propertyPath: _playerBlind
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3204577408874443559, guid: 9be5726c40c28b049a15f715ee30f08d,
-        type: 3}
       propertyPath: _messagePanel
       value: 
       objectReference: {fileID: 909838926}
-    - target: {fileID: 3204577408874443559, guid: 9be5726c40c28b049a15f715ee30f08d,
-        type: 3}
-      propertyPath: _playerPoison
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3204577408874443559, guid: 9be5726c40c28b049a15f715ee30f08d,
-        type: 3}
-      propertyPath: _playerShield
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3204577408874443559, guid: 9be5726c40c28b049a15f715ee30f08d,
         type: 3}
       propertyPath: CameraAnimator
