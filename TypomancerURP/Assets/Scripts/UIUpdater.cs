@@ -112,14 +112,14 @@ public class UIUpdater : MonoBehaviour
     {
         if (healthChanged < 0)
         {
-            if (creature is Player)
-            {
-                CameraAnimator.Play("Damage");
-            }
-            if (creature is Enemy)
-            {
-                CameraAnimator.Play("Attack");
-            }
+            //if (creature is Player)
+            //{
+            //    CameraAnimator.Play("Damage");
+            //}
+            //if (creature is Enemy)
+            //{
+            //    CameraAnimator.Play("Attack");
+            //}
         }
         else if (healthChanged > 0)
         {
@@ -163,7 +163,7 @@ public class UIUpdater : MonoBehaviour
     }
 
     private void UpdateEnemyHealth(object sender, CreatureUIStatUpdate e)
-    {
+     {
         float healthPercentage = (float)e.Health / (float)e.MaxHealth;
 
         EnemyHealthSlider.value = 1 - healthPercentage;
