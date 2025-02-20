@@ -1,5 +1,3 @@
-using Cinemachine;
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -112,14 +110,14 @@ public class UIUpdater : MonoBehaviour
     {
         if (healthChanged < 0)
         {
-            //if (creature is Player)
-            //{
-            //    CameraAnimator.Play("Damage");
-            //}
-            //if (creature is Enemy)
-            //{
-            //    CameraAnimator.Play("Attack");
-            //}
+            if (creature is Player)
+            {
+                CameraAnimator.Play("Damage");
+            }
+            if (creature is Enemy)
+            {
+                CameraAnimator.Play("Attack");
+            }
         }
         else if (healthChanged > 0)
         {
@@ -127,7 +125,7 @@ public class UIUpdater : MonoBehaviour
         }
         if (creature is Player)
         {
-            
+
         }
         else if (creature is Enemy)
         {
@@ -158,12 +156,12 @@ public class UIUpdater : MonoBehaviour
     private void UpdatePlayerHealth(object sender, CreatureUIStatUpdate e)
     {
         float healthPercentage = (float)e.Health / (float)e.MaxHealth;
-        
+
         PlayerHealthSlider.value = 1 - healthPercentage;
     }
 
     private void UpdateEnemyHealth(object sender, CreatureUIStatUpdate e)
-     {
+    {
         float healthPercentage = (float)e.Health / (float)e.MaxHealth;
 
         EnemyHealthSlider.value = 1 - healthPercentage;
