@@ -18,6 +18,7 @@ public class BattleSimulator : MonoBehaviour
     private float EnemyCooldownTimePassed = 0f; // To track time
 
     WordManager wordManager;
+    UIWordSelector UIWordSelector;
 
     public event EventHandler<CreatureUIStatUpdate> OnPlayerStatUpdate;
     public event EventHandler<CreatureUIStatUpdate> OnEnemyStatUpdate;
@@ -49,6 +50,8 @@ public class BattleSimulator : MonoBehaviour
     void Start()
     {
         wordManager = FindObjectOfType<WordManager>();
+        UIWordSelector = FindObjectOfType<UIWordSelector>();
+        UIWordSelector.OnPauseStateUpdate += PauseToggle;
 
         userInput = FindObjectOfType<UIWordSelector>();
         userInput.OnMove += MoveByPlayer;
@@ -60,6 +63,12 @@ public class BattleSimulator : MonoBehaviour
         enemyAttackCooldownStartTurn = enemyAttackCooldownCurrent;
         RerollEnemyWord();
     }
+
+    private void PauseToggle(bool state)
+    {
+        battlePaused = state;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -227,5 +236,9 @@ public class BattleSimulator : MonoBehaviour
             OnDefenceChanged?.Invoke(creature, DefenceModifier);
             creature.ChangeDefence(DefenceModifier);
         }
+    }
+    private bool GetPauseState()
+    {
+        return battlePaused;
     }
 }

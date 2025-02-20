@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UIWordSelector : MonoBehaviour
 {
     [SerializeField] private TMP_Text[] letterSlots; // letter1, letter2, letter3, letter4;
+    [SerializeField] private GameObject Lexicon;
     [SerializeField] private GameObject _pointer;
 
     public LoadInOwnedLetters loadInOwnedLetters;
@@ -16,6 +17,7 @@ public class UIWordSelector : MonoBehaviour
     private float tolerance = 0.01f;
 
     public event EventHandler<WordEventArgs> OnValidateWord;
+    public event Action<bool> OnPauseStateUpdate;
 
     private WordManager wordManager;
 
@@ -59,7 +61,12 @@ public class UIWordSelector : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !IsMovementBlocked)
         {
             UpdateCurrentSelectedLetter();
-            CheckForCorrectWord();
+
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Lexicon.SetActive(!Lexicon.activeInHierarchy); //toggle visibility
+            OnPauseStateUpdate?.Invoke(Lexicon.activeInHierarchy); //Toggle pause
         }
 
         if (canSubmit)
@@ -137,7 +144,10 @@ public class UIWordSelector : MonoBehaviour
             if (Vector3.Distance(ptr_pos, letter.transform.position) < tolerance)
             {
                 if (letter.text != "" && letter.text != null)
+                {
                     letter.text = GetRandomLetter(letter.text);
+                    CheckForCorrectWord();
+                }
             }
         }
     }
