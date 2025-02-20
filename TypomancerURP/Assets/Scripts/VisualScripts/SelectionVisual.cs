@@ -37,6 +37,7 @@ public class SelectionVisual : MonoBehaviour
                 {
 
                     _pointer.transform.position = _selectables[i].transform.position;
+                    _pointer.transform.rotation = _selectables[i].transform.rotation;
 
                 }
 

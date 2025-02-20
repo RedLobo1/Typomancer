@@ -2282,10 +2282,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6356202201113676940, guid: 880f09c9dd9f7e94b956a071e922b859,
+    - target: {fileID: 6375937704994947218, guid: 880f09c9dd9f7e94b956a071e922b859,
         type: 3}
-      propertyPath: m_IsActive
+      propertyPath: m_text
+      value: Oliver you bastard!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375937704994947218, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 55.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375937704994947218, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_fontStyle
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375937704994947218, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 55.16
       objectReference: {fileID: 0}
     - target: {fileID: 6853357471323692298, guid: 880f09c9dd9f7e94b956a071e922b859,
         type: 3}
