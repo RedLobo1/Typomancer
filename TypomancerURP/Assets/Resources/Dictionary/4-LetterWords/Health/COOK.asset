@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: COOK
   m_EditorClassIdentifier: 
   Word: COOK
-  Phrase: called a doctor.
+  Phrase: Prepared fries and healed from the last attack.
   attackModifier: 0
   DefenceModifier: 0
   HealthModifier: 4

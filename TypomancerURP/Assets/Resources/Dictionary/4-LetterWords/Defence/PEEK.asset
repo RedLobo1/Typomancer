@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 920678fd3830e154bbc9014f28cef5de, type: 3}
-  m_Name: DEED
+  m_Name: PEEK
   m_EditorClassIdentifier: 
-  Word: DEED
-  Phrase: You lied to the enemy to gain its trust.
+  Word: PEEK
+  Phrase: looked at what the opponent is about to do and dodged.
   attackModifier: 0
   DefenceModifier: 3
   HealthModifier: 0

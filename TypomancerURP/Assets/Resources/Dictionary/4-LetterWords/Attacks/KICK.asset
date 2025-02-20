@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 920678fd3830e154bbc9014f28cef5de, type: 3}
   m_Name: KICK
   m_EditorClassIdentifier: 
-  Word: kick
-  Phrase: blasted ice from the wrists.
+  Word: KICK
+  Phrase: kicked the opponent in the nuts.
   attackModifier: 3
   DefenceModifier: 0
   HealthModifier: 0

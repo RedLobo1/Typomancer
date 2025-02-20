@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: POPE
   m_EditorClassIdentifier: 
   Word: POPE
-  Phrase: called the cops to protect against attacks this turn.
+  Phrase: prayed to not take damage.
   attackModifier: 0
   DefenceModifier: 3
   HealthModifier: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PIED
   m_EditorClassIdentifier: 
   Word: PIED
-  Phrase: ate the most delicious pie.
+  Phrase: thought the word meant pie, and ate it.
   attackModifier: 0
   DefenceModifier: 0
   HealthModifier: 4
