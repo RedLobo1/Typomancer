@@ -3696,6 +3696,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 817148292182775212, guid: fa6c0a9ef70c7ef44be456c63b7da693,
+        type: 3}
+      propertyPath: autoAdvanceTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 817148292182775212, guid: fa6c0a9ef70c7ef44be456c63b7da693,
+        type: 3}
+      propertyPath: dialogueLines.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 817148292182775212, guid: fa6c0a9ef70c7ef44be456c63b7da693,
+        type: 3}
+      propertyPath: dialogueLines.Array.data[1]
+      value: Press SPACE to switch the letter out!
+      objectReference: {fileID: 0}
+    - target: {fileID: 817148292182775212, guid: fa6c0a9ef70c7ef44be456c63b7da693,
+        type: 3}
+      propertyPath: dialogueLines.Array.data[2]
+      value: Use A and D to move or the Arrow keys
+      objectReference: {fileID: 0}
+    - target: {fileID: 817148292182775212, guid: fa6c0a9ef70c7ef44be456c63b7da693,
+        type: 3}
+      propertyPath: dialogueLines.Array.data[3]
+      value: Press SPACE to switch the letter out!
+      objectReference: {fileID: 0}
+    - target: {fileID: 817148292182775212, guid: fa6c0a9ef70c7ef44be456c63b7da693,
+        type: 3}
+      propertyPath: dialogueLines.Array.data[4]
+      value: Use A and D to move or the Arrow keys
+      objectReference: {fileID: 0}
     - target: {fileID: 3740551033826672969, guid: fa6c0a9ef70c7ef44be456c63b7da693,
         type: 3}
       propertyPath: maxSelectionDistance
