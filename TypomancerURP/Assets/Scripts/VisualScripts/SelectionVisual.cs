@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class SelectionVisual : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _selectables;
-    [SerializeField] private GameObject _pointer;
+    [SerializeField] public GameObject[] Selectables;
+    [SerializeField] public GameObject Pointer;
     [SerializeField] private GameObject _pointer2;
     private int _currentSelected = 1;
 
@@ -17,26 +17,27 @@ public class SelectionVisual : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            _currentSelected = (_currentSelected + 1) % _selectables.Length;
+            _currentSelected = (_currentSelected + 1) % Selectables.Length;
             SelectBox();
         }
 
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            _currentSelected = (_currentSelected - 1 + _selectables.Length) % _selectables.Length;
+            _currentSelected = (_currentSelected - 1 + Selectables.Length) % Selectables.Length;
             SelectBox();
         }
     }
     private void SelectBox()
     {
-        for (int i = 0; i < _selectables.Length; i++)
+        for (int i = 0; i < Selectables.Length; i++)
         {
-            if (_selectables[i] != null)
+            if (Selectables[i] != null)
             {
                 if (i == _currentSelected)
                 {
 
-                    _pointer.transform.position = _selectables[i].transform.position;
+                    Pointer.transform.position = Selectables[i].transform.position;
+                    Pointer.transform.rotation = Selectables[i].transform.rotation;
 
                 }
 
