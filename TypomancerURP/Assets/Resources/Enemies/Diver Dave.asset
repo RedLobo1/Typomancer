@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b679afd6ee03dad4bbeff61e2b51c185, type: 3}
-  m_Name: Pete panini
+  m_Name: Diver Dave
   m_EditorClassIdentifier: 
-  Name: Panini
-  PrizeLetter: 112
-  MaxHealth: 12
-  BasettackCooldown: 12
+  Name: Diver Dave
+  PrizeLetter: 101
+  MaxHealth: 15
+  BasettackCooldown: 16
   wordList:
     entries:
-    - word: KICK
-      odds: 40
-    - word: PICK
-      odds: 75
-    - word: KOKO
+    - word: CODE
+      odds: 20
+    - word: POOP
       odds: 30
-    - word: COPE
-      odds: 50
-  enemySprite: {fileID: 21300000, guid: 8efe75ae77e9b5744aeb42eec564cd2e, type: 3}
+    - word: COCK
+      odds: 30
+    - word: POPE
+      odds: 15
+  enemySprite: {fileID: 21300000, guid: 0f299a5a2250faf4789f37dd4a1f6260, type: 3}

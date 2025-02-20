@@ -15,7 +15,7 @@ MonoBehaviour:
   Word: PEEK
   Phrase: looked at what the opponent is about to do and dodged.
   attackModifier: 0
-  DefenceModifier: 3
+  DefenceModifier: 2
   HealthModifier: 0
   TextColor: {r: 0, g: 0, b: 0, a: 0}
   StatusEffect: 0
