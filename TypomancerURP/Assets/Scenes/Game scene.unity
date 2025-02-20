@@ -2272,6 +2272,11 @@ PrefabInstance:
       objectReference: {fileID: 2066022569}
     - target: {fileID: 5268774715839416591, guid: 6a52cb6001eec784f9cda8c21df79ac3,
         type: 3}
+      propertyPath: MessageAliveTime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5268774715839416591, guid: 6a52cb6001eec784f9cda8c21df79ac3,
+        type: 3}
       propertyPath: EnemyAttackSlider
       value: 
       objectReference: {fileID: 1281556559}
