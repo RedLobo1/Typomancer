@@ -22,7 +22,7 @@ public class PopulateLexicon : MonoBehaviour
     private List<List<SO_Word>> _wordList;
     private int _totalWords;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         wordManager = FindObjectOfType<WordManager>();
         wordManager.OnFullWordListLoaded += SaveWordList;
@@ -57,7 +57,7 @@ public class PopulateLexicon : MonoBehaviour
 
     private void PopulatePanel(SO_Word word)
     {
-        if (WordPanels != null)
+        if (WordPanels != null && _wordList != null)
         {
             for (int i = 0; i < _wordList.Count; i++)
             {

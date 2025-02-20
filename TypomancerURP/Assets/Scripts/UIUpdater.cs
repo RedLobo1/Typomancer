@@ -163,7 +163,7 @@ public class UIUpdater : MonoBehaviour
     }
 
     private void UpdateEnemyHealth(object sender, CreatureUIStatUpdate e)
-    {
+     {
         float healthPercentage = (float)e.Health / (float)e.MaxHealth;
 
         EnemyHealthSlider.value = 1 - healthPercentage;
