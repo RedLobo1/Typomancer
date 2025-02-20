@@ -1,4 +1,6 @@
+using Cinemachine;
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,6 +12,8 @@ public class UIUpdater : MonoBehaviour
     private GameObject PlayerName;
 
     [SerializeField] private Slider EnemyAttackSlider;
+
+    [SerializeField] private Animator CameraAnimator;
 
     [SerializeField] private Slider EnemyHealthSlider;
     [SerializeField] private Slider PlayerHealthSlider;
@@ -34,7 +38,7 @@ public class UIUpdater : MonoBehaviour
 
 
         //stat events
-        //battleSim.OnHealthChanged += UIHealthAnimation; //general health update for SE or stat boost Animation
+        battleSim.OnHealthChanged += UIHealthAnimation; //general health update for SE or stat boost Animation
         //battleSim.OnDefenceChanged += UIDefenceAnimation;
         //battleSim.OnStatusEffectAfflicted += UIStatusEffectAnimation;
 
@@ -44,20 +48,40 @@ public class UIUpdater : MonoBehaviour
         battleSim.OnEnemyStatUpdate += UpdateEnemyHealth; //only HP visible in UI so it sends HP and Max HP only
         battleSim.OnPlayerStatUpdate += UpdatePlayerHealth; //only HP visible in UI so it sends HP and Max HP only
 
-        battleSim.OnEnemyWordPicked += UpdateEnemyAttack;
+        battleSim.OnEnemyWordPicked += UpdateEnemyWord;
 
         wordManager.OnWordchecked += UIActivateTab;
 
     }
-
     private void LogicWhenPlayerDefeated()
     {
-        
+        StartCoroutine(RestartLevelTimer());
+    }
+
+    IEnumerator RestartLevelTimer()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Restart the current level
     }
 
     private void LogicWhenEnemyDefeated()
     {
-        SceneManager.LoadScene(SceneManager.sceneCount);
+        StartCoroutine(NextLevelTimer());
+    }
+
+    IEnumerator NextLevelTimer()
+    {
+        yield return new WaitForSeconds(3f);
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings) // Prevents loading out-of-range scene
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            Debug.Log("No more levels!"); // You can handle game completion here
+        }
     }
 
     private void UIActivateTab(Color color, bool canSubmit)
@@ -88,7 +112,14 @@ public class UIUpdater : MonoBehaviour
     {
         if (healthChanged < 0)
         {
-            //the stat decreased check
+            if (creature is Player)
+            {
+                CameraAnimator.Play("Damage");
+            }
+            if (creature is Enemy)
+            {
+                CameraAnimator.Play("Attack");
+            }
         }
         else if (healthChanged > 0)
         {
@@ -96,7 +127,7 @@ public class UIUpdater : MonoBehaviour
         }
         if (creature is Player)
         {
-            //´this is for the location of the animation
+            
         }
         else if (creature is Enemy)
         {
@@ -143,7 +174,7 @@ public class UIUpdater : MonoBehaviour
         EnemyAttackSlider.value = percentage;
     }
 
-    private void UpdateEnemyAttack(string attack)
+    private void UpdateEnemyWord(string attack)
     {
         attack.ToCharArray();
         var index = 0;
