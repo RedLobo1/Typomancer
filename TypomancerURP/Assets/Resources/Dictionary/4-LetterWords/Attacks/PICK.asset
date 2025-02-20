@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PICK
   m_EditorClassIdentifier: 
   Word: PICK
-  Phrase: attempted to pop off a head.
+  Phrase: axed the opponent.
   attackModifier: 3
   DefenceModifier: 0
   HealthModifier: 0

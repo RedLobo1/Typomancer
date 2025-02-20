@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DOPE
   m_EditorClassIdentifier: 
   Word: DOPE
-  Phrase: ate the most delicious pie.
+  Phrase: received a free heal. DOPE!
   attackModifier: 0
   DefenceModifier: 0
   HealthModifier: 4

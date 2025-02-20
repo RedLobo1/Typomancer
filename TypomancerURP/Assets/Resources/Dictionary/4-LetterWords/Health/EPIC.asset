@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EPIC
   m_EditorClassIdentifier: 
   Word: EPIC
-  Phrase: ate the most delicious pie.
+  Phrase: did an epic backflip, making the opponent undo the last attack.
   attackModifier: 0
   DefenceModifier: 0
   HealthModifier: 4

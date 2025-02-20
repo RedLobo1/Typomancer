@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PICO
   m_EditorClassIdentifier: 
   Word: PICO
-  Phrase: took a picture and blinded the oppontent temporarily.
+  Phrase: shrunk the opponent to slow them down.
   attackModifier: 0
   DefenceModifier: 0
   HealthModifier: 0
   TextColor: {r: 0, g: 0, b: 0, a: 0}
-  StatusEffect: 1
+  StatusEffect: 2
   enemySprite: {fileID: 0}

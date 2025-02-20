@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: COPE
   m_EditorClassIdentifier: 
   Word: COPE
-  Phrase: formed a pod to defend.
+  Phrase: tried to cope with the stress of battle.
   attackModifier: 0
   DefenceModifier: 3
   HealthModifier: 0

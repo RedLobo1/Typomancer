@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: POKE
   m_EditorClassIdentifier: 
   Word: POKE
-  Phrase: attempted to pop off a head.
+  Phrase: poked the opponent in the eye.
   attackModifier: 3
   DefenceModifier: 0
   HealthModifier: 0

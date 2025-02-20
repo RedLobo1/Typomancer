@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PIKE
   m_EditorClassIdentifier: 
   Word: PIKE
-  Phrase: attempted to pop off a head.
+  Phrase: asked a pike to attack.
   attackModifier: 3
   DefenceModifier: 0
   HealthModifier: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CODE
   m_EditorClassIdentifier: 
   Word: CODE
-  Phrase: formed a pod to defend.
+  Phrase: Coded a firewall.
   attackModifier: 0
   DefenceModifier: 3
   HealthModifier: 0
