@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 920678fd3830e154bbc9014f28cef5de, type: 3}
-  m_Name: POO
+  m_Name: DICE
   m_EditorClassIdentifier: 
-  Word: Poo
-  Phrase: Shat in the arena
-  attackModifier: 0
+  Word: DICE
+  Phrase: attempted to pop off a head.
+  attackModifier: 3
   DefenceModifier: 0
   HealthModifier: 0
   TextColor: {r: 0, g: 0, b: 0, a: 0}

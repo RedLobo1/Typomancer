@@ -14,12 +14,14 @@ public class WordManager : MonoBehaviour
     UIWordSelector UI;
 
     private string[] types = { "Attacks", "Defence", "Health", "Status" };
-    private string[] wordGroups = { "3-LetterWords", "4-LetterWords"};
+    private string[] wordGroups = {/*"3-LetterWords",*/"4-LetterWords" };
 
     private string[] hexColors = { "#E31D2B", "#00A0FF", "#1DE276", "#E8DE1C", "#FFFFFF" };
     private List<Color> colors = new List<Color>();
 
     public event Action<Color, bool> OnWordchecked;
+
+    public event Action<List<List<SO_Word>>> OnFullWordListLoaded;
 
     void Awake()
     {
@@ -29,6 +31,10 @@ public class WordManager : MonoBehaviour
 
         UI = FindObjectOfType<UIWordSelector>();
         UI.OnValidateWord += ValidateWord;
+    }
+    private void Start()
+    {
+        OnFullWordListLoaded?.Invoke(_wordList);
     }
 
     private void ConvertHexToColors()
@@ -117,6 +123,9 @@ public class WordManager : MonoBehaviour
         _wordList.Add(_DefenceList);
         _wordList.Add(_HealList);
         _wordList.Add(_StatusList);
+
+
+
     }
 
     // Update is called once per frame

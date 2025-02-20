@@ -1,5 +1,3 @@
-using Cinemachine;
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -128,7 +126,7 @@ public class UIUpdater : MonoBehaviour
         }
         if (creature is Player)
         {
-            
+
         }
         else if (creature is Enemy)
         {
@@ -159,7 +157,7 @@ public class UIUpdater : MonoBehaviour
     private void UpdatePlayerHealth(object sender, CreatureUIStatUpdate e)
     {
         float healthPercentage = (float)e.Health / (float)e.MaxHealth;
-        
+
         PlayerHealthSlider.value = 1 - healthPercentage;
     }
 
