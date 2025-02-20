@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ODIC
   m_EditorClassIdentifier: 
   Word: ODIC
-  Phrase: Stunned the opponent with an electric eel
+  Phrase: made the opponent stand still to swear an ode.
   attackModifier: 0
   DefenceModifier: 0
   HealthModifier: 0

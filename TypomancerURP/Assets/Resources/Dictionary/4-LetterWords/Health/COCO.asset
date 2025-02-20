@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: COCO
   m_EditorClassIdentifier: 
   Word: COCO
-  Phrase: laugh frantically to cope with fear.
+  Phrase: Drank some warm coco and healed from the previous attack.
   attackModifier: 0
   DefenceModifier: 0
   HealthModifier: 4

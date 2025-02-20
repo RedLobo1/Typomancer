@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: POOP
   m_EditorClassIdentifier: 
   Word: POOP
-  Phrase: Spread disease to entities nearby.
+  Phrase: made the opponent eat poop.
   attackModifier: 0
   DefenceModifier: 0
   HealthModifier: 0
