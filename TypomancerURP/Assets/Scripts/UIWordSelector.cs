@@ -14,7 +14,8 @@ public class UIWordSelector : MonoBehaviour
     private BattleSimulator battleSim;
     private LettersOwned letters;
 
-    private float tolerance = 0.01f;
+    [SerializeField]
+    private float PointerOverlapTolerance = 15f;
 
     public event EventHandler<WordEventArgs> OnValidateWord;
     public event Action<bool> OnPauseStateUpdate;
@@ -143,7 +144,7 @@ public class UIWordSelector : MonoBehaviour
         var ptr_pos = _pointer.transform.position;
         foreach (var letter in letterSlots)
         {
-            if (Vector3.Distance(ptr_pos, letter.transform.position) < tolerance)
+            if (Vector3.Distance(ptr_pos, letter.transform.position) < PointerOverlapTolerance)
             {
                 if (letter.text != "" && letter.text != null)
                 {
