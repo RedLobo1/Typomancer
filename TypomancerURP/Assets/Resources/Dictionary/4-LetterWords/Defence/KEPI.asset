@@ -15,7 +15,7 @@ MonoBehaviour:
   Word: KEPI
   Phrase: You lied to the enemy to gain its trust.
   attackModifier: 0
-  DefenceModifier: 3
+  DefenceModifier: 2
   HealthModifier: 0
   TextColor: {r: 0, g: 0, b: 0, a: 0}
   StatusEffect: 0

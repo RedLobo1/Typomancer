@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b679afd6ee03dad4bbeff61e2b51c185, type: 3}
-  m_Name: Eek the Cheese Man
+  m_Name: Lexicon Larry Lekkerman
   m_EditorClassIdentifier: 
-  Name: Eek the Cheese Man
+  Name: Lexicon Larry Lekkerman
   PrizeLetter: 101
   MaxHealth: 20
   BasettackCooldown: 7

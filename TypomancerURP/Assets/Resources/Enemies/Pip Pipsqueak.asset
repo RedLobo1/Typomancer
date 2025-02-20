@@ -14,14 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Pip Pipsqueak
   PrizeLetter: 112
-  MaxHealth: 12
-  BasettackCooldown: 12
+  MaxHealth: 9
+  BasettackCooldown: 13
   wordList:
     entries:
     - word: KICK
-      odds: 40
-    - word: PICK
-      odds: 75
+      odds: 25
     - word: KOKO
       odds: 30
     - word: COPE

@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b679afd6ee03dad4bbeff61e2b51c185, type: 3}
-  m_Name: Oodle
+  m_Name: Krusty Krag
   m_EditorClassIdentifier: 
-  Name: 'Oodle '
-  PrizeLetter: 111
-  MaxHealth: 10
-  BasettackCooldown: 5
+  Name: Krusty Krag
+  PrizeLetter: 101
+  MaxHealth: 15
+  BasettackCooldown: 14
   wordList:
     entries:
     - word: CODE
-      odds: 0
-    - word: COPE
-      odds: 0
-    - word: KICK
-      odds: 255
-  enemySprite: {fileID: 21300000, guid: 8efe75ae77e9b5744aeb42eec564cd2e, type: 3}
+      odds: 20
+    - word: POOP
+      odds: 30
+    - word: COCK
+      odds: 30
+    - word: POPE
+      odds: 15
+  enemySprite: {fileID: 21300000, guid: 0f299a5a2250faf4789f37dd4a1f6260, type: 3}

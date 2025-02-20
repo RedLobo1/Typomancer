@@ -10,7 +10,7 @@ public class SceneSwitcher : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab)|| Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             animator.Play("FadeOut");
             StartCoroutine(SwitchSceneWithDelay());

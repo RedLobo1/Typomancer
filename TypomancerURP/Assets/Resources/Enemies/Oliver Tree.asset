@@ -10,22 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b679afd6ee03dad4bbeff61e2b51c185, type: 3}
-  m_Name: Eek the Cheese Man
+  m_Name: Oliver Tree
   m_EditorClassIdentifier: 
-  Name: Eek the Cheese Man
-  PrizeLetter: 101
-  MaxHealth: 20
-  BasettackCooldown: 7
+  Name: Oliver Tree
+  PrizeLetter: 111
+  MaxHealth: 10
+  BasettackCooldown: 10
   wordList:
     entries:
-    - word: PECK
-      odds: 25
-    - word: PICK
+    - word: KICK
+      odds: 60
+    - word: COOK
       odds: 20
-    - word: POPE
+    - word: COCO
       odds: 20
-    - word: POOP
-      odds: 30
-    - word: PIPE
-      odds: 30
-  enemySprite: {fileID: 21300000, guid: 0f299a5a2250faf4789f37dd4a1f6260, type: 3}
+  enemySprite: {fileID: 21300000, guid: 8efe75ae77e9b5744aeb42eec564cd2e, type: 3}

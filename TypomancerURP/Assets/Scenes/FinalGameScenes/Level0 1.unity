@@ -3035,10 +3035,10 @@ MonoBehaviour:
   dialogueLines:
   - Yeah thats me Clopidek
   - ...
-  - Oh no its the Demented Goblin Squad
+  - Oh no it's the Demented Goblin Squad :(
   - they want to steal my letters !!!
   - '''''Beating sounds'''''
-  - Nooo they stole my name !
+  - Nooo... they stole my name !
 --- !u!1 &1151172056
 GameObject:
   m_ObjectHideFlags: 0
