@@ -12,19 +12,9 @@ public class AudioPlayer : MonoBehaviour
     [SerializeField] private bool FindAllObjectsOnReload = false;
     [SerializeField] private bool QuitPressingStartSelect = true;
 
-    //list of objects
-    private CharacterController character;
-    [SerializeField] private GameObject PlayerName;
-    [SerializeField] private Slider EnemyAttackSlider;
-    [SerializeField] private Animator CameraAnimator;
-    [SerializeField] private Slider EnemyHealthSlider;
-    [SerializeField] private Slider PlayerHealthSlider;
-    [SerializeField] private Image Tab;
-    [SerializeField] private Transform Word;
-
+    //lists of objects
     private BattleSimulator battleSim;
     private WordManager wordManager;
-
     private UIWordSelector userInput;
     private SelectionVisual selectables;
 
@@ -34,13 +24,19 @@ public class AudioPlayer : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
         FindAllObjectsOfType();
         PlayAmbiance();
+        wordManager.OnWordchecked += ActivateTabSound;
 
-        userInput.OnPauseStateUpdate += PlayLexiconOpenClose;
-
-        selectables.OnChangedSelection += PlaySelectionSoundEffect;
+        if (userInput != null)
+            userInput.OnPauseStateUpdate += PlayLexiconOpenClose;
+        if (selectables != null)
+            selectables.OnChangedSelection += PlayUIMovingSound;
     }
 
-
+    private void ActivateTabSound(Color color, bool arg2) ///////
+    {
+        if(arg2)
+            AudioManager.Instance.Play("Shuffle");
+    }
 
     private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
@@ -61,6 +57,7 @@ public class AudioPlayer : MonoBehaviour
         //character = GameObject.FindObjectOfType<CharacterController>();
 
         battleSim = FindObjectOfType<BattleSimulator>();
+        userInput = FindObjectOfType<UIWordSelector>();
         wordManager = FindObjectOfType<WordManager>();
         
         if(battleSim != null)
@@ -89,21 +86,20 @@ public class AudioPlayer : MonoBehaviour
         }
     }
 
-    private void PlaySelectionSoundEffect()
+    private void PlayUIMovingSound()
     {
-        throw new NotImplementedException();
+        AudioManager.Instance.Play("Click");
     }
 
     private void PlayLexiconOpenClose(bool obj)
     {
-        throw new NotImplementedException();
+        AudioManager.Instance.Play("Paper");
     }
 
     private void OnPrizeLetterObtained(char obj)
     {
         throw new NotImplementedException();
     }
-
 
     private void LogicWhenPlayerDefeated()
     {
@@ -129,7 +125,7 @@ public class AudioPlayer : MonoBehaviour
         if(IsCorrect)
             AudioManager.Instance.Play("Spell");
         else
-            AudioManager.Instance.Play("Click");
+            AudioManager.Instance.Play("Wave");
 
     }
     private void HealSound(Creature creature, sbyte healthChanged)
