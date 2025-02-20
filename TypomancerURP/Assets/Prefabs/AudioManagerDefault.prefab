@@ -272,4 +272,19 @@ MonoBehaviour:
       randomClips:
       - {fileID: 8300000, guid: 64db221025990324098fde013909b299, type: 3}
       - {fileID: 8300000, guid: c44506a34630e0646883a416d9e2135d, type: 3}
+  - name: Bell
+    sounds:
+    - name: Bell
+      clip: {fileID: 8300000, guid: 6678f5916a6dba94c9b8dbb17cce4078, type: 3}
+      volume: 1
+      pitch: 1
+      source: {fileID: 0}
+      loop: 0
+      playOnAwake: 0
+      randomPitch: 1
+      randomClip: 0
+      canInterrupt: 1
+      minRandomPitch: 0.8
+      maxRandomPitch: 1.2
+      randomClips: []
   mute: 0

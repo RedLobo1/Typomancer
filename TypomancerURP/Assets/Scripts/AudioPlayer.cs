@@ -41,6 +41,7 @@ public class AudioPlayer : MonoBehaviour
     private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
         FindAllObjectsOfType();
+        AudioManager.Instance.Play("Bell");
     }
 
     private void Update()
@@ -103,12 +104,12 @@ public class AudioPlayer : MonoBehaviour
 
     private void LogicWhenPlayerDefeated()
     {
-        AudioManager.Instance.Play("Debuff");
+        AudioManager.Instance.Play("Bell");
     }
 
     private void LogicWhenEnemyDefeated()
     {
-        AudioManager.Instance.Play("Attack");
+        AudioManager.Instance.Play("Bell");
     }
 
     private void PlayOnNextLevel()
