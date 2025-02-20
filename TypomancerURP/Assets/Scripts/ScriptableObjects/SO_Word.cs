@@ -5,6 +5,7 @@ public class SO_Word : ScriptableObject
 {
     public string Word;
     public string Phrase; //text displayed when using the word
+    public EMoveType? type;
     public byte attackModifier;
     public byte DefenceModifier;
     public sbyte HealthModifier;
