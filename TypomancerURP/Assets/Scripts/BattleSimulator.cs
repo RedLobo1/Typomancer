@@ -135,13 +135,15 @@ public class BattleSimulator : MonoBehaviour
         {
             enemyAttackCooldownCurrent = MathF.Max(enemyAttackCooldownCurrent - blindSetBackamount, 0);//roll back timer by 3s or until 0
             RerollEnemyWord();//reroll chosen word
-            RemoveStatusEffectFromCreature(creature);
+            
         }
+        RemoveStatusEffectFromCreature(creature);
     }
 
     private void RemoveStatusEffectFromCreature(Creature creature)
     {
         creature.SetStatusEffect(EStatusEffect.None);//heal stun
+        OnStatusEffectAfflicted?.Invoke(creature, EStatusEffect.None);
     }
 
     private void OnSick(Creature creature)
@@ -201,7 +203,7 @@ public class BattleSimulator : MonoBehaviour
 
     private void ExecuteStatChanges(Creature attacker, Creature defender, SO_Word MoveData)
     {
-         sbyte healthModifier = (sbyte)(Mathf.Min(0, -MoveData.attackModifier + enemy.GetDefence()));
+        sbyte healthModifier = (sbyte)(Mathf.Min(0, -MoveData.attackModifier + enemy.GetDefence()));
         UpdateHealth(defender, healthModifier);
         if (MoveData.attackModifier != 0)
             LiftDefence(defender); //if the attack does damage, remove the defence
@@ -210,7 +212,7 @@ public class BattleSimulator : MonoBehaviour
         UpdateDefence(attacker, (byte)MoveData.DefenceModifier);
 
 
-        if (MoveData.StatusEffect != EStatusEffect.None)
+        if (MoveData.StatusEffect != defender.GetStatusEffect())
         {
             OnStatusEffectAfflicted?.Invoke(defender, MoveData.StatusEffect);
             defender.SetStatusEffect(MoveData.StatusEffect);
@@ -225,8 +227,10 @@ public class BattleSimulator : MonoBehaviour
     {
         if (healthModifier != 0)
         {
-            OnHealthChanged?.Invoke(creature, healthModifier);
             creature.ChangeHealth(healthModifier);
+            OnHealthChanged?.Invoke(creature, healthModifier);
+            if (creature is Player player) OnPlayerStatUpdate?.Invoke(this, new CreatureUIStatUpdate(player.GetMaxHealth(), player.GetHealth()));
+            if (creature is Player enemy) OnEnemyStatUpdate?.Invoke(this, new CreatureUIStatUpdate(enemy.GetMaxHealth(), enemy.GetHealth()));
         }
     }
     private void UpdateDefence(Creature creature, byte DefenceModifier)
@@ -240,7 +244,7 @@ public class BattleSimulator : MonoBehaviour
 
     private void LiftDefence(Creature creature)
     {
-        OnDefenceChanged?.Invoke(creature,0);
+        OnDefenceChanged?.Invoke(creature, 0);
         creature.ChangeDefence(0);
     }
     private bool GetPauseState()

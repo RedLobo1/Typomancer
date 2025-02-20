@@ -18,7 +18,7 @@ MonoBehaviour:
   BasettackCooldown: 15
   wordList:
     entries:
-    - word: KICK
+    - word: PICO
       odds: 100
     - word: COOK
       odds: 0
