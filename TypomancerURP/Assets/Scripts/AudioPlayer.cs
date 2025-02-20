@@ -24,11 +24,12 @@ public class AudioPlayer : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
         FindAllObjectsOfType();
         PlayAmbiance();
-
-        userInput.OnPauseStateUpdate += PlayLexiconOpenClose;
         wordManager.OnWordchecked += ActivateTabSound;
-        
-        selectables.OnChangedSelection += PlayUIMovingSound;
+
+        if (userInput != null)
+            userInput.OnPauseStateUpdate += PlayLexiconOpenClose;
+        if (selectables != null)
+            selectables.OnChangedSelection += PlayUIMovingSound;
     }
 
     private void ActivateTabSound(Color color, bool arg2) ///////
