@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Oliver Tree
   PrizeLetter: 111
   MaxHealth: 10
-  BasettackCooldown: 10
+  BasettackCooldown: 11
   wordList:
     entries:
     - word: KICK

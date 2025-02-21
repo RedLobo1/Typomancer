@@ -14,16 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 'Demented Ditty '
   PrizeLetter: 101
-  MaxHealth: 12
+  MaxHealth: 15
   BasettackCooldown: 8
   wordList:
     entries:
-    - word: CODE
-      odds: 20
-    - word: POOP
+    - word: DOPE
+      odds: 10
+    - word: DICK
       odds: 30
-    - word: COCK
-      odds: 30
-    - word: POPE
-      odds: 15
-  enemySprite: {fileID: 21300000, guid: 0f299a5a2250faf4789f37dd4a1f6260, type: 3}
+    - word: ....
+      odds: 60
+  enemySprite: {fileID: 21300000, guid: d365b9704e1bfc14a9a96b735918fce2, type: 3}
