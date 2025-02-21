@@ -54,7 +54,7 @@ public class UIUpdater : MonoBehaviour
 
     [SerializeField] private bool _finalScene;
 
-    void Start()
+    void Awake()
     {
         battleSim = FindObjectOfType<BattleSimulator>();
         wordManager = FindObjectOfType<WordManager>();
