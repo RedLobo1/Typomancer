@@ -1847,6 +1847,7 @@ MonoBehaviour:
   Lexicon: {fileID: 829114353}
   _pointer: {fileID: 1532793277}
   loadInOwnedLetters: {fileID: 0}
+  PointerOverlapTolerance: 15
   IsMovementBlocked: 0
 --- !u!4 &1151172058
 Transform:
@@ -2559,12 +2560,12 @@ PrefabInstance:
     - target: {fileID: 6195662944956058925, guid: 880f09c9dd9f7e94b956a071e922b859,
         type: 3}
       propertyPath: m_text
-      value: E
+      value: D
       objectReference: {fileID: 0}
     - target: {fileID: 6324064259133788225, guid: 880f09c9dd9f7e94b956a071e922b859,
         type: 3}
       propertyPath: m_text
-      value: 'You call that a move Eddy? '
+      value: Remember me Ditty?
       objectReference: {fileID: 0}
     - target: {fileID: 6853357471323692298, guid: 880f09c9dd9f7e94b956a071e922b859,
         type: 3}
@@ -2671,6 +2672,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6931054693978728029, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7225540057727288108, guid: 880f09c9dd9f7e94b956a071e922b859,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2679,7 +2685,7 @@ PrefabInstance:
     - target: {fileID: 9075699312717027625, guid: 880f09c9dd9f7e94b956a071e922b859,
         type: 3}
       propertyPath: m_text
-      value: rrosive ddy
+      value: emented itty
       objectReference: {fileID: 0}
     - target: {fileID: 9075699312717027625, guid: 880f09c9dd9f7e94b956a071e922b859,
         type: 3}

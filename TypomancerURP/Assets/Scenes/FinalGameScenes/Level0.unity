@@ -2483,6 +2483,7 @@ MonoBehaviour:
   Lexicon: {fileID: 0}
   _pointer: {fileID: 7381881371488231505}
   loadInOwnedLetters: {fileID: 0}
+  PointerOverlapTolerance: 15
   IsMovementBlocked: 0
 --- !u!4 &1151172058
 Transform:
@@ -3866,6 +3867,11 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 620348832}
+    - target: {fileID: 8061107676831398591, guid: fa6c0a9ef70c7ef44be456c63b7da693,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

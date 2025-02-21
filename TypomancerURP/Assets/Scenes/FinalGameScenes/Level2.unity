@@ -707,7 +707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d918b997570e74147a258864cad11c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 12
   statusTimer: 0
   damagecounter: 0
 --- !u!1 &527585732
@@ -1847,6 +1847,7 @@ MonoBehaviour:
   Lexicon: {fileID: 829114353}
   _pointer: {fileID: 1532793277}
   loadInOwnedLetters: {fileID: 0}
+  PointerOverlapTolerance: 15
   IsMovementBlocked: 0
 --- !u!4 &1151172058
 Transform:
