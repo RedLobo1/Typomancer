@@ -37,16 +37,20 @@ public class SceneSwitcher : MonoBehaviour
         {
             SceneManager.LoadScene(sceneToLoad);
         }
-
-
-        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
-        {
-            SceneManager.LoadScene(nextSceneIndex);
-        }
         else
         {
-            Debug.Log("No more levels!");
+            if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+            {
+                SceneManager.LoadScene(nextSceneIndex);
+            }
+            else
+            {
+                Debug.Log("No more levels!");
+            }
         }
+
+
+
     }
 
     private IEnumerator AutoSwitchWithFadeOut()

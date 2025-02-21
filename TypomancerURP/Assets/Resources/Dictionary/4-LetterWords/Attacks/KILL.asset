@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: KILL
   m_EditorClassIdentifier: 
   Word: KILL
-  Phrase: "Made you evaporate ... (\uFFE3\u25BD\uFFE3) Bye~Bye~"
+  Phrase: Made you evaporate ...  Bye~Bye~
   attackModifier: 100
   DefenceModifier: 0
   HealthModifier: 0

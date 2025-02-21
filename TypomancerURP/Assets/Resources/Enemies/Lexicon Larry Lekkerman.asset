@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Lexicon Larry Lekkerman
   PrizeLetter: 108
   MaxHealth: 12
-  BasettackCooldown: 50
+  BasettackCooldown: 65
   wordList:
     entries:
     - word: KILL
