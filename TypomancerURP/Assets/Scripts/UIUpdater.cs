@@ -52,6 +52,7 @@ public class UIUpdater : MonoBehaviour
     private BattleSimulator battleSim;
     private WordManager wordManager;
 
+    [SerializeField] private bool _finalScene;
 
     void Start()
     {
@@ -128,7 +129,16 @@ public class UIUpdater : MonoBehaviour
     {
         _playerDead.SetActive(true);
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Restart the current level
+
+        if (!_finalScene)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Restart the current level
+        }
+        else
+        {
+            SceneManager.LoadScene(9);
+        }
+
     }
 
     private void LogicWhenEnemyDefeated()

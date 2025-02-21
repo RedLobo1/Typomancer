@@ -12,6 +12,8 @@ public class DialogueSystem : MonoBehaviour
     private int currentLineIndex = 0;
     private bool isTyping = false;
 
+    public bool IsEnd;
+    public GameObject Tab;
     void Start()
     {
         if (dialogueLines.Length > 0)
@@ -44,6 +46,11 @@ public class DialogueSystem : MonoBehaviour
         else
         {
             dialogueText.text = ""; // End of dialogue
+            if(IsEnd)
+            {
+                Tab.SetActive(true);
+            }
+
         }
     }
 }

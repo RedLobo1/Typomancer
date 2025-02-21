@@ -2019,6 +2019,8 @@ MonoBehaviour:
   - Nice to meet you!
   - Use A and D to move or the Arrow keys
   - Press SPACE to switch the letter out!
+  IsEnd: 0
+  Tab: {fileID: 0}
 --- !u!1 &807259973
 GameObject:
   m_ObjectHideFlags: 0
@@ -3033,12 +3035,14 @@ MonoBehaviour:
   textSpeed: 0.05
   autoAdvanceTime: 1.5
   dialogueLines:
-  - Yeah thats me Clopidek
+  - Its-a-me Clopidek
   - ...
   - Oh no it's the Demented Goblin Squad :(
   - they want to steal my letters !!!
   - '''''Beating sounds'''''
   - Nooo... they stole my name !
+  IsEnd: 0
+  Tab: {fileID: 0}
 --- !u!1 &1151172056
 GameObject:
   m_ObjectHideFlags: 0
@@ -3076,6 +3080,7 @@ MonoBehaviour:
   Lexicon: {fileID: 0}
   _pointer: {fileID: 7381881371488231505}
   loadInOwnedLetters: {fileID: 0}
+  PointerOverlapTolerance: 15
   IsMovementBlocked: 0
 --- !u!4 &1151172058
 Transform:
@@ -3510,6 +3515,8 @@ MonoBehaviour:
   switchDelay: 18
   animator: {fileID: 620348835}
   autoswitch: 1
+  sceneToLoad: 0
+  specialLoad: 0
 --- !u!4 &1574112874
 Transform:
   m_ObjectHideFlags: 0

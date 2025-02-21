@@ -8,6 +8,10 @@ public class SceneSwitcher : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private bool autoswitch;
 
+
+    [SerializeField] private int sceneToLoad;
+    [SerializeField] private bool specialLoad;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab)|| Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
@@ -28,6 +32,12 @@ public class SceneSwitcher : MonoBehaviour
         yield return new WaitForSeconds(switchDelay);
 
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+        if(specialLoad)
+        {
+            SceneManager.LoadScene(sceneToLoad);
+        }
+
 
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
