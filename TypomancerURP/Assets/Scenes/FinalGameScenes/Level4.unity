@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28e0aa67aaf91e43b5de024a85a698e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AvailableLetters: KICO
+  AvailableLetters: KICOP
 --- !u!4 &360080414
 Transform:
   m_ObjectHideFlags: 0
@@ -1847,7 +1847,6 @@ MonoBehaviour:
   Lexicon: {fileID: 829114353}
   _pointer: {fileID: 1532793277}
   loadInOwnedLetters: {fileID: 0}
-  PointerOverlapTolerance: 15
   IsMovementBlocked: 0
 --- !u!4 &1151172058
 Transform:
@@ -2173,9 +2172,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAttackModifier: 0.9
-  enemyAttackCooldownMinumum: 0.1
+  enemyAttackCooldownMinumum: 7
   stunTime: 5
-  sickTime: 5
+  sickTime: 3
   sickDamageInterval: 1
   sickDamageAmount: 1
   blindSetBackamount: 3
@@ -2221,9 +2220,9 @@ Transform:
   m_GameObject: {fileID: 1743401823}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.57, y: -0.56999993, z: 8.35}
-  m_LocalScale: {x: 1.6300001, y: 1.6300001, z: 1.6300001}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: -0.57, y: 0.28, z: 8.35}
+  m_LocalScale: {x: 1.2824386, y: 1.2824386, z: 1.2824386}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 499778875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2242,7 +2241,7 @@ MonoBehaviour:
   maxHealth: 0
   statusTimer: 0
   damagecounter: 0
-  SO_Enemy: {fileID: 11400000, guid: 3919f91c710c0984a80bb6c4cf5cefe3, type: 2}
+  SO_Enemy: {fileID: 11400000, guid: f1540e4260f01304187dffcc8bbe5f3d, type: 2}
 --- !u!212 &1743401826
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2284,7 +2283,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8efe75ae77e9b5744aeb42eec564cd2e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0f299a5a2250faf4789f37dd4a1f6260, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2512,15 +2511,65 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 441029082867924422, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 907951852844000282, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960369898439602996, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3012249590110265121, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3685148865828053368, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095440038685993547, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860064739000975424, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5225948429066593426, guid: 880f09c9dd9f7e94b956a071e922b859,
         type: 3}
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6171676854607556550, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195662944956058925, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_text
+      value: E
+      objectReference: {fileID: 0}
     - target: {fileID: 6324064259133788225, guid: 880f09c9dd9f7e94b956a071e922b859,
         type: 3}
       propertyPath: m_text
-      value: OLIVER YOU BASTARD!
+      value: 'You call that a move Eddy? '
+      objectReference: {fileID: 0}
+    - target: {fileID: 6853357471323692298, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6906547813659250300, guid: 880f09c9dd9f7e94b956a071e922b859,
         type: 3}
@@ -2621,6 +2670,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7225540057727288108, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9075699312717027625, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_text
+      value: rrosive ddy
+      objectReference: {fileID: 0}
+    - target: {fileID: 9075699312717027625, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 15.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 9075699312717027625, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_margin.z
+      value: 30.95755
+      objectReference: {fileID: 0}
+    - target: {fileID: 9075699312717027625, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_lineSpacing
+      value: 50.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9075699312717027625, guid: 880f09c9dd9f7e94b956a071e922b859,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 15.74
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
