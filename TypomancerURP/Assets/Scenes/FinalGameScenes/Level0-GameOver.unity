@@ -3730,32 +3730,32 @@ PrefabInstance:
     - target: {fileID: 817148292182775212, guid: fa6c0a9ef70c7ef44be456c63b7da693,
         type: 3}
       propertyPath: dialogueLines.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 817148292182775212, guid: fa6c0a9ef70c7ef44be456c63b7da693,
         type: 3}
       propertyPath: dialogueLines.Array.data[0]
-      value: Your name is no longer Clopidek I guess...
+      value: Oh, did Larry send you here?
       objectReference: {fileID: 0}
     - target: {fileID: 817148292182775212, guid: fa6c0a9ef70c7ef44be456c63b7da693,
         type: 3}
       propertyPath: dialogueLines.Array.data[1]
-      value: ...
+      value: Looks like it is just us now...
       objectReference: {fileID: 0}
     - target: {fileID: 817148292182775212, guid: fa6c0a9ef70c7ef44be456c63b7da693,
         type: 3}
       propertyPath: dialogueLines.Array.data[2]
-      value: Use A and D to move or the Arrow keys
+      value: This means your name is no longer Clopidek I guess...
       objectReference: {fileID: 0}
     - target: {fileID: 817148292182775212, guid: fa6c0a9ef70c7ef44be456c63b7da693,
         type: 3}
       propertyPath: dialogueLines.Array.data[3]
-      value: Use A and D to move or the Arrow keys
+      value: But if you press tab I can give you another chance... to suffer
       objectReference: {fileID: 0}
     - target: {fileID: 817148292182775212, guid: fa6c0a9ef70c7ef44be456c63b7da693,
         type: 3}
       propertyPath: dialogueLines.Array.data[4]
-      value: Use A and D to move or the Arrow keys
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1055503972669376361, guid: fa6c0a9ef70c7ef44be456c63b7da693,
         type: 3}
