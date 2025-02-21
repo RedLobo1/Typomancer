@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +17,10 @@ public class AudioPlayer : MonoBehaviour
 
     void Start()
     {
+
+        Cursor.lockState = CursorLockMode.Locked; // Locks the cursor to the center of the screen
+        Cursor.visible = false; // Hides the cursor
+
         SceneManager.sceneLoaded += OnSceneLoaded;
         FindAllObjectsOfType();
         PlayAmbiance();

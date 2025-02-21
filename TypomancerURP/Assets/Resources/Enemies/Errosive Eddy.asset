@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Errosive Eddy
   PrizeLetter: 101
-  MaxHealth: 15
+  MaxHealth: 12
   BasettackCooldown: 16
   wordList:
     entries:
