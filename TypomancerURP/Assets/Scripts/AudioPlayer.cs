@@ -50,8 +50,8 @@ public class AudioPlayer : MonoBehaviour
 
         if (QuitPressingStartSelect)
         {
-            //if (Input.GetButton("JoystickButton6") && Input.GetButton("JoystickButton7"))
-            //    Application.Quit();
+            if (Input.GetKey(KeyCode.JoystickButton6) && Input.GetKey(KeyCode.JoystickButton7))
+                Application.Quit();
         }
     }
     private void FindAllObjectsOfType()

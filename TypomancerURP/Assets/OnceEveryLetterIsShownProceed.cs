@@ -10,7 +10,7 @@ public class OnceEveryLetterIsShownProceed : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.JoystickButton1))
         {
             CheckSelection();
         }

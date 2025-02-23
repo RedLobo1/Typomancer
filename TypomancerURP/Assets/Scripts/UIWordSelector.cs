@@ -45,7 +45,6 @@ public class UIWordSelector : MonoBehaviour
 
     }
 
-
     private void TogglCanSubmit(Color color, bool isWordCorrect)
     {
         canSubmit = isWordCorrect;
@@ -62,18 +61,23 @@ public class UIWordSelector : MonoBehaviour
 
         if (!battleSim.GetPauseState())
         {
-            if (Input.GetKeyDown(KeyCode.Space) && !IsMovementBlocked)
+            if ((Input.GetKeyDown(KeyCode.Space)||
+                Input.GetKeyDown(KeyCode.JoystickButton1))
+                && !IsMovementBlocked)
             {
                 UpdateCurrentSelectedLetter();
-
             }
             if (canSubmit)
-                if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
+                if (Input.GetKeyDown(KeyCode.Tab) || 
+                    Input.GetKeyDown(KeyCode.KeypadEnter) || 
+                    Input.GetKeyDown(KeyCode.Return) ||
+                    Input.GetKeyDown(KeyCode.JoystickButton5))
                 {
                     SubmitWord();
                 }
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) ||
+            Input.GetKeyDown(KeyCode.JoystickButton7))
         {
             Lexicon.SetActive(!Lexicon.activeInHierarchy); //toggle visibility
             OnPauseStateUpdate?.Invoke(Lexicon.activeInHierarchy); //Toggle pause

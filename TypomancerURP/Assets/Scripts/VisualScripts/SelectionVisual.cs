@@ -21,13 +21,17 @@ public class SelectionVisual : MonoBehaviour
     {
         if (battleSim == null || !battleSim.GetPauseState())
         {
-            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.D) ||
+                Input.GetKeyDown(KeyCode.RightArrow) ||
+                Input.GetKeyDown(KeyCode.JoystickButton16))
             {
                 _currentSelected = (_currentSelected + 1) % Selectables.Length;
                 SelectBox();
             }
 
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.A) ||
+                Input.GetKeyDown(KeyCode.LeftArrow) ||
+                Input.GetKeyDown(KeyCode.JoystickButton15))
             {
                 _currentSelected = (_currentSelected - 1 + Selectables.Length) % Selectables.Length;
                 SelectBox();
